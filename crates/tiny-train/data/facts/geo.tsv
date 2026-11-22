@@ -1,0 +1,498 @@
+capital	Afghanistan	Kabul
+continent	Afghanistan	Asia
+capital	Angola	Luanda
+continent	Angola	Africa
+capital	Albania	Tirana
+continent	Albania	Europe
+language	Albania	Albanian
+currency	Albania	Albanian lek
+capital	Andorra	Andorra la Vella
+continent	Andorra	Europe
+capital	United Arab Emirates	Abu Dhabi
+continent	United Arab Emirates	Asia
+capital	Argentina	Buenos Aires
+continent	Argentina	South America
+language	Argentina	Spanish
+currency	Argentina	Argentine peso
+capital	Armenia	Yerevan
+continent	Armenia	Asia
+language	Armenia	Armenian
+currency	Armenia	Armenian dram
+capital	Antigua and Barbuda	Saint John's
+continent	Antigua and Barbuda	North America
+capital	Australia	Canberra
+continent	Australia	Oceania
+language	Australia	English
+currency	Australia	Australian dollar
+capital	Austria	Vienna
+continent	Austria	Europe
+language	Austria	German
+currency	Austria	Euro
+capital	Azerbaijan	Baku
+continent	Azerbaijan	Asia
+capital	Burundi	Gitega
+continent	Burundi	Africa
+capital	Belgium	Brussels
+continent	Belgium	Europe
+capital	Benin	Porto-Novo
+continent	Benin	Africa
+capital	Burkina Faso	Ouagadougou
+continent	Burkina Faso	Africa
+capital	Bangladesh	Dhaka
+continent	Bangladesh	Asia
+capital	Bulgaria	Sofia
+continent	Bulgaria	Europe
+language	Bulgaria	Bulgarian
+currency	Bulgaria	Euro
+capital	Bahrain	Manama
+continent	Bahrain	Asia
+capital	Bahamas	Nassau
+continent	Bahamas	North America
+capital	Bosnia and Herzegovina	Sarajevo
+continent	Bosnia and Herzegovina	Europe
+capital	Belarus	Minsk
+continent	Belarus	Europe
+capital	Belize	Belmopan
+continent	Belize	North America
+capital	Bolivia	Sucre
+continent	Bolivia	South America
+capital	Brazil	Brasilia
+continent	Brazil	South America
+language	Brazil	Portuguese
+currency	Brazil	Brazilian real
+capital	Barbados	Bridgetown
+continent	Barbados	North America
+capital	Brunei	Bandar Seri Begawan
+continent	Brunei	Asia
+capital	Bhutan	Thimphu
+continent	Bhutan	Asia
+capital	Botswana	Gaborone
+continent	Botswana	Africa
+capital	Central African Republic	Bangui
+continent	Central African Republic	Africa
+capital	Canada	Ottawa
+continent	Canada	North America
+capital	Switzerland	Bern
+continent	Switzerland	Europe
+capital	Chile	Santiago
+continent	Chile	South America
+language	Chile	Spanish
+currency	Chile	Chilean peso
+capital	China	Beijing
+continent	China	Asia
+language	China	Chinese
+currency	China	Chinese yuan
+capital	Ivory Coast	Yamoussoukro
+continent	Ivory Coast	Africa
+capital	Cameroon	Yaounde
+continent	Cameroon	Africa
+capital	DR Congo	Kinshasa
+continent	DR Congo	Africa
+capital	Congo	Brazzaville
+continent	Congo	Africa
+capital	Colombia	Bogota
+continent	Colombia	South America
+language	Colombia	Spanish
+currency	Colombia	Colombian peso
+capital	Comoros	Moroni
+continent	Comoros	Africa
+capital	Cape Verde	Praia
+continent	Cape Verde	Africa
+capital	Costa Rica	San Jose
+continent	Costa Rica	North America
+capital	Cuba	Havana
+continent	Cuba	North America
+language	Cuba	Spanish
+currency	Cuba	Cuban peso
+capital	Cyprus	Nicosia
+continent	Cyprus	Europe
+capital	Czechia	Prague
+continent	Czechia	Europe
+language	Czechia	Czech
+currency	Czechia	Czech koruna
+capital	Germany	Berlin
+continent	Germany	Europe
+language	Germany	German
+currency	Germany	Euro
+capital	Djibouti	Djibouti
+continent	Djibouti	Africa
+capital	Dominica	Roseau
+continent	Dominica	North America
+capital	Denmark	Copenhagen
+continent	Denmark	Europe
+language	Denmark	Danish
+currency	Denmark	Danish krone
+capital	Dominican Republic	Santo Domingo
+continent	Dominican Republic	North America
+capital	Algeria	Algiers
+continent	Algeria	Africa
+capital	Ecuador	Quito
+continent	Ecuador	South America
+capital	Egypt	Cairo
+continent	Egypt	Africa
+language	Egypt	Arabic
+currency	Egypt	Egyptian pound
+capital	Eritrea	Asmara
+continent	Eritrea	Africa
+capital	Spain	Madrid
+continent	Spain	Europe
+language	Spain	Spanish
+currency	Spain	Euro
+capital	Estonia	Tallinn
+continent	Estonia	Europe
+language	Estonia	Estonian
+currency	Estonia	Euro
+capital	Ethiopia	Addis Ababa
+continent	Ethiopia	Africa
+capital	Finland	Helsinki
+continent	Finland	Europe
+language	Finland	Finnish
+currency	Finland	Euro
+capital	Fiji	Suva
+continent	Fiji	Oceania
+capital	France	Paris
+continent	France	Europe
+language	France	French
+currency	France	Euro
+capital	Micronesia	Palikir
+continent	Micronesia	Oceania
+capital	Gabon	Libreville
+continent	Gabon	Africa
+capital	United Kingdom	London
+continent	United Kingdom	Europe
+language	United Kingdom	English
+currency	United Kingdom	British pound
+capital	Georgia	Tbilisi
+continent	Georgia	Asia
+language	Georgia	Georgian
+currency	Georgia	lari
+capital	Ghana	Accra
+continent	Ghana	Africa
+capital	Guinea	Conakry
+continent	Guinea	Africa
+capital	Gambia	Banjul
+continent	Gambia	Africa
+capital	Guinea-Bissau	Bissau
+continent	Guinea-Bissau	Africa
+capital	Equatorial Guinea	Ciudad de la Paz
+continent	Equatorial Guinea	Africa
+capital	Greece	Athens
+continent	Greece	Europe
+language	Greece	Greek
+currency	Greece	Euro
+capital	Grenada	St. George's
+continent	Grenada	North America
+capital	Guatemala	Guatemala City
+continent	Guatemala	North America
+capital	Guyana	Georgetown
+continent	Guyana	South America
+capital	Honduras	Tegucigalpa
+continent	Honduras	North America
+capital	Croatia	Zagreb
+continent	Croatia	Europe
+language	Croatia	Croatian
+currency	Croatia	Euro
+capital	Haiti	Port-au-Prince
+continent	Haiti	North America
+capital	Hungary	Budapest
+continent	Hungary	Europe
+language	Hungary	Hungarian
+currency	Hungary	Hungarian forint
+capital	Indonesia	Jakarta
+continent	Indonesia	Asia
+language	Indonesia	Indonesian
+currency	Indonesia	Indonesian rupiah
+capital	India	New Delhi
+continent	India	Asia
+capital	Ireland	Dublin
+continent	Ireland	Europe
+language	Ireland	English
+currency	Ireland	Euro
+capital	Iran	Tehran
+continent	Iran	Asia
+language	Iran	Persian
+currency	Iran	Iranian rial
+capital	Iraq	Baghdad
+continent	Iraq	Asia
+capital	Iceland	Reykjavik
+continent	Iceland	Europe
+language	Iceland	Icelandic
+currency	Iceland	Icelandic krona
+capital	Israel	Jerusalem
+continent	Israel	Asia
+language	Israel	Hebrew
+currency	Israel	Israeli new shekel
+capital	Italy	Rome
+continent	Italy	Europe
+language	Italy	Italian
+currency	Italy	Euro
+capital	Jamaica	Kingston
+continent	Jamaica	North America
+capital	Jordan	Amman
+continent	Jordan	Asia
+capital	Japan	Tokyo
+continent	Japan	Asia
+language	Japan	Japanese
+currency	Japan	Japanese yen
+capital	Kazakhstan	Astana
+continent	Kazakhstan	Asia
+capital	Kenya	Nairobi
+continent	Kenya	Africa
+capital	Kyrgyzstan	Bishkek
+continent	Kyrgyzstan	Asia
+capital	Cambodia	Phnom Penh
+continent	Cambodia	Asia
+capital	Kiribati	South Tarawa
+continent	Kiribati	Oceania
+capital	Saint Kitts and Nevis	Basseterre
+continent	Saint Kitts and Nevis	North America
+capital	South Korea	Seoul
+continent	South Korea	Asia
+language	South Korea	Korean
+currency	South Korea	South Korean won
+capital	Kuwait	Kuwait City
+continent	Kuwait	Asia
+capital	Laos	Vientiane
+continent	Laos	Asia
+capital	Lebanon	Beirut
+continent	Lebanon	Asia
+capital	Liberia	Monrovia
+continent	Liberia	Africa
+capital	Libya	Tripoli
+continent	Libya	Africa
+capital	Saint Lucia	Castries
+continent	Saint Lucia	North America
+capital	Liechtenstein	Vaduz
+continent	Liechtenstein	Europe
+capital	Sri Lanka	Colombo
+continent	Sri Lanka	Asia
+capital	Lesotho	Maseru
+continent	Lesotho	Africa
+capital	Lithuania	Vilnius
+continent	Lithuania	Europe
+language	Lithuania	Lithuanian
+currency	Lithuania	Euro
+capital	Luxembourg	Luxembourg
+continent	Luxembourg	Europe
+capital	Latvia	Riga
+continent	Latvia	Europe
+language	Latvia	Latvian
+currency	Latvia	Euro
+capital	Morocco	Rabat
+continent	Morocco	Africa
+language	Morocco	Arabic
+currency	Morocco	Moroccan dirham
+capital	Monaco	Monaco
+continent	Monaco	Europe
+capital	Moldova	Chisinau
+continent	Moldova	Europe
+capital	Madagascar	Antananarivo
+continent	Madagascar	Africa
+capital	Maldives	Male
+continent	Maldives	Asia
+capital	Mexico	Mexico City
+continent	Mexico	North America
+language	Mexico	Spanish
+currency	Mexico	Mexican peso
+capital	Marshall Islands	Majuro
+continent	Marshall Islands	Oceania
+capital	North Macedonia	Skopje
+continent	North Macedonia	Europe
+capital	Mali	Bamako
+continent	Mali	Africa
+capital	Malta	Valletta
+continent	Malta	Europe
+capital	Myanmar	Naypyidaw
+continent	Myanmar	Asia
+capital	Montenegro	Podgorica
+continent	Montenegro	Europe
+capital	Mongolia	Ulan Bator
+continent	Mongolia	Asia
+language	Mongolia	Mongolian
+currency	Mongolia	Mongolian togrog
+capital	Mozambique	Maputo
+continent	Mozambique	Africa
+capital	Mauritania	Nouakchott
+continent	Mauritania	Africa
+capital	Mauritius	Port Louis
+continent	Mauritius	Africa
+capital	Malawi	Lilongwe
+continent	Malawi	Africa
+capital	Malaysia	Kuala Lumpur
+continent	Malaysia	Asia
+capital	Namibia	Windhoek
+continent	Namibia	Africa
+capital	Niger	Niamey
+continent	Niger	Africa
+capital	Nigeria	Abuja
+continent	Nigeria	Africa
+capital	Nicaragua	Managua
+continent	Nicaragua	North America
+capital	Netherlands	Amsterdam
+continent	Netherlands	Europe
+language	Netherlands	Dutch
+currency	Netherlands	Euro
+capital	Norway	Oslo
+continent	Norway	Europe
+language	Norway	Norwegian
+currency	Norway	Norwegian krone
+capital	Nepal	Kathmandu
+continent	Nepal	Asia
+language	Nepal	Nepali
+currency	Nepal	Nepalese rupee
+capital	Nauru	Yaren
+continent	Nauru	Oceania
+capital	New Zealand	Wellington
+continent	New Zealand	Oceania
+language	New Zealand	English
+currency	New Zealand	New Zealand dollar
+capital	Oman	Muscat
+continent	Oman	Asia
+capital	Pakistan	Islamabad
+continent	Pakistan	Asia
+capital	Panama	Panama City
+continent	Panama	North America
+capital	Peru	Lima
+continent	Peru	South America
+language	Peru	Spanish
+currency	Peru	Peruvian sol
+capital	Philippines	Manila
+continent	Philippines	Asia
+capital	Palau	Ngerulmud
+continent	Palau	Oceania
+capital	Papua New Guinea	Port Moresby
+continent	Papua New Guinea	Oceania
+capital	Poland	Warsaw
+continent	Poland	Europe
+language	Poland	Polish
+currency	Poland	Polish zoty
+capital	North Korea	Pyongyang
+continent	North Korea	Asia
+capital	Portugal	Lisbon
+continent	Portugal	Europe
+language	Portugal	Portuguese
+currency	Portugal	Euro
+capital	Paraguay	Asuncion
+continent	Paraguay	South America
+capital	Qatar	Doha
+continent	Qatar	Asia
+capital	Romania	Bucharest
+continent	Romania	Europe
+language	Romania	Romanian
+currency	Romania	Romanian leu
+capital	Russia	Moscow
+continent	Russia	Europe
+language	Russia	Russian
+currency	Russia	Russian ruble
+capital	Rwanda	Kigali
+continent	Rwanda	Africa
+capital	Saudi Arabia	Riyadh
+continent	Saudi Arabia	Asia
+language	Saudi Arabia	Arabic
+currency	Saudi Arabia	Saudi riyal
+capital	Sudan	Khartoum
+continent	Sudan	Africa
+capital	Senegal	Dakar
+continent	Senegal	Africa
+capital	Singapore	Singapore
+continent	Singapore	Asia
+capital	Solomon Islands	Honiara
+continent	Solomon Islands	Oceania
+capital	Sierra Leone	Freetown
+continent	Sierra Leone	Africa
+capital	El Salvador	San Salvador
+continent	El Salvador	North America
+capital	San Marino	City of San Marino
+continent	San Marino	Europe
+capital	Somalia	Mogadishu
+continent	Somalia	Africa
+capital	Serbia	Belgrade
+continent	Serbia	Europe
+language	Serbia	Serbian
+currency	Serbia	Serbian dinar
+capital	South Sudan	Juba
+continent	South Sudan	Africa
+capital	Sao Tome and Principe	Sao Tome
+continent	Sao Tome and Principe	Africa
+capital	Suriname	Paramaribo
+continent	Suriname	South America
+capital	Slovakia	Bratislava
+continent	Slovakia	Europe
+language	Slovakia	Slovak
+currency	Slovakia	Euro
+capital	Slovenia	Ljubljana
+continent	Slovenia	Europe
+capital	Sweden	Stockholm
+continent	Sweden	Europe
+language	Sweden	Swedish
+currency	Sweden	Swedish krona
+capital	Eswatini	Lobamba
+continent	Eswatini	Africa
+capital	Seychelles	Victoria
+continent	Seychelles	Africa
+capital	Syria	Damascus
+continent	Syria	Asia
+capital	Chad	N'Djamena
+continent	Chad	Africa
+capital	Togo	Lome
+continent	Togo	Africa
+capital	Thailand	Bangkok
+continent	Thailand	Asia
+language	Thailand	Thai
+currency	Thailand	Thai baht
+capital	Tajikistan	Dushanbe
+continent	Tajikistan	Asia
+capital	Turkmenistan	Ashgabat
+continent	Turkmenistan	Asia
+capital	Timor-Leste	Dili
+continent	Timor-Leste	Asia
+capital	Tonga	Nuku'alofa
+continent	Tonga	Oceania
+capital	Trinidad and Tobago	Port of Spain
+continent	Trinidad and Tobago	North America
+capital	Tunisia	Tunis
+continent	Tunisia	Africa
+capital	Turkey	Ankara
+continent	Turkey	Asia
+language	Turkey	Turkish
+currency	Turkey	Turkish lira
+capital	Tuvalu	Funafuti
+continent	Tuvalu	Oceania
+capital	Tanzania	Dodoma
+continent	Tanzania	Africa
+capital	Uganda	Kampala
+continent	Uganda	Africa
+capital	Ukraine	Kyiv
+continent	Ukraine	Europe
+language	Ukraine	Ukrainian
+currency	Ukraine	Ukrainian hryvnia
+capital	Uruguay	Montevideo
+continent	Uruguay	South America
+capital	United States	Washington D.C.
+continent	United States	North America
+language	United States	English
+currency	United States	United States dollar
+capital	Uzbekistan	Tashkent
+continent	Uzbekistan	Asia
+capital	Vatican City	Vatican City
+continent	Vatican City	Europe
+capital	Saint Vincent and the Grenadines	Kingstown
+continent	Saint Vincent and the Grenadines	North America
+capital	Venezuela	Caracas
+continent	Venezuela	South America
+capital	Vietnam	Hanoi
+continent	Vietnam	Asia
+language	Vietnam	Vietnamese
+currency	Vietnam	Vietnamese dong
+capital	Vanuatu	Port Vila
+continent	Vanuatu	Oceania
+capital	Samoa	Apia
+continent	Samoa	Oceania
+capital	Yemen	Sana'a
+continent	Yemen	Asia
+capital	South Africa	Pretoria
+continent	South Africa	Africa
+capital	Zambia	Lusaka
+continent	Zambia	Africa
+capital	Zimbabwe	Harare
+continent	Zimbabwe	Africa

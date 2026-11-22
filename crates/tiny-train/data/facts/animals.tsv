@@ -1,0 +1,189 @@
+class	dog	mammal
+class	cat	mammal
+class	cow	mammal
+class	horse	mammal
+class	pig	mammal
+class	sheep	mammal
+class	goat	mammal
+class	rabbit	mammal
+class	mouse	mammal
+class	elephant	mammal
+class	lion	mammal
+class	tiger	mammal
+class	bear	mammal
+class	wolf	mammal
+class	fox	mammal
+class	monkey	mammal
+class	giraffe	mammal
+class	zebra	mammal
+class	kangaroo	mammal
+class	whale	mammal
+class	dolphin	mammal
+class	bat	mammal
+class	squirrel	mammal
+class	hedgehog	mammal
+class	deer	mammal
+class	camel	mammal
+class	chicken	bird
+class	duck	bird
+class	goose	bird
+class	eagle	bird
+class	owl	bird
+class	penguin	bird
+class	parrot	bird
+class	swan	bird
+class	ostrich	bird
+class	sparrow	bird
+class	shark	fish
+class	salmon	fish
+class	goldfish	fish
+class	trout	fish
+class	snake	reptile
+class	lizard	reptile
+class	crocodile	reptile
+class	turtle	reptile
+class	frog	amphibian
+class	toad	amphibian
+class	newt	amphibian
+class	ant	insect
+class	bee	insect
+class	butterfly	insect
+class	fly	insect
+class	beetle	insect
+class	mosquito	insect
+class	grasshopper	insect
+class	spider	arachnid
+legs	dog	four
+legs	cat	four
+legs	cow	four
+legs	horse	four
+legs	elephant	four
+legs	frog	four
+legs	lizard	four
+legs	chicken	two
+legs	duck	two
+legs	penguin	two
+legs	ostrich	two
+legs	owl	two
+legs	ant	six
+legs	bee	six
+legs	butterfly	six
+legs	fly	six
+legs	beetle	six
+legs	spider	eight
+legs	octopus	eight
+legs	crab	ten
+legs	snake	none
+legs	fish	none
+legs	worm	none
+legs	snail	none
+baby	dog	puppy
+baby	cat	kitten
+baby	cow	calf
+baby	horse	foal
+baby	pig	piglet
+baby	sheep	lamb
+baby	goat	kid
+baby	chicken	chick
+baby	duck	duckling
+baby	goose	gosling
+baby	swan	cygnet
+baby	frog	tadpole
+baby	bear	cub
+baby	lion	cub
+baby	tiger	cub
+baby	fox	cub
+baby	deer	fawn
+baby	kangaroo	joey
+baby	butterfly	caterpillar
+baby	elephant	calf
+baby	whale	calf
+baby	owl	owlet
+baby	eagle	eaglet
+sound	dog	bark
+sound	cat	meow
+sound	cow	moo
+sound	horse	neigh
+sound	pig	oink
+sound	sheep	baa
+sound	duck	quack
+sound	lion	roar
+sound	wolf	howl
+sound	owl	hoot
+sound	snake	hiss
+sound	bee	buzz
+sound	frog	croak
+sound	mouse	squeak
+sound	chicken	cluck
+sound	rooster	crow
+food	cow	grass
+food	horse	grass and hay
+food	sheep	grass
+food	rabbit	grass and vegetables
+food	giraffe	leaves from tall trees
+food	elephant	grass, leaves and fruit
+food	panda	bamboo
+food	koala	eucalyptus leaves
+food	lion	meat
+food	tiger	meat
+food	wolf	meat
+food	shark	fish and other sea animals
+food	penguin	fish
+food	frog	insects
+food	spider	insects
+food	bee	nectar and pollen
+food	squirrel	nuts and seeds
+food	monkey	fruit, leaves and insects
+food	owl	mice and other small animals
+food	cat	meat and fish
+food	whale	krill and small fish
+food	caterpillar	leaves
+food	hedgehog	insects, worms and slugs
+home	lion	the grasslands of Africa
+home	tiger	the forests of Asia
+home	polar bear	the Arctic
+home	penguin	Antarctica and other southern coasts
+home	camel	the desert
+home	kangaroo	Australia
+home	koala	Australia
+home	panda	China
+home	monkey	the rainforest
+home	whale	the ocean
+home	shark	the ocean
+home	dolphin	the sea
+home	frog	ponds and wet places
+home	bee	a hive
+home	bird	a nest
+home	rabbit	a burrow
+home	fox	a den
+home	bear	a den
+home	spider	a web
+home	ant	an anthill
+home	squirrel	trees
+home	giraffe	the savanna of Africa
+home	elephant	Africa and Asia
+home	zebra	the grasslands of Africa
+sound	donkey	hee-haw
+sound	goat	baa
+sound	turkey	gobble
+sound	elephant	trumpet
+sound	monkey	ooh-ooh-aah
+sound	crow	caw
+sound	pigeon	coo
+sound	goose	honk
+legs	sheep	four
+legs	pig	four
+legs	lion	four
+legs	tiger	four
+legs	kangaroo	two
+legs	parrot	two
+legs	eagle	two
+legs	turtle	four
+legs	crocodile	four
+legs	centipede	many
+legs	ladybird	six
+legs	grasshopper	six
+legs	lobster	ten
+legs	whale	none
+legs	dolphin	none
+legs	shark	none

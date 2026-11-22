@@ -11,7 +11,7 @@ cargo-fuzz = true
 libfuzzer-sys = "0.4"
 
 [dependencies.tiny]
-path = ".."
+path = "../crates/tiny"
 
 # A separate workspace, so the fuzz crate stays out of the main one.
 [workspace]

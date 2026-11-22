@@ -1,30 +1,22 @@
-[package]
-name = "tiny"
-version = "0.1.0"
+[workspace]
+members = ["crates/tiny", "crates/tiny-train"]
+# `cargo run` at the root starts the chat program; the trainer is `-p tiny-train`.
+default-members = ["crates/tiny"]
+resolver = "3"
+
+[workspace.package]
 edition = "2024"
-description = "TINY 2.1 ported to Rust: a tiny letter-by-letter question-answering transformer with a neon terminal UI"
 license = "MIT"
 rust-version = "1.95"
 repository = "https://github.com/sunsided/tiny-llm"
 readme = "README.md"
-keywords = ["transformer", "llm", "tui", "retro", "dos"]
-categories = ["command-line-utilities", "games"]
 publish = false
 
-[dependencies]
-clap = { version = "4.6.9", features = ["derive"] }
-cpal = "0.18"
-rand = "0.10.4"
-ratatui = "0.30.2"
-synthie = { version = "0.10", default-features = false, features = ["std"] }
-synthie-trombone = "0.2"
-thiserror = "2.0.21"
-
-[lints.rust]
+[workspace.lints.rust]
 missing_docs = "warn"
 unsafe_code = "forbid"
 
-[lints.clippy]
+[workspace.lints.clippy]
 pedantic = { level = "warn", priority = -1 }
 mod_module_files = "deny"
 missing_docs_in_private_items = "warn"
@@ -34,18 +26,10 @@ undocumented_unsafe_blocks = "warn"
 multiple_unsafe_ops_per_block = "warn"
 cognitive_complexity = "warn"
 
-[lints.rustdoc]
+[workspace.lints.rustdoc]
 broken_intra_doc_links = "deny"
 private_intra_doc_links = "allow"
 
 [profile.dev]
-# Inference is a tight float loop; unoptimised it is ~30x slower.
+# Inference and training are tight float loops; unoptimised they are ~30x slower.
 opt-level = 2
-
-[dev-dependencies]
-criterion = "0.8.2"
-proptest = "1.12.0"
-
-[[bench]]
-name = "step"
-harness = false

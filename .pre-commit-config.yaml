@@ -2,8 +2,8 @@
 # Local hooks call Taskfile tasks so checks stay defined in one place.
 # Pin external repos to SHAs: `prek auto-update --freeze` / `pre-commit autoupdate --freeze`.
 default_install_hook_types: [pre-commit, commit-msg, pre-push]
-# License texts are verbatim SPDX downloads; whitespace fixers must not touch them.
-exclude: ^(LICENSES/|LICENSE-)
+# License texts and the training data are verbatim copies; whitespace fixers must not touch them.
+exclude: ^(LICENSES/|LICENSE-|crates/tiny-train/data/|crates/tiny-train/tests/fixtures/)
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks

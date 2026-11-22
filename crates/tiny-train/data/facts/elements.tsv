@@ -1,0 +1,446 @@
+symbol	Hydrogen	H
+atomic	Hydrogen	1
+kind	Hydrogen	a nonmetal
+phase	Hydrogen	gas
+symbol	Helium	He
+atomic	Helium	2
+kind	Helium	a noble gas
+phase	Helium	gas
+symbol	Lithium	Li
+atomic	Lithium	3
+kind	Lithium	a metal
+phase	Lithium	solid
+symbol	Beryllium	Be
+atomic	Beryllium	4
+kind	Beryllium	a metal
+phase	Beryllium	solid
+symbol	Boron	B
+atomic	Boron	5
+kind	Boron	a metalloid
+phase	Boron	solid
+symbol	Carbon	C
+atomic	Carbon	6
+kind	Carbon	a nonmetal
+phase	Carbon	solid
+symbol	Nitrogen	N
+atomic	Nitrogen	7
+kind	Nitrogen	a nonmetal
+phase	Nitrogen	gas
+symbol	Oxygen	O
+atomic	Oxygen	8
+kind	Oxygen	a nonmetal
+phase	Oxygen	gas
+symbol	Fluorine	F
+atomic	Fluorine	9
+kind	Fluorine	a nonmetal
+phase	Fluorine	gas
+symbol	Neon	Ne
+atomic	Neon	10
+kind	Neon	a noble gas
+phase	Neon	gas
+symbol	Sodium	Na
+atomic	Sodium	11
+kind	Sodium	a metal
+phase	Sodium	solid
+symbol	Magnesium	Mg
+atomic	Magnesium	12
+kind	Magnesium	a metal
+phase	Magnesium	solid
+symbol	Aluminium	Al
+atomic	Aluminium	13
+kind	Aluminium	a metal
+phase	Aluminium	solid
+symbol	Silicon	Si
+atomic	Silicon	14
+kind	Silicon	a metalloid
+phase	Silicon	solid
+symbol	Phosphorus	P
+atomic	Phosphorus	15
+kind	Phosphorus	a nonmetal
+phase	Phosphorus	solid
+symbol	Sulfur	S
+atomic	Sulfur	16
+kind	Sulfur	a nonmetal
+phase	Sulfur	solid
+symbol	Chlorine	Cl
+atomic	Chlorine	17
+kind	Chlorine	a nonmetal
+phase	Chlorine	gas
+symbol	Argon	Ar
+atomic	Argon	18
+kind	Argon	a noble gas
+phase	Argon	gas
+symbol	Potassium	K
+atomic	Potassium	19
+kind	Potassium	a metal
+phase	Potassium	solid
+symbol	Calcium	Ca
+atomic	Calcium	20
+kind	Calcium	a metal
+phase	Calcium	solid
+symbol	Scandium	Sc
+atomic	Scandium	21
+kind	Scandium	a metal
+phase	Scandium	solid
+symbol	Titanium	Ti
+atomic	Titanium	22
+kind	Titanium	a metal
+phase	Titanium	solid
+symbol	Vanadium	V
+atomic	Vanadium	23
+kind	Vanadium	a metal
+phase	Vanadium	solid
+symbol	Chromium	Cr
+atomic	Chromium	24
+kind	Chromium	a metal
+phase	Chromium	solid
+symbol	Manganese	Mn
+atomic	Manganese	25
+kind	Manganese	a metal
+phase	Manganese	solid
+symbol	Iron	Fe
+atomic	Iron	26
+kind	Iron	a metal
+phase	Iron	solid
+symbol	Cobalt	Co
+atomic	Cobalt	27
+kind	Cobalt	a metal
+phase	Cobalt	solid
+symbol	Nickel	Ni
+atomic	Nickel	28
+kind	Nickel	a metal
+phase	Nickel	solid
+symbol	Copper	Cu
+atomic	Copper	29
+kind	Copper	a metal
+phase	Copper	solid
+symbol	Zinc	Zn
+atomic	Zinc	30
+kind	Zinc	a metal
+phase	Zinc	solid
+symbol	Gallium	Ga
+atomic	Gallium	31
+kind	Gallium	a metal
+phase	Gallium	solid
+symbol	Germanium	Ge
+atomic	Germanium	32
+kind	Germanium	a metalloid
+phase	Germanium	solid
+symbol	Arsenic	As
+atomic	Arsenic	33
+kind	Arsenic	a metalloid
+phase	Arsenic	solid
+symbol	Selenium	Se
+atomic	Selenium	34
+kind	Selenium	a nonmetal
+phase	Selenium	solid
+symbol	Bromine	Br
+atomic	Bromine	35
+kind	Bromine	a nonmetal
+phase	Bromine	liquid
+symbol	Krypton	Kr
+atomic	Krypton	36
+kind	Krypton	a noble gas
+phase	Krypton	gas
+symbol	Rubidium	Rb
+atomic	Rubidium	37
+kind	Rubidium	a metal
+phase	Rubidium	solid
+symbol	Strontium	Sr
+atomic	Strontium	38
+kind	Strontium	a metal
+phase	Strontium	solid
+symbol	Yttrium	Y
+atomic	Yttrium	39
+kind	Yttrium	a metal
+phase	Yttrium	solid
+symbol	Zirconium	Zr
+atomic	Zirconium	40
+kind	Zirconium	a metal
+phase	Zirconium	solid
+symbol	Niobium	Nb
+atomic	Niobium	41
+kind	Niobium	a metal
+phase	Niobium	solid
+symbol	Molybdenum	Mo
+atomic	Molybdenum	42
+kind	Molybdenum	a metal
+phase	Molybdenum	solid
+symbol	Technetium	Tc
+atomic	Technetium	43
+kind	Technetium	a metal
+phase	Technetium	solid
+symbol	Ruthenium	Ru
+atomic	Ruthenium	44
+kind	Ruthenium	a metal
+phase	Ruthenium	solid
+symbol	Rhodium	Rh
+atomic	Rhodium	45
+kind	Rhodium	a metal
+phase	Rhodium	solid
+symbol	Palladium	Pd
+atomic	Palladium	46
+kind	Palladium	a metal
+phase	Palladium	solid
+symbol	Silver	Ag
+atomic	Silver	47
+kind	Silver	a metal
+phase	Silver	solid
+symbol	Cadmium	Cd
+atomic	Cadmium	48
+kind	Cadmium	a metal
+phase	Cadmium	solid
+symbol	Indium	In
+atomic	Indium	49
+kind	Indium	a metal
+phase	Indium	solid
+symbol	Tin	Sn
+atomic	Tin	50
+kind	Tin	a metal
+phase	Tin	solid
+symbol	Antimony	Sb
+atomic	Antimony	51
+kind	Antimony	a metalloid
+phase	Antimony	solid
+symbol	Tellurium	Te
+atomic	Tellurium	52
+kind	Tellurium	a metalloid
+phase	Tellurium	solid
+symbol	Iodine	I
+atomic	Iodine	53
+kind	Iodine	a nonmetal
+phase	Iodine	solid
+symbol	Xenon	Xe
+atomic	Xenon	54
+kind	Xenon	a noble gas
+phase	Xenon	gas
+symbol	Cesium	Cs
+atomic	Cesium	55
+kind	Cesium	a metal
+phase	Cesium	solid
+symbol	Barium	Ba
+atomic	Barium	56
+kind	Barium	a metal
+phase	Barium	solid
+symbol	Lanthanum	La
+atomic	Lanthanum	57
+kind	Lanthanum	a metal
+phase	Lanthanum	solid
+symbol	Cerium	Ce
+atomic	Cerium	58
+kind	Cerium	a metal
+phase	Cerium	solid
+symbol	Praseodymium	Pr
+atomic	Praseodymium	59
+kind	Praseodymium	a metal
+phase	Praseodymium	solid
+symbol	Neodymium	Nd
+atomic	Neodymium	60
+kind	Neodymium	a metal
+phase	Neodymium	solid
+symbol	Promethium	Pm
+atomic	Promethium	61
+kind	Promethium	a metal
+phase	Promethium	solid
+symbol	Samarium	Sm
+atomic	Samarium	62
+kind	Samarium	a metal
+phase	Samarium	solid
+symbol	Europium	Eu
+atomic	Europium	63
+kind	Europium	a metal
+phase	Europium	solid
+symbol	Gadolinium	Gd
+atomic	Gadolinium	64
+kind	Gadolinium	a metal
+phase	Gadolinium	solid
+symbol	Terbium	Tb
+atomic	Terbium	65
+kind	Terbium	a metal
+phase	Terbium	solid
+symbol	Dysprosium	Dy
+atomic	Dysprosium	66
+kind	Dysprosium	a metal
+phase	Dysprosium	solid
+symbol	Holmium	Ho
+atomic	Holmium	67
+kind	Holmium	a metal
+phase	Holmium	solid
+symbol	Erbium	Er
+atomic	Erbium	68
+kind	Erbium	a metal
+phase	Erbium	solid
+symbol	Thulium	Tm
+atomic	Thulium	69
+kind	Thulium	a metal
+phase	Thulium	solid
+symbol	Ytterbium	Yb
+atomic	Ytterbium	70
+kind	Ytterbium	a metal
+phase	Ytterbium	solid
+symbol	Lutetium	Lu
+atomic	Lutetium	71
+kind	Lutetium	a metal
+phase	Lutetium	solid
+symbol	Hafnium	Hf
+atomic	Hafnium	72
+kind	Hafnium	a metal
+phase	Hafnium	solid
+symbol	Tantalum	Ta
+atomic	Tantalum	73
+kind	Tantalum	a metal
+phase	Tantalum	solid
+symbol	Tungsten	W
+atomic	Tungsten	74
+kind	Tungsten	a metal
+phase	Tungsten	solid
+symbol	Rhenium	Re
+atomic	Rhenium	75
+kind	Rhenium	a metal
+phase	Rhenium	solid
+symbol	Osmium	Os
+atomic	Osmium	76
+kind	Osmium	a metal
+phase	Osmium	solid
+symbol	Iridium	Ir
+atomic	Iridium	77
+kind	Iridium	a metal
+phase	Iridium	solid
+symbol	Platinum	Pt
+atomic	Platinum	78
+kind	Platinum	a metal
+phase	Platinum	solid
+symbol	Gold	Au
+atomic	Gold	79
+kind	Gold	a metal
+phase	Gold	solid
+symbol	Mercury	Hg
+atomic	Mercury	80
+kind	Mercury	a metal
+phase	Mercury	liquid
+symbol	Thallium	Tl
+atomic	Thallium	81
+kind	Thallium	a metal
+phase	Thallium	solid
+symbol	Lead	Pb
+atomic	Lead	82
+kind	Lead	a metal
+phase	Lead	solid
+symbol	Bismuth	Bi
+atomic	Bismuth	83
+kind	Bismuth	a metal
+phase	Bismuth	solid
+symbol	Polonium	Po
+atomic	Polonium	84
+kind	Polonium	a metal
+phase	Polonium	solid
+symbol	Astatine	At
+atomic	Astatine	85
+kind	Astatine	a metalloid
+phase	Astatine	solid
+symbol	Radon	Rn
+atomic	Radon	86
+kind	Radon	a noble gas
+phase	Radon	gas
+symbol	Francium	Fr
+atomic	Francium	87
+kind	Francium	a metal
+phase	Francium	solid
+symbol	Radium	Ra
+atomic	Radium	88
+kind	Radium	a metal
+phase	Radium	solid
+symbol	Actinium	Ac
+atomic	Actinium	89
+kind	Actinium	a metal
+phase	Actinium	solid
+symbol	Thorium	Th
+atomic	Thorium	90
+kind	Thorium	a metal
+phase	Thorium	solid
+symbol	Protactinium	Pa
+atomic	Protactinium	91
+kind	Protactinium	a metal
+phase	Protactinium	solid
+symbol	Uranium	U
+atomic	Uranium	92
+kind	Uranium	a metal
+phase	Uranium	solid
+symbol	Neptunium	Np
+atomic	Neptunium	93
+kind	Neptunium	a metal
+phase	Neptunium	solid
+symbol	Plutonium	Pu
+atomic	Plutonium	94
+kind	Plutonium	a metal
+phase	Plutonium	solid
+symbol	Americium	Am
+atomic	Americium	95
+kind	Americium	a metal
+phase	Americium	solid
+symbol	Curium	Cm
+atomic	Curium	96
+kind	Curium	a metal
+phase	Curium	solid
+symbol	Berkelium	Bk
+atomic	Berkelium	97
+kind	Berkelium	a metal
+phase	Berkelium	solid
+symbol	Californium	Cf
+atomic	Californium	98
+kind	Californium	a metal
+phase	Californium	solid
+symbol	Einsteinium	Es
+atomic	Einsteinium	99
+kind	Einsteinium	a metal
+phase	Einsteinium	solid
+symbol	Fermium	Fm
+atomic	Fermium	100
+kind	Fermium	a metal
+phase	Fermium	solid
+symbol	Mendelevium	Md
+atomic	Mendelevium	101
+kind	Mendelevium	a metal
+symbol	Nobelium	No
+atomic	Nobelium	102
+kind	Nobelium	a metal
+symbol	Lawrencium	Lr
+atomic	Lawrencium	103
+kind	Lawrencium	a metal
+symbol	Rutherfordium	Rf
+atomic	Rutherfordium	104
+kind	Rutherfordium	a metal
+symbol	Dubnium	Db
+atomic	Dubnium	105
+kind	Dubnium	a metal
+symbol	Seaborgium	Sg
+atomic	Seaborgium	106
+kind	Seaborgium	a metal
+symbol	Bohrium	Bh
+atomic	Bohrium	107
+kind	Bohrium	a metal
+symbol	Hassium	Hs
+atomic	Hassium	108
+kind	Hassium	a metal
+symbol	Meitnerium	Mt
+atomic	Meitnerium	109
+symbol	Darmstadtium	Ds
+atomic	Darmstadtium	110
+symbol	Roentgenium	Rg
+atomic	Roentgenium	111
+symbol	Copernicium	Cn
+atomic	Copernicium	112
+kind	Copernicium	a metal
+symbol	Nihonium	Nh
+atomic	Nihonium	113
+symbol	Flerovium	Fl
+atomic	Flerovium	114
+kind	Flerovium	a metal
+symbol	Moscovium	Mc
+atomic	Moscovium	115
+symbol	Livermorium	Lv
+atomic	Livermorium	116
+symbol	Tennessine	Ts
+atomic	Tennessine	117
+symbol	Oganesson	Og
+atomic	Oganesson	118

@@ -9,9 +9,31 @@ SPDX-FileCopyrightText = ["2026 WollyMonjac", "2026 Markus Mayer"]
 SPDX-License-Identifier = "MIT"
 
 # The trained network was trained partly on data from mledoze/countries (ODbL-1.0) and
-# Periodic-Table-JSON (CC-BY-SA-3.0); see assets/DATA_LICENSES.md.
+# Periodic-Table-JSON (CC-BY-SA-3.0); see crates/tiny/assets/DATA_LICENSES.md.
 [[annotations]]
-path = "assets/TINY.BIN"
+path = ["crates/tiny/assets/TINY.BIN", "crates/tiny-train/data/tiny2.pt"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 WollyMonjac"
+SPDX-License-Identifier = "MIT AND ODbL-1.0 AND CC-BY-SA-3.0"
+
+# Geography tables derived from mledoze/countries (languages, currencies, demonyms, landlocked,
+# subregions, borders, web domains).
+[[annotations]]
+path = ["crates/tiny-train/data/facts/geo2.tsv", "crates/tiny-train/data/facts/geo3.tsv"]
+precedence = "override"
+SPDX-FileCopyrightText = ["mledoze/countries contributors", "2026 WollyMonjac"]
+SPDX-License-Identifier = "ODbL-1.0"
+
+# Element table derived from Bowserinator/Periodic-Table-JSON.
+[[annotations]]
+path = "crates/tiny-train/data/facts/elements.tsv"
+precedence = "override"
+SPDX-FileCopyrightText = ["Bowserinator/Periodic-Table-JSON contributors", "2026 WollyMonjac"]
+SPDX-License-Identifier = "CC-BY-SA-3.0"
+
+# The frozen test set of the original training kit, generated from all fact files.
+[[annotations]]
+path = "crates/tiny-train/tests/fixtures/**"
 precedence = "override"
 SPDX-FileCopyrightText = "2026 WollyMonjac"
 SPDX-License-Identifier = "MIT AND ODbL-1.0 AND CC-BY-SA-3.0"

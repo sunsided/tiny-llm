@@ -5,7 +5,11 @@ all-features = true
 
 [advisories]
 # Advisories (vulnerable, unmaintained, yanked) fail by default; ignore entries need a reason.
-ignore = []
+ignore = [
+  # paste is an unmaintained compile-time macro crate; candle and burn (burn-dispatch, cubecl)
+  # both depend on it, so there is no way around it. Remove once they drop it.
+  { id = "RUSTSEC-2024-0436", reason = "unmaintained proc macro pulled in by the ML framework" },
+]
 
 [licenses]
 # Permissive licenses plus the weak-copyleft ones this project family uses (see docs/licensing.md).
@@ -26,6 +30,12 @@ allow = [
 confidence-threshold = 0.9
 # The allowlist is shared across projects; not every license appears in every dependency tree.
 unused-allowed-license = "allow"
+# Permissive licences allowed only for the one crate that uses them (both come in through burn).
+exceptions = [
+  { crate = "xxhash-rust", allow = ["BSL-1.0"] },
+  # Mozilla's CA certificate list, used by cubecl-cuda's HTTP client.
+  { crate = "webpki-roots", allow = ["CDLA-Permissive-2.0"] },
+]
 
 [bans]
 multiple-versions = "warn"
