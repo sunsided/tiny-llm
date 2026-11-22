@@ -90,7 +90,7 @@ struct TrainArgs {
     /// Seed of the generator and the batch order (default: the current time).
     #[arg(long)]
     seed: Option<u64>,
-    /// Where to train: `cpu`, or `cuda` (build with `--features cuda`).
+    /// Where to train: only `cpu` for now.
     #[arg(long, default_value = "cpu")]
     device: String,
 }
@@ -203,9 +203,7 @@ fn show_samples(kit: &Kit, seed: u64) {
 fn device(name: &str) -> anyhow::Result<Device> {
     match name {
         "cpu" => Ok(Device::Cpu),
-        "cuda" if candle_core::utils::cuda_is_available() => Ok(Device::new_cuda(0)?),
-        "cuda" => anyhow::bail!("CUDA is not available; build with `--features cuda`"),
-        other => anyhow::bail!("unknown device {other}; use cpu or cuda"),
+        other => anyhow::bail!("unknown device {other}; only cpu is supported"),
     }
 }
 

@@ -22,9 +22,5 @@ serde_json = "1.0.154"
 tiny = { path = "../tiny" }
 zip = { version = "9", default-features = false }
 
-[features]
-# Train on an NVIDIA GPU (needs the CUDA toolkit): `--features cuda`, then `train --device cuda`.
-cuda = ["candle-core/cuda", "candle-nn/cuda"]
-
 [lints]
 workspace = true
