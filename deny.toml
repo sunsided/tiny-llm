@@ -30,6 +30,12 @@ allow = [
 confidence-threshold = 0.9
 # The allowlist is shared across projects; not every license appears in every dependency tree.
 unused-allowed-license = "allow"
+# Permissive licences allowed only for the one crate that uses them (both come in through burn).
+exceptions = [
+  { crate = "xxhash-rust", allow = ["BSL-1.0"] },
+  # Mozilla's CA certificate list, used by cubecl-cuda's HTTP client.
+  { crate = "webpki-roots", allow = ["CDLA-Permissive-2.0"] },
+]
 
 [bans]
 multiple-versions = "warn"
