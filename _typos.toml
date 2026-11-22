@@ -16,5 +16,7 @@ extend-exclude = [
 # Project-specific words typos flags wrongly, e.g. `ser = "ser"`. Keep each entry justified.
 # The terminal UI crate this project uses.
 ratatui = "ratatui"
+# candle's Tensor::arange (NumPy's name for a range of numbers).
+arange = "arange"
 
 [default.extend-identifiers]

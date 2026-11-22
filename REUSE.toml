@@ -33,7 +33,7 @@ SPDX-License-Identifier = "CC-BY-SA-3.0"
 
 # The frozen test set of the original training kit, generated from all fact files.
 [[annotations]]
-path = "crates/tiny-train/tests/fixtures/eval.jsonl"
+path = "crates/tiny-train/tests/fixtures/**"
 precedence = "override"
 SPDX-FileCopyrightText = "2026 WollyMonjac"
 SPDX-License-Identifier = "MIT AND ODbL-1.0 AND CC-BY-SA-3.0"

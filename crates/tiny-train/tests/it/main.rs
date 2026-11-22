@@ -3,4 +3,5 @@
 mod eval;
 mod export;
 mod model;
+mod questions;
 mod train;
