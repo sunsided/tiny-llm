@@ -176,3 +176,40 @@ fn confidence(scores: &[f32], tok: usize) -> f32 {
     let sum: f32 = scores.iter().map(|s| safe_exp(s - scores[tok])).sum();
     1.0 / sum
 }
+
+#[cfg(test)]
+mod tests {
+    use proptest::prelude::*;
+    use rand::SeedableRng;
+    use rand::rngs::StdRng;
+
+    use super::*;
+    use crate::model::VOCAB;
+
+    proptest! {
+        /// Creativity 0 always takes the first best letter.
+        #[test]
+        fn greedy_takes_the_best(scores in prop::collection::vec(-50.0f32..50.0, VOCAB), seed: u64) {
+            let (tok, confidence) = pick(&scores, 0, &mut StdRng::seed_from_u64(seed));
+
+            prop_assert_eq!(tok, best_index(&scores));
+            prop_assert!(confidence > 0.0 && confidence <= 1.0);
+        }
+
+        /// Sampling never picks a letter far less likely than the best one.
+        #[test]
+        fn sampling_skips_unlikely_letters(
+            scores in prop::collection::vec(-50.0f32..50.0, VOCAB),
+            creativity in 1u8..=9,
+            seed: u64,
+        ) {
+            let (tok, confidence) = pick(&scores, creativity, &mut StdRng::seed_from_u64(seed));
+            let best = scores[best_index(&scores)];
+            let weight = safe_exp((scores[tok] - best) / (f32::from(creativity) / 5.0));
+
+            prop_assert!(tok < VOCAB);
+            prop_assert!(weight >= UNLIKELY);
+            prop_assert!(confidence > 0.0 && confidence <= 1.0);
+        }
+    }
+}

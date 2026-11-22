@@ -67,6 +67,20 @@ mod tests {
         assert_eq!(clean(&"x".repeat(100)).len(), MAX_QUESTION);
     }
 
+    proptest::proptest! {
+        /// Any typed line cleans to printable letters, at most [`MAX_QUESTION`]
+        /// of them, without trailing spaces, and cleaning again changes nothing.
+        #[test]
+        fn clean_is_tidy_and_idempotent(line in "(?s).{0,120}") {
+            let q = clean(&line);
+
+            proptest::prop_assert!(q.bytes().all(is_printable));
+            proptest::prop_assert!(q.len() <= MAX_QUESTION);
+            proptest::prop_assert!(!q.ends_with(' '));
+            proptest::prop_assert_eq!(clean(&q), q);
+        }
+    }
+
     /// Tokens and letters round-trip; newline has no letter.
     #[test]
     fn tokens_round_trip() {
