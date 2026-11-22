@@ -276,7 +276,10 @@ impl Kit {
             }
             "odd" => {
                 let n = rng.randint(0, 999);
-                let q = fmt(rng.choice(ODD_Q), &[("n", &num(n, wordy && n < 100))]);
+                let q = fmt(
+                    rng.choice::<&str>(ODD_Q),
+                    &[("n", &num(n, wordy && n < 100))],
+                );
                 (
                     q,
                     format!("{n} is {}.", if n % 2 == 0 { "even" } else { "odd" }),
@@ -318,20 +321,26 @@ impl Kit {
         let (x, y) = (num(a, wordy), num(b, wordy));
         let symbol = "+-x*/".contains(op);
         let mut q = if op == "add" {
-            fmt(rng.choice(ADD_Q), &[("A", &x), ("B", &y)])
+            fmt(rng.choice::<&str>(ADD_Q), &[("A", &x), ("B", &y)])
         } else if symbol && !wordy {
-            fmt(rng.choice(SYMBOL_Q), &[("A", &x), ("B", &y), ("o", op)])
+            fmt(
+                rng.choice::<&str>(SYMBOL_Q),
+                &[("A", &x), ("B", &y), ("o", op)],
+            )
         } else {
             let o = if symbol { sym } else { op };
-            fmt(rng.choice(WORD_Q), &[("A", &x), ("B", &y), ("o", o)])
+            fmt(
+                rng.choice::<&str>(WORD_Q),
+                &[("A", &x), ("B", &y), ("o", o)],
+            )
         };
 
         if k == "sub" && rng.random() < 0.2 {
-            q = fmt(rng.choice(SUB_Q), &[("A", &x), ("B", &y)]);
+            q = fmt(rng.choice::<&str>(SUB_Q), &[("A", &x), ("B", &y)]);
         }
 
         if k == "mul" && rng.random() < 0.15 {
-            q = fmt(rng.choice(MUL_Q), &[("A", &x), ("B", &y)]);
+            q = fmt(rng.choice::<&str>(MUL_Q), &[("A", &x), ("B", &y)]);
         }
 
         let args = [
@@ -345,7 +354,7 @@ impl Kit {
             ("b", &args[2].1),
             ("o", sym),
         ];
-        (q, fmt(rng.choice(SUM_A), &args))
+        (q, fmt(rng.choice::<&str>(SUM_A), &args))
     }
 
     /// `g_numbers2`: Roman numerals both ways, squares and square roots.
@@ -355,9 +364,9 @@ impl Kit {
             let n = *rng.choice(half(&self.split.sq, test));
             let (ns, ms) = (n.to_string(), (n * n).to_string());
             let args = [("n", ns.as_str()), ("m", &ms)];
-            let q = fmt(rng.choice(SQUARE_Q), &args);
+            let q = fmt(rng.choice::<&str>(SQUARE_Q), &args);
             let ans = if q.contains("root") { ROOT_A } else { SQUARE_A };
-            return (q, fmt(rng.choice(ans), &args));
+            return (q, fmt(rng.choice::<&str>(ans), &args));
         }
 
         let n = *rng.choice(half(&self.split.roman, test));
@@ -369,8 +378,8 @@ impl Kit {
             (UNROMAN_Q, UNROMAN_A)
         };
 
-        let q = fmt(rng.choice(qs), &args);
-        (q, fmt(rng.choice(ans), &args))
+        let q = fmt(rng.choice::<&str>(qs), &args);
+        (q, fmt(rng.choice::<&str>(ans), &args))
     }
 }
 
@@ -383,11 +392,11 @@ fn step(
     (qs, ans): (&[&str], &[&str]),
     rng: &mut PyRandom,
 ) -> (String, String) {
-    let q = fmt(rng.choice(qs), &[("n", &num(n, wordy && n < 100))]);
+    let q = fmt(rng.choice::<&str>(qs), &[("n", &num(n, wordy && n < 100))]);
     (
         q,
         fmt(
-            rng.choice(ans),
+            rng.choice::<&str>(ans),
             &[("r", &r.to_string()), ("n", &n.to_string())],
         ),
     )
@@ -405,7 +414,7 @@ fn compare(big: bool, rng: &mut PyRandom) -> (String, String) {
     let b = *other(&pool, |&x| x != a, rng);
     let args = [("a", a.to_string()), ("b", b.to_string())];
     let args = [("a", args[0].1.as_str()), ("b", &args[1].1)];
-    let q = fmt(rng.choice(if big { BIG_Q } else { SMALL_Q }), &args);
+    let q = fmt(rng.choice::<&str>(if big { BIG_Q } else { SMALL_Q }), &args);
     let ans = match (q.starts_with("is "), big) {
         (false, true) => format!("{} is bigger.", a.max(b)),
         (false, false) => format!("{} is smaller.", a.min(b)),
@@ -423,7 +432,7 @@ fn count(rng: &mut PyRandom) -> (String, String) {
     let a = rng.randint(0, 95);
     let b = a + rng.randint(2, 9);
     let q = fmt(
-        rng.choice(COUNT_Q),
+        rng.choice::<&str>(COUNT_Q),
         &[("a", &a.to_string()), ("b", &b.to_string())],
     );
     let join = |xs: Vec<i64>| -> String {
@@ -450,13 +459,13 @@ fn number_words(to_words: bool, rng: &mut PyRandom) -> (String, String) {
             rng.randint(0, 100)
         };
 
-        let q = fmt(rng.choice(WORDS_Q), &[("n", &n.to_string())]);
+        let q = fmt(rng.choice::<&str>(WORDS_Q), &[("n", &n.to_string())]);
         return (q, format!("{}.", cap(&words(n))));
     }
 
     let n = rng.randint(0, 100);
     (
-        fmt(rng.choice(FROMWORDS_Q), &[("w", &words(n))]),
+        fmt(rng.choice::<&str>(FROMWORDS_Q), &[("w", &words(n))]),
         format!("{n}."),
     )
 }
@@ -471,9 +480,9 @@ fn scale(double: bool, wordy: bool, rng: &mut PyRandom) -> (String, String) {
         (n, n / 2, HALF_Q, HALF_A)
     };
 
-    let q = fmt(rng.choice(qs), &[("n", &num(n, wordy))]);
+    let q = fmt(rng.choice::<&str>(qs), &[("n", &num(n, wordy))]);
     let a = fmt(
-        rng.choice(ans),
+        rng.choice::<&str>(ans),
         &[("r", &r.to_string()), ("n", &n.to_string())],
     );
     (q, a)

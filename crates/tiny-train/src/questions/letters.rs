@@ -183,26 +183,32 @@ impl Kit {
                     (LAST_Q, LAST_A, upper.len() - 1)
                 };
 
-                let q = fmt(rng.choice(qs), &[("w", w)]);
-                (q, fmt(rng.choice(ans), &[("L", &upper[i..=i]), ("W", &wc)]))
+                let q = fmt(rng.choice::<&str>(qs), &[("w", w)]);
+                (
+                    q,
+                    fmt(rng.choice::<&str>(ans), &[("L", &upper[i..=i]), ("W", &wc)]),
+                )
             }
             "spell" => {
                 let letters: Vec<String> = upper.chars().map(String::from).collect();
                 (
-                    fmt(rng.choice(SPELL_Q), &[("w", w)]),
+                    fmt(rng.choice::<&str>(SPELL_Q), &[("w", w)]),
                     format!("{}.", letters.join("-")),
                 )
             }
             "back" => {
                 let back: String = w.chars().rev().collect();
                 (
-                    fmt(rng.choice(BACK_Q), &[("w", w)]),
+                    fmt(rng.choice::<&str>(BACK_Q), &[("w", w)]),
                     format!("{}.", cap(&back)),
                 )
             }
-            "caps" => (fmt(rng.choice(CAPS_Q), &[("w", w)]), format!("{upper}.")),
+            "caps" => (
+                fmt(rng.choice::<&str>(CAPS_Q), &[("w", w)]),
+                format!("{upper}."),
+            ),
             "count" => {
-                let q = fmt(rng.choice(COUNT_Q), &[("w", w)]);
+                let q = fmt(rng.choice::<&str>(COUNT_Q), &[("w", w)]);
                 let n = words(i64::try_from(w.len()).expect("short word"));
                 let opts = [format!("{}.", cap(&n)), format!("{wc} has {n} letters.")];
                 (q, rng.choice(&opts).clone())
@@ -220,14 +226,14 @@ impl Kit {
             "country" => {
                 let t = rng.choice(COUNTRY_Q);
                 let q = fmt(t, &[("W", if rng.random() < 0.5 { &wc } else { &w })]);
-                (q, fmt(rng.choice(COUNTRY_A), &[("W", &wc)]))
+                (q, fmt(rng.choice::<&str>(COUNTRY_A), &[("W", &wc)]))
             }
             "animal" => {
-                let q = fmt(rng.choice(ANIMAL_Q), &[("w", &w)]);
-                (q, fmt(rng.choice(ANIMAL_A), &[("w", &w)]))
+                let q = fmt(rng.choice::<&str>(ANIMAL_Q), &[("w", &w)]);
+                (q, fmt(rng.choice::<&str>(ANIMAL_A), &[("w", &w)]))
             }
             "word" => (
-                fmt(rng.choice(WORD_Q), &[("w", &w)]),
+                fmt(rng.choice::<&str>(WORD_Q), &[("w", &w)]),
                 format!("I do not know the word {w}."),
             ),
             "person" => {
@@ -254,7 +260,7 @@ impl Kit {
             let n = rng.randint(2, 3) - i64::from(country);
             let mut w: String = (0..n).map(|_| *rng.choice(SYL)).collect();
             if country && rng.random() < 0.7 {
-                w.push_str(rng.choice(ENDS));
+                w.push_str(rng.choice::<&str>(ENDS));
             }
 
             if !self.real.contains(&w) && (4..=11).contains(&w.len()) {

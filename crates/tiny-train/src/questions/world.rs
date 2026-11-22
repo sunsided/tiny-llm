@@ -177,7 +177,7 @@ impl Kit {
         let q = match generic {
             Some(l) if !test && rng.random() < 0.2 => {
                 let x = art(s);
-                fmt(rng.choice(GENERIC_Q), &[("l", l), ("x", &x)])
+                fmt(rng.choice::<&str>(GENERIC_Q), &[("l", l), ("x", &x)])
             }
             _ => self.fill(pick_q(&r.questions, rng, test), s, a),
         };
@@ -252,14 +252,14 @@ impl Kit {
             .iter()
             .filter(|c| self.borders.contains_key(*c))
             .collect();
-        let s: &str = rng.choice(&pool);
+        let s: &str = rng.choice::<&String>(&pool);
         let nb = &self.borders[s];
         let k = rng.random();
         let args = [("s", s)];
         if k < 0.45 {
-            let q = fmt(rng.choice(BORDERS_Q), &args);
+            let q = fmt(rng.choice::<&str>(BORDERS_Q), &args);
             if nb.is_empty() {
-                return (q, fmt(rng.choice(NO_BORDERS_A), &args));
+                return (q, fmt(rng.choice::<&str>(NO_BORDERS_A), &args));
             }
 
             if nb.len() <= 4 {
@@ -273,7 +273,7 @@ impl Kit {
         }
 
         if k < 0.6 {
-            let q = fmt(rng.choice(BORDER_COUNT_Q), &args);
+            let q = fmt(rng.choice::<&str>(BORDER_COUNT_Q), &args);
             let n = nb.len();
             let t = if n == 0 {
                 "{s} has no land neighbours."
@@ -315,7 +315,7 @@ impl Kit {
         };
 
         let args = [("s", s), ("t", t)];
-        let q = fmt(rng.choice(BORDER_YN_Q), &args);
+        let q = fmt(rng.choice::<&str>(BORDER_YN_Q), &args);
         let a = if nb.iter().any(|c| c == t) {
             "Yes, {s} borders {t}."
         } else {
@@ -333,7 +333,7 @@ impl Kit {
         let args = [("s", s)];
         let cap_of = |c: &str| self.dv("capital", c);
         if k == "capcur" && self.d("currency").contains_key(s) {
-            let q = fmt(rng.choice(CAPCUR_Q), &args);
+            let q = fmt(rng.choice::<&str>(CAPCUR_Q), &args);
             let a = format!(
                 "The capital is {} and the money is the {}.",
                 cap_of(s),
@@ -343,7 +343,7 @@ impl Kit {
         }
 
         if k == "caplang" && self.d("language").contains_key(s) {
-            let q = fmt(rng.choice(CAPLANG_Q), &args);
+            let q = fmt(rng.choice::<&str>(CAPLANG_Q), &args);
             return (
                 q,
                 format!(
@@ -358,12 +358,12 @@ impl Kit {
             "twocap" => {
                 let t = other(pool, |c| c != s, rng).as_str();
                 let args = [("s", s), ("t", t), ("a", cap_of(s)), ("b", cap_of(t))];
-                let q = fmt(rng.choice(TWOCAP_Q), &args);
-                (q, fmt(rng.choice(TWOCAP_A), &args))
+                let q = fmt(rng.choice::<&str>(TWOCAP_Q), &args);
+                (q, fmt(rng.choice::<&str>(TWOCAP_A), &args))
             }
             "twocont" => {
                 let t = other(pool, |c| c != s, rng).as_str();
-                let q = fmt(rng.choice(TWOCONT_Q), &[("s", s), ("t", t)]);
+                let q = fmt(rng.choice::<&str>(TWOCONT_Q), &[("s", s), ("t", t)]);
                 let cont = |c: &str| self.dv("continent", c);
                 (
                     q,
@@ -372,7 +372,7 @@ impl Kit {
             }
             "animal2" | "animal3" => self.combo_animal(k == "animal2", rng),
             _ => {
-                let q = fmt(rng.choice(CAPCONT_Q), &args);
+                let q = fmt(rng.choice::<&str>(CAPCONT_Q), &args);
                 let a = format!(
                     "{s} is in {}. The capital is {}.",
                     self.dv("continent", s),
@@ -394,7 +394,7 @@ impl Kit {
         let x = rng.choice(both).as_str();
         let ax = art(x);
         let q = fmt(
-            rng.choice(if legs { ANIMAL2_Q } else { ANIMAL3_Q }),
+            rng.choice::<&str>(if legs { ANIMAL2_Q } else { ANIMAL3_Q }),
             &[("x", x), ("ax", &ax)],
         );
         let a = if legs {

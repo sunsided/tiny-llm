@@ -80,7 +80,7 @@ pub(super) fn style(q: &str, rng: &mut PyRandom, test: bool, typos: bool) -> Str
     if rng.random() < 0.5 {
         q.push('?');
     } else if rng.random() < 0.08 {
-        q.push_str(rng.choice(SUFFIX));
+        q.push_str(rng.choice::<&str>(SUFFIX));
     }
 
     if rng.random() < 0.03 {

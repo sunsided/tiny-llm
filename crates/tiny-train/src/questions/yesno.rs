@@ -107,7 +107,10 @@ impl Kit {
                     other(&self.classes, |c| c != a, rng)
                 };
 
-                let q = fmt(rng.choice(CLASS_Q), &[("s", s), ("x", x), ("X", &art(x))]);
+                let q = fmt(
+                    rng.choice::<&str>(CLASS_Q),
+                    &[("s", s), ("x", x), ("X", &art(x))],
+                );
                 let t = if x == a {
                     "Yes, a {s} is {A}."
                 } else {
@@ -232,7 +235,7 @@ impl Kit {
             rng.choice(&others).as_str()
         };
 
-        let q = fmt(rng.choice(LANG_Q), &[("x", x), ("s", s)]);
+        let q = fmt(rng.choice::<&str>(LANG_Q), &[("x", x), ("s", s)]);
         let t = if mine.iter().any(|m| m == x) {
             "Yes, people in {s} speak {a}."
         } else {
@@ -246,8 +249,8 @@ impl Kit {
     fn wrong_capital(&self, s: &str, a: &str, rng: &mut PyRandom) -> &str {
         let same = self.d("continent").get(s).cloned();
         match self.caps_by_cont.get(&same) {
-            Some(caps) if caps.len() > 1 => other(caps, |c| c != a, rng),
-            _ => other(&self.rev.cap_rev_keys, |c| c != a, rng),
+            Some(caps) if caps.len() > 1 => other::<String>(caps, |c| c != a, rng),
+            _ => other::<String>(&self.rev.cap_rev_keys, |c| c != a, rng),
         }
     }
 
@@ -356,6 +359,6 @@ impl Kit {
 /// Asks whether `x` is the answer for `s` and answers with the true `a`.
 fn claim(s: &str, a: &str, x: &str, (qs, yes, no): Claim, rng: &mut PyRandom) -> (String, String) {
     let args = [("s", s), ("a", a), ("x", x)];
-    let q = fmt(rng.choice(qs), &args);
+    let q = fmt(rng.choice::<&str>(qs), &args);
     (q, fmt(if x == a { yes } else { no }, &args))
 }

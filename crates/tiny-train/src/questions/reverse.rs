@@ -187,7 +187,10 @@ fn pair_q(
 ) -> (String, String) {
     let (a, s) = rng.choice(pairs);
     let q = fmt(pick_q(qs, rng, test), &[("a", a)]);
-    let ans = fmt(rng.choice(ans), &[("a", a), ("s", s), ("S", &cap(s))]);
+    let ans = fmt(
+        rng.choice::<&str>(ans),
+        &[("a", a), ("s", s), ("S", &cap(s))],
+    );
     (q, ans)
 }
 
@@ -233,10 +236,13 @@ impl Kit {
     pub(super) fn g_reverse2(&self, rng: &mut PyRandom) -> (String, String) {
         let simple = |pairs: &[(String, String)], qs: &[&str], ans: &[&str], rng: &mut PyRandom| {
             let (a, s) = rng.choice(pairs);
-            let q = fmt(rng.choice(qs), &[("a", a)]);
+            let q = fmt(rng.choice::<&str>(qs), &[("a", a)]);
             (
                 q,
-                fmt(rng.choice(ans), &[("a", a), ("s", s), ("S", &cap(s))]),
+                fmt(
+                    rng.choice::<&str>(ans),
+                    &[("a", a), ("s", s), ("S", &cap(s))],
+                ),
             )
         };
 
@@ -245,16 +251,19 @@ impl Kit {
             "atom" => simple(&self.rev.atom_rev, ATOM_Q, ATOM_A, rng),
             "dom" => {
                 let (a, s) = rng.choice(&self.rev.dom_rev);
-                (fmt(rng.choice(DOM_Q), &[("a", a)]), format!("{s}."))
+                (fmt(rng.choice::<&str>(DOM_Q), &[("a", a)]), format!("{s}."))
             }
             "state" => simple(&self.rev.state_rev, STATE_Q, STATE_A, rng),
             _ => {
                 let (x, es) = rng.choice(&self.rev.meaning);
-                let q = fmt(rng.choice(MEAN_Q), &[("x", x)]);
+                let q = fmt(rng.choice::<&str>(MEAN_Q), &[("x", x)]);
                 let m = es.join(" or ");
                 (
                     q,
-                    fmt(rng.choice(MEAN_A), &[("x", x), ("X", &cap(x)), ("m", &m)]),
+                    fmt(
+                        rng.choice::<&str>(MEAN_A),
+                        &[("x", x), ("X", &cap(x)), ("m", &m)],
+                    ),
                 )
             }
         }
