@@ -141,7 +141,7 @@ tasks:
     desc: Build docs including private items, warnings as errors (mermaid diagrams rendered)
     aliases: [docs]
     env:
-      RUSTDOCFLAGS: -D warnings
+      RUSTDOCFLAGS: -D warnings --html-in-header {{.ROOT_DIR}}/docs/mermaid.html
     cmds:
       - cargo doc --workspace --all-features --no-deps --document-private-items
 
