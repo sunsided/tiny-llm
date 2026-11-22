@@ -6,7 +6,7 @@
 use std::path::{Path, PathBuf};
 
 use anyhow::Context;
-use candle_core::Device;
+use burn::tensor::Device;
 use clap::{Args, Parser, Subcommand};
 use tiny::model::{Config, Network, Weights};
 use tiny_train::checkpoint::Checkpoint;
@@ -90,7 +90,8 @@ struct TrainArgs {
     /// Seed of the generator and the batch order (default: the current time).
     #[arg(long)]
     seed: Option<u64>,
-    /// Where to train: `cpu`, or `cuda` (build with `--features cuda`).
+    /// Where to train: `cpu` (pure-Rust Flex backend), `cuda` (build with
+    /// `--features cuda`) or `wgpu` (build with `--features wgpu`).
     #[arg(long, default_value = "cpu")]
     device: String,
 }
@@ -118,10 +119,10 @@ fn main() -> anyhow::Result<()> {
 fn run_training(args: &TrainArgs) -> anyhow::Result<()> {
     let kit = kit()?;
     let tests = test_set()?;
-    let device = device(&args.device)?;
+    let device = device(&args.device)?.autodiff();
     let model = match &args.resume {
         Some(path) => Model::from_checkpoint(&Checkpoint::load(path)?, &device)?,
-        None => Model::new(DEFAULT_CONFIG, &device)?,
+        None => Model::new(DEFAULT_CONFIG, &device),
     };
     let seed = args.seed.unwrap_or_else(time_seed);
     let options = Options {
@@ -135,10 +136,10 @@ fn run_training(args: &TrainArgs) -> anyhow::Result<()> {
         eval_every: args.eval_every.map(|minutes| minutes * 60.0),
         seed,
     };
+    let config = model.config();
     println!(
-        "model {:?}, {} parameters, seed {seed}",
-        model.config,
-        model.config.parameter_count()
+        "model {config:?}, {} parameters, seed {seed}",
+        config.parameter_count()
     );
 
     let mut rng = PyRandom::new(seed);
@@ -147,7 +148,7 @@ fn run_training(args: &TrainArgs) -> anyhow::Result<()> {
         Example::new(&sample.question, &sample.answer)
     };
     let on_eval = |model: &Model, elapsed: f64| -> anyhow::Result<()> {
-        let checkpoint = model.to_checkpoint()?;
+        let checkpoint = model.to_checkpoint();
         checkpoint.save(&args.out)?;
         let score = evaluate(
             &mut Network::new(Weights::from_bytes(&to_bin(&checkpoint)?)?),
@@ -162,7 +163,7 @@ fn run_training(args: &TrainArgs) -> anyhow::Result<()> {
         Ok(())
     };
 
-    let steps = train(&model, &options, source, on_eval)?;
+    let (_, steps) = train(model, &options, source, on_eval)?;
     println!("saved {}, {steps} steps", args.out.display());
     Ok(())
 }
@@ -202,10 +203,13 @@ fn show_samples(kit: &Kit, seed: u64) {
 /// The compute device named on the command line.
 fn device(name: &str) -> anyhow::Result<Device> {
     match name {
-        "cpu" => Ok(Device::Cpu),
-        "cuda" if candle_core::utils::cuda_is_available() => Ok(Device::new_cuda(0)?),
-        "cuda" => anyhow::bail!("CUDA is not available; build with `--features cuda`"),
-        other => anyhow::bail!("unknown device {other}; use cpu or cuda"),
+        "cpu" => Ok(Device::flex()),
+        #[cfg(feature = "cuda")]
+        "cuda" => Ok(Device::cuda(0)),
+        #[cfg(feature = "wgpu")]
+        "wgpu" => Ok(Device::wgpu(Default::default())),
+        "cuda" | "wgpu" => anyhow::bail!("build with `--features {name}` to train on {name}"),
+        other => anyhow::bail!("unknown device {other}; use cpu, cuda or wgpu"),
     }
 }
 

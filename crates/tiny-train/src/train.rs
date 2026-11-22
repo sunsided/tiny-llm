@@ -6,8 +6,10 @@ mod run;
 
 pub use run::{Options, train};
 
-use candle_core::backprop::GradStore;
-use candle_core::{D, DType, Device, Tensor, Var};
+use burn::module::ParamId;
+use burn::optim::GradientsParams;
+use burn::tensor::activation::log_softmax;
+use burn::tensor::{Device, Int, Tensor, TensorData};
 use tiny::model::CTX;
 use tiny::text::{NEWLINE, token};
 
@@ -46,59 +48,59 @@ impl Example {
     }
 }
 
-/// A padded batch: tokens `B × T` (`u32`, padding 0) and loss weights `B × T`.
+/// Batches are padded to a multiple of this many letters. GPU backends compile
+/// kernels per shape, so few distinct lengths keep that cost small; the extra
+/// padding is masked out of the loss and, sitting after every real letter,
+/// never changes what the causal model computes for them.
+pub const LENGTH_STEP: usize = 16;
+
+/// A padded batch: tokens `B × T` (padding 0) and loss weights `B × T`.
 #[derive(Debug, Clone)]
 pub struct Batch {
     /// Letter tokens.
-    pub tokens: Tensor,
+    pub tokens: Tensor<2, Int>,
     /// 1 where the loss counts, 0 elsewhere (question letters and padding).
-    pub mask: Tensor,
+    pub mask: Tensor<2>,
 }
 
 impl Batch {
-    /// Pads `examples` to the longest one.
-    ///
-    /// # Errors
-    ///
-    /// Fails when candle cannot build the tensors.
-    pub fn new(examples: &[Example], device: &Device) -> anyhow::Result<Self> {
-        let len = examples.iter().map(|e| e.tokens.len()).max().unwrap_or(0);
-        let mut tokens = vec![0u32; examples.len() * len];
+    /// Pads `examples` to the longest one, rounded up to [`LENGTH_STEP`] (at most [`CTX`]).
+    #[must_use]
+    pub fn new(examples: &[Example], device: &Device) -> Self {
+        let longest = examples.iter().map(|e| e.tokens.len()).max().unwrap_or(0);
+        let len = longest.next_multiple_of(LENGTH_STEP).clamp(2, CTX);
+        let mut tokens = vec![0i64; examples.len() * len];
         let mut mask = vec![0f32; examples.len() * len];
         for (i, example) in examples.iter().enumerate() {
-            tokens[i * len..][..example.tokens.len()].copy_from_slice(&example.tokens);
+            for (slot, &t) in tokens[i * len..].iter_mut().zip(&example.tokens) {
+                *slot = i64::from(t);
+            }
+
             mask[i * len..][..example.mask.len()].copy_from_slice(&example.mask);
         }
 
-        let shape = (examples.len(), len);
-        Ok(Self {
-            tokens: Tensor::from_vec(tokens, shape, device)?,
-            mask: Tensor::from_vec(mask, shape, device)?,
-        })
+        let shape = [examples.len(), len];
+        Self {
+            tokens: Tensor::from_data(TensorData::new(tokens, shape), device),
+            mask: Tensor::from_data(TensorData::new(mask, shape), device),
+        }
     }
 }
 
 /// Mean cross-entropy of predicting each next letter, over answer letters only (`train2.loss_fn`).
-///
-/// # Errors
-///
-/// Fails on a shape mismatch.
-pub fn loss(model: &Model, batch: &Batch) -> anyhow::Result<Tensor> {
-    let len = batch.tokens.dim(1)?;
-    let input = batch.tokens.narrow(1, 0, len - 1)?.contiguous()?;
-    let target = batch.tokens.narrow(1, 1, len - 1)?.contiguous()?;
-    let weight = batch.mask.narrow(1, 1, len - 1)?;
+#[must_use]
+pub fn loss(model: &Model, batch: &Batch) -> Tensor<1> {
+    let [rows, len] = batch.tokens.dims();
+    let input = batch.tokens.clone().slice([0..rows, 0..len - 1]);
+    let target = batch.tokens.clone().slice([0..rows, 1..len]);
+    let weight = batch.mask.clone().slice([0..rows, 1..len]);
 
-    let log_probs = candle_nn::ops::log_softmax(&model.forward(&input)?, D::Minus1)?;
-    let picked = (log_probs * crate::model::one_hot(&target)?)?.sum(D::Minus1)?;
-    let total = (picked.neg()? * &weight)?.sum_all()?;
+    let log_probs = log_softmax(model.forward(input), 2);
+    let picked = (log_probs * crate::model::one_hot(target))
+        .sum_dim(2)
+        .squeeze_dim::<2>(2);
 
-    Ok((total
-        / weight
-            .sum_all()?
-            .to_dtype(DType::F32)?
-            .to_scalar::<f32>()
-            .map(f64::from)?)?)
+    (picked.neg() * weight.clone()).sum() / weight.sum()
 }
 
 /// The learning rate over a time-boxed run (`train2.train`).
@@ -133,28 +135,43 @@ impl Schedule {
 /// Scales all gradients down so their global norm is at most `max_norm`
 /// (`torch.nn.utils.clip_grad_norm_`); returns the norm before clipping.
 ///
-/// # Errors
-///
-/// Fails when candle cannot compute on the gradients.
-pub fn clip_gradients(grads: &mut GradStore, vars: &[Var], max_norm: f64) -> anyhow::Result<f64> {
-    let mut squares = 0.0f64;
-    for var in vars {
-        if let Some(g) = grads.get(var) {
-            squares += f64::from(g.sqr()?.sum_all()?.to_scalar::<f32>()?);
+/// `matrices` and `gains` are the ids of the rank-2 and rank-1 parameters.
+pub fn clip_gradients(
+    grads: &mut GradientsParams,
+    matrices: &[ParamId],
+    gains: &[ParamId],
+    max_norm: f64,
+) -> f64 {
+    let mut squares: Option<Tensor<1>> = None;
+    let mut add =
+        |part: Tensor<1>| squares = Some(squares.take().map_or(part.clone(), |s| s + part));
+    for &id in matrices {
+        if let Some(g) = grads.get::<2>(id) {
+            add(g.powi_scalar(2).sum());
+        }
+    }
+    for &id in gains {
+        if let Some(g) = grads.get::<1>(id) {
+            add(g.powi_scalar(2).sum());
         }
     }
 
-    let norm = squares.sqrt();
+    let norm = squares.map_or(0.0, |s| f64::from(s.into_scalar::<f32>()).sqrt());
     let factor = max_norm / (norm + 1e-6);
     if factor < 1.0 {
-        for var in vars {
-            if let Some(g) = grads.remove(var) {
-                grads.insert(var, (g * factor)?);
+        for &id in matrices {
+            if let Some(g) = grads.remove::<2>(id) {
+                grads.register(id, g * factor);
+            }
+        }
+        for &id in gains {
+            if let Some(g) = grads.remove::<1>(id) {
+                grads.register(id, g * factor);
             }
         }
     }
 
-    Ok(norm)
+    norm
 }
 
 #[cfg(test)]

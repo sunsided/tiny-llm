@@ -1,44 +1,75 @@
-//! Full-precision network weights, as saved by the original `train2.py`
-//! (`torch.save({"cfg": {...}, "sd": state_dict})`).
+//! Full-precision network weights, independent of any tensor library: read
+//! from the original `train2.py` checkpoints (`torch.save({"cfg": {...}, "sd":
+//! state_dict})`) and saved as safetensors.
 
-use std::collections::BTreeMap;
-use std::io::BufReader;
+use std::collections::{BTreeMap, HashMap};
 use std::path::Path;
 
-use anyhow::{Context, bail};
-use candle_core::pickle::{Object, Stack, read_all_with_key};
-use candle_core::{DType, Device, Tensor};
+use anyhow::{Context, bail, ensure};
+use pytorch_reader::{DType as PtType, PytorchReader};
+use safetensors::{Dtype, SafeTensors, tensor::TensorView};
+use serde::Deserialize;
 use tiny::model::Config;
 
-/// Name of the tensor that holds `[D, L, H, HID]` in saved checkpoints.
+/// Metadata key under which saved checkpoints keep `D,L,H,HID`.
 const CONFIG_KEY: &str = "config";
+
+/// A row-major `f32` array with its shape.
+#[derive(Debug, Clone, PartialEq)]
+pub struct Array {
+    /// Size of each dimension, outermost first.
+    pub shape: Vec<usize>,
+    /// The values, `shape.iter().product()` of them.
+    pub data: Vec<f32>,
+}
+
+impl Array {
+    /// The rows of a matrix (`shape` of rank 2).
+    ///
+    /// # Errors
+    ///
+    /// Fails when the array is not a `rows × cols` matrix.
+    pub fn rows(
+        &self,
+        rows: usize,
+        cols: usize,
+    ) -> anyhow::Result<std::slice::ChunksExact<'_, f32>> {
+        ensure!(
+            self.shape == [rows, cols],
+            "expected {rows}x{cols}, got {:?}",
+            self.shape
+        );
+        Ok(self.data.chunks_exact(cols))
+    }
+}
 
 /// A network's shape and its named full-precision tensors.
 #[derive(Debug, Clone)]
 pub struct Checkpoint {
     /// Shape of the network.
     pub config: Config,
-    /// State-dict tensors by their PyTorch names (`emb.weight`, `blocks.0.q.weight`, ...), as `f32`.
-    pub tensors: BTreeMap<String, Tensor>,
+    /// State-dict tensors by their PyTorch names (`emb.weight`, `blocks.0.q.weight`, ...).
+    pub tensors: BTreeMap<String, Array>,
+}
+
+/// The `cfg` dictionary of a `train2.py` checkpoint.
+#[derive(Debug, Deserialize)]
+#[expect(
+    non_snake_case,
+    reason = "field names are the dictionary keys of train2.py's Cfg"
+)]
+struct PtConfig {
+    /// Width.
+    D: usize,
+    /// Layers.
+    L: usize,
+    /// Heads.
+    H: usize,
+    /// Middle-layer width.
+    HID: usize,
 }
 
 impl Checkpoint {
-    /// Reads a PyTorch checkpoint written by `train2.py` (`tiny2.pt`).
-    ///
-    /// # Errors
-    ///
-    /// Fails when the file is not such a checkpoint or a tensor cannot be read.
-    pub fn load_pt(path: &Path) -> anyhow::Result<Self> {
-        let config =
-            read_config(path).with_context(|| format!("reading cfg of {}", path.display()))?;
-        let tensors = read_all_with_key(path, Some("sd"))?
-            .into_iter()
-            .map(|(name, tensor)| Ok((name, tensor.to_dtype(DType::F32)?)))
-            .collect::<candle_core::Result<_>>()?;
-
-        Ok(Self { config, tensors })
-    }
-
     /// Reads a checkpoint: a PyTorch `.pt` file from `train2.py`, or a
     /// `.safetensors` file written by [`Checkpoint::save`].
     ///
@@ -47,49 +78,115 @@ impl Checkpoint {
     /// Fails when the file cannot be read as either.
     pub fn load(path: &Path) -> anyhow::Result<Self> {
         if path.extension().is_some_and(|ext| ext == "pt") {
-            return Self::load_pt(path);
+            Self::load_pt(path)
+        } else {
+            Self::load_safetensors(path)
         }
+    }
 
-        let mut tensors: BTreeMap<String, Tensor> =
-            candle_core::safetensors::load(path, &Device::Cpu)?
-                .into_iter()
-                .collect();
-        let sizes = tensors
-            .remove(CONFIG_KEY)
-            .context("no config tensor in the checkpoint")?
-            .to_vec1::<u32>()?;
-        let [width, layers, heads, hidden] = sizes[..] else {
-            bail!("config tensor has {} values, expected 4", sizes.len());
-        };
-        let size = |n: u32| usize::try_from(n);
+    /// Reads a PyTorch checkpoint written by `train2.py` (`tiny2.pt`).
+    ///
+    /// # Errors
+    ///
+    /// Fails when the file is not such a checkpoint or holds non-`f32` tensors.
+    pub fn load_pt(path: &Path) -> anyhow::Result<Self> {
+        let cfg: PtConfig = PytorchReader::load_config(path, Some("cfg"))
+            .with_context(|| format!("reading cfg of {}", path.display()))?;
+        let reader = PytorchReader::with_top_level_key(path, "sd")?;
+        let tensors = reader
+            .into_tensors()
+            .into_iter()
+            .map(|(name, tensor)| {
+                ensure!(
+                    tensor.dtype() == PtType::F32,
+                    "{name} is {:?}, not f32",
+                    tensor.dtype()
+                );
+                let array = Array {
+                    shape: tensor.shape().to_vec(),
+                    data: floats(&tensor.read()?),
+                };
+                Ok((name, array))
+            })
+            .collect::<anyhow::Result<_>>()?;
         let config = Config {
-            width: size(width)?,
-            layers: size(layers)?,
-            heads: size(heads)?,
-            hidden: size(hidden)?,
+            width: cfg.D,
+            layers: cfg.L,
+            heads: cfg.H,
+            hidden: cfg.HID,
         };
 
         Ok(Self { config, tensors })
     }
 
-    /// Writes the checkpoint as safetensors, with the config as an extra `u32` tensor.
+    /// Reads a safetensors checkpoint written by [`Checkpoint::save`].
+    ///
+    /// # Errors
+    ///
+    /// Fails when the file cannot be read, lacks the config, or holds non-`f32` tensors.
+    pub fn load_safetensors(path: &Path) -> anyhow::Result<Self> {
+        let bytes = std::fs::read(path).with_context(|| format!("reading {}", path.display()))?;
+        let (_, metadata) = SafeTensors::read_metadata(&bytes)?;
+        let config = metadata
+            .metadata()
+            .as_ref()
+            .and_then(|m| m.get(CONFIG_KEY))
+            .context("no config in the checkpoint metadata")?;
+        let config = parse_config(config)?;
+
+        let tensors = SafeTensors::deserialize(&bytes)?
+            .tensors()
+            .into_iter()
+            .map(|(name, view)| {
+                ensure!(
+                    view.dtype() == Dtype::F32,
+                    "{name} is {:?}, not f32",
+                    view.dtype()
+                );
+                Ok((
+                    name,
+                    Array {
+                        shape: view.shape().to_vec(),
+                        data: floats(view.data()),
+                    },
+                ))
+            })
+            .collect::<anyhow::Result<_>>()?;
+
+        Ok(Self { config, tensors })
+    }
+
+    /// Writes the checkpoint as safetensors, with the config in the metadata.
     ///
     /// # Errors
     ///
     /// Fails when the file cannot be written.
     pub fn save(&self, path: &Path) -> anyhow::Result<()> {
         let c = self.config;
-        let sizes = [c.width, c.layers, c.heads, c.hidden]
-            .map(|n| u32::try_from(n).unwrap_or(u32::MAX))
-            .to_vec();
-        let mut tensors: std::collections::HashMap<String, Tensor> = self
+        let metadata = HashMap::from([(
+            CONFIG_KEY.to_owned(),
+            format!("{},{},{},{}", c.width, c.layers, c.heads, c.hidden),
+        )]);
+        let bytes: Vec<(String, Vec<u8>, Vec<usize>)> = self
             .tensors
             .iter()
-            .map(|(k, v)| (k.clone(), v.clone()))
+            .map(|(name, array)| {
+                let data = array.data.iter().flat_map(|v| v.to_le_bytes()).collect();
+                (name.clone(), data, array.shape.clone())
+            })
             .collect();
-        tensors.insert(CONFIG_KEY.to_owned(), Tensor::new(sizes, &Device::Cpu)?);
+        let views = bytes
+            .iter()
+            .map(|(name, data, shape)| {
+                Ok((
+                    name.as_str(),
+                    TensorView::new(Dtype::F32, shape.clone(), data)?,
+                ))
+            })
+            .collect::<Result<Vec<_>, safetensors::SafeTensorError>>()?;
 
-        Ok(candle_core::safetensors::save(&tensors, path)?)
+        let file = safetensors::serialize(views, Some(metadata))?;
+        std::fs::write(path, file).with_context(|| format!("writing {}", path.display()))
     }
 
     /// The tensor called `name`.
@@ -97,53 +194,38 @@ impl Checkpoint {
     /// # Errors
     ///
     /// Fails when the checkpoint has no such tensor.
-    pub fn tensor(&self, name: &str) -> anyhow::Result<&Tensor> {
+    pub fn tensor(&self, name: &str) -> anyhow::Result<&Array> {
         self.tensors
             .get(name)
             .with_context(|| format!("checkpoint has no tensor {name}"))
     }
 }
 
-/// Reads the `cfg` dictionary (`D`, `L`, `H`, `HID`) from the pickle in the checkpoint zip.
-fn read_config(path: &Path) -> anyhow::Result<Config> {
-    let mut zip = zip::ZipArchive::new(BufReader::new(std::fs::File::open(path)?))?;
-    let names = zip
-        .file_names()
-        .map(|name| name.map(std::borrow::Cow::into_owned))
-        .collect::<Result<Vec<_>, _>>()?;
-    let name = names
-        .into_iter()
-        .find(|name| name.ends_with("data.pkl"))
-        .context("no data.pkl in the checkpoint")?;
-    let mut stack = Stack::empty();
-    stack.read_loop(&mut BufReader::new(zip.by_name(&name)?))?;
-
-    let cfg = entry(stack.finalize()?, "cfg")?;
-    let size = |key: &str| -> anyhow::Result<usize> {
-        match entry(cfg.clone(), key)? {
-            Object::Int(n) => Ok(usize::try_from(n)?),
-            Object::Long(n) => Ok(usize::try_from(n)?),
-            other => bail!("cfg.{key} is not a number: {other:?}"),
-        }
+/// `"96,4,4,256"` as a [`Config`].
+fn parse_config(text: &str) -> anyhow::Result<Config> {
+    let sizes = text
+        .split(',')
+        .map(|n| n.trim().parse::<usize>())
+        .collect::<Result<Vec<_>, _>>()
+        .with_context(|| format!("bad config {text:?}"))?;
+    let [width, layers, heads, hidden] = sizes[..] else {
+        bail!("config {text:?} needs four numbers");
     };
 
     Ok(Config {
-        width: size("D")?,
-        layers: size("L")?,
-        heads: size("H")?,
-        hidden: size("HID")?,
+        width,
+        layers,
+        heads,
+        hidden,
     })
 }
 
-/// The value stored under string key `key` in a pickled dict.
-fn entry(dict: Object, key: &str) -> anyhow::Result<Object> {
-    let Object::Dict(entries) = dict else {
-        bail!("expected a dict holding {key}");
-    };
-
-    entries
-        .into_iter()
-        .find(|(k, _)| *k == Object::Unicode(key.to_owned()))
-        .map(|(_, v)| v)
-        .with_context(|| format!("no {key} in the dict"))
+/// Little-endian `f32` values from raw bytes.
+fn floats(bytes: &[u8]) -> Vec<f32> {
+    bytes
+        .as_chunks::<4>()
+        .0
+        .iter()
+        .map(|&b| f32::from_le_bytes(b))
+        .collect()
 }
