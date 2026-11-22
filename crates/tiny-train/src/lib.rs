@@ -5,4 +5,5 @@
 #![forbid(unsafe_code)]
 
 pub mod checkpoint;
+pub mod eval;
 pub mod export;
