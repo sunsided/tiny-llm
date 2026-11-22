@@ -37,3 +37,16 @@ fn safetensors_round_trip() {
         to_bin(&checkpoint).expect("bin")
     );
 }
+
+/// A matrix whose data does not fill its shape is an export error, not a
+/// short `TINY.BIN`.
+#[test]
+fn short_data_is_an_export_error() {
+    let root = Path::new(env!("CARGO_MANIFEST_DIR"));
+    let mut checkpoint = Checkpoint::load(&root.join("data/tiny2.pt")).expect("tiny2.pt loads");
+    if let Some(emb) = checkpoint.tensors.get_mut("emb.weight") {
+        emb.data.pop();
+    }
+
+    assert!(to_bin(&checkpoint).is_err());
+}

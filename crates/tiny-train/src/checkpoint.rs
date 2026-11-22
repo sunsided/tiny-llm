@@ -28,7 +28,7 @@ impl Array {
     ///
     /// # Errors
     ///
-    /// Fails when the array is not a `rows × cols` matrix.
+    /// Fails when the array is not a `rows × cols` matrix, or its data does not fill that shape.
     pub fn rows(
         &self,
         rows: usize,
@@ -38,6 +38,11 @@ impl Array {
             self.shape == [rows, cols],
             "expected {rows}x{cols}, got {:?}",
             self.shape
+        );
+        ensure!(
+            self.data.len() == rows * cols,
+            "a {rows}x{cols} matrix holds {} values",
+            self.data.len()
         );
         Ok(self.data.chunks_exact(cols))
     }

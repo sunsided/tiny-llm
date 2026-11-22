@@ -57,6 +57,11 @@ fn write_gains(out: &mut Vec<u8>, array: &Array, width: usize) -> anyhow::Result
         "expected {width} gains, got {:?}",
         array.shape
     );
+    ensure!(
+        array.data.len() == width,
+        "{width} gains hold {} values",
+        array.data.len()
+    );
     for g in &array.data {
         out.extend_from_slice(&g.to_le_bytes());
     }

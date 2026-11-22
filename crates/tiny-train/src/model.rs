@@ -126,6 +126,11 @@ impl Model {
     }
 
     /// The current weights as a checkpoint (for export or saving).
+    ///
+    /// # Panics
+    ///
+    /// Panics if a parameter cannot be read back as `f32`, which would mean a
+    /// backend stored it in another type.
     #[must_use]
     pub fn to_checkpoint(&self) -> Checkpoint {
         let tensors = self
@@ -338,7 +343,7 @@ fn tensor<const D: usize>(array: &Array, device: &Device) -> Tensor<D> {
 fn array(data: &TensorData) -> Array {
     let shape = data.shape().to_vec();
     Array {
-        data: data.try_to_vec::<f32>().unwrap_or_default(),
+        data: data.try_to_vec::<f32>().expect("parameters are f32"),
         shape,
     }
 }
