@@ -1,5 +1,7 @@
 [workspace]
 members = ["crates/tiny", "crates/tiny-train"]
+# `cargo run` at the root starts the chat program; the trainer is `-p tiny-train`.
+default-members = ["crates/tiny"]
 resolver = "3"
 
 [workspace.package]
