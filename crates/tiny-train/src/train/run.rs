@@ -80,13 +80,14 @@ impl<S: FnMut() -> Example> Pool<S> {
 ///
 /// # Errors
 ///
-/// Fails when `on_eval` does.
+/// Fails when `options.batch_size` is 0, or when `on_eval` does.
 pub fn train(
     mut model: Model,
     options: &Options,
     source: impl FnMut() -> Example,
     mut on_eval: impl FnMut(&Model, f64) -> anyhow::Result<()>,
 ) -> anyhow::Result<(Model, u32)> {
+    anyhow::ensure!(options.batch_size > 0, "the batch size must be at least 1");
     let mut pool = Pool {
         source,
         batches: Vec::new(),

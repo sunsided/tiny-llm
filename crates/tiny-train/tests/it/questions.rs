@@ -107,3 +107,23 @@ fn test_samples_per_kind_match_python() {
         .collect();
     assert_lines(&want, &got);
 }
+
+/// A facts directory without `geo.tsv` fails to load with an error naming the
+/// missing relation, instead of panicking later in a generator.
+#[test]
+fn missing_relation_is_an_error() {
+    let source = Path::new(env!("CARGO_MANIFEST_DIR")).join("data/facts");
+    let dir = std::env::temp_dir().join(format!("tiny-train-facts-{}", std::process::id()));
+    std::fs::create_dir_all(&dir).expect("temp dir");
+    for entry in std::fs::read_dir(&source).expect("facts") {
+        let path = entry.expect("entry").path();
+        if path.file_name().is_some_and(|n| n != "geo.tsv") {
+            std::fs::copy(&path, dir.join(path.file_name().expect("name"))).expect("copy");
+        }
+    }
+
+    let error = Kit::load(&dir).map(|_| ()).expect_err("geo.tsv is missing");
+    std::fs::remove_dir_all(&dir).expect("cleanup");
+
+    assert!(error.to_string().contains("capital"), "{error}");
+}

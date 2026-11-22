@@ -84,8 +84,8 @@ struct TrainArgs {
     /// Evaluate (and save) every this many minutes.
     #[arg(long)]
     eval_every: Option<f64>,
-    /// Examples per batch.
-    #[arg(long, default_value_t = 64)]
+    /// Examples per batch (at least 1).
+    #[arg(long, default_value_t = 64, value_parser = clap::builder::RangedU64ValueParser::<usize>::new().range(1..))]
     batch: usize,
     /// Seed of the generator and the batch order (default: the current time).
     #[arg(long)]
@@ -286,4 +286,30 @@ fn time_seed() -> u64 {
 /// A count as `f64` for averages.
 fn count(n: usize) -> f64 {
     f64::from(u32::try_from(n).unwrap_or(u32::MAX))
+}
+
+#[cfg(test)]
+mod tests {
+    use clap::Parser;
+
+    use super::Cli;
+
+    /// A batch size of 0 is rejected when parsing, before training starts.
+    #[test]
+    fn batch_size_zero_is_rejected() {
+        /// Command-line arguments of a training run with batch size `batch`.
+        fn args(batch: &str) -> [&str; 6] {
+            [
+                "tiny-train",
+                "train",
+                "1",
+                "out.safetensors",
+                "--batch",
+                batch,
+            ]
+        }
+
+        assert!(Cli::try_parse_from(args("0")).is_err());
+        assert!(Cli::try_parse_from(args("1")).is_ok());
+    }
 }
