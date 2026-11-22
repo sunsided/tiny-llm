@@ -155,10 +155,12 @@ impl PyRandom {
     /// `randint(a, b)`: an integer in `[a, b]`, both ends included.
     ///
     /// # Panics
-    /// If `b < a`.
+    /// If `b < a`, or the range has more than `usize::MAX` values.
     pub fn randint(&mut self, a: i64, b: i64) -> i64 {
-        let width = usize::try_from(b - a + 1).expect("randint range");
-        a + i64::try_from(self.randbelow(width)).expect("width fits i64")
+        // In i128, so even randint(i64::MIN, i64::MAX) cannot overflow.
+        let width = usize::try_from(i128::from(b) - i128::from(a) + 1).expect("randint range");
+        let offset = i128::try_from(self.randbelow(width)).expect("usize fits i128");
+        i64::try_from(i128::from(a) + offset).expect("result lies in [a, b]")
     }
 
     /// `choice(seq)`: one element, uniformly.
@@ -243,6 +245,17 @@ impl PyRandom {
 
 #[cfg(test)]
 mod tests {
+    /// The widest range `usize` can count (all of `i64` but one value) does
+    /// not overflow, and the result stays inside it.
+    #[test]
+    fn randint_full_range() {
+        let mut rng = PyRandom::new(5);
+        let x = rng.randint(i64::MIN, i64::MAX - 1);
+
+        assert!((i64::MIN..i64::MAX).contains(&x));
+        assert_eq!(rng.randint(-3, -3), -3);
+    }
+
     use super::PyRandom;
 
     /// Raw outputs match `random.Random(1).getrandbits(32)`.
