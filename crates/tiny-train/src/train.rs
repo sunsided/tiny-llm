@@ -90,9 +90,7 @@ pub fn loss(model: &Model, batch: &Batch) -> anyhow::Result<Tensor> {
     let weight = batch.mask.narrow(1, 1, len - 1)?;
 
     let log_probs = candle_nn::ops::log_softmax(&model.forward(&input)?, D::Minus1)?;
-    let picked = log_probs
-        .gather(&target.unsqueeze(D::Minus1)?, D::Minus1)?
-        .squeeze(D::Minus1)?;
+    let picked = (log_probs * crate::model::one_hot(&target)?)?.sum(D::Minus1)?;
     let total = (picked.neg()? * &weight)?.sum_all()?;
 
     Ok((total

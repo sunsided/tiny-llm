@@ -61,3 +61,29 @@ fn loss_is_low_and_a_step_lowers_it() {
     assert!(before_value < 1.5, "{before_value}");
     assert!(after < before_value, "{after} >= {before_value}");
 }
+
+/// Every parameter receives a non-zero gradient (attention included: an
+/// operation without a backward pass would silently freeze its inputs).
+#[test]
+fn every_parameter_gets_a_gradient() {
+    let model = released();
+    let grads = loss(&model, &batch())
+        .expect("loss")
+        .backward()
+        .expect("backward");
+    let data = model.vars.data().lock().expect("var map");
+
+    for (name, var) in data.iter() {
+        let grad = grads
+            .get(var)
+            .unwrap_or_else(|| panic!("no gradient for {name}"));
+        let size = grad
+            .abs()
+            .expect("abs")
+            .sum_all()
+            .expect("sum")
+            .to_scalar::<f32>()
+            .expect("scalar");
+        assert!(size > 0.0, "zero gradient for {name}");
+    }
+}

@@ -11,7 +11,6 @@
 
 use std::time::Instant;
 
-use candle_core::Device;
 use candle_nn::{AdamW, Optimizer, ParamsAdamW};
 use rand::SeedableRng;
 use rand::rngs::StdRng;
@@ -112,7 +111,7 @@ pub fn train(
                 .map(|(at, every)| at + every);
         }
 
-        let batch = Batch::new(&pool.next(), &Device::Cpu)?;
+        let batch = Batch::new(&pool.next(), model.device())?;
         let rate = options.schedule.rate(step, elapsed);
         log.add(optimizer.step(model, &batch, rate)?);
         step += 1;

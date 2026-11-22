@@ -127,7 +127,7 @@ impl Model {
         Ok(model)
     }
 
-    /// The current weights as a checkpoint (for export or saving).
+    /// The current weights as a checkpoint on the CPU (for export or saving).
     ///
     /// # Errors
     ///
@@ -140,13 +140,24 @@ impl Model {
         let data = self.vars.data().lock().expect("var map");
         let tensors: BTreeMap<String, Tensor> = data
             .iter()
-            .map(|(name, var)| Ok((name.clone(), var.as_tensor().copy()?)))
+            .map(|(name, var)| {
+                Ok((
+                    name.clone(),
+                    var.as_tensor().copy()?.to_device(&Device::Cpu)?,
+                ))
+            })
             .collect::<candle_core::Result<_>>()?;
 
         Ok(Checkpoint {
             config: self.config,
             tensors,
         })
+    }
+
+    /// Where the weights live (CPU or a CUDA device).
+    #[must_use]
+    pub fn device(&self) -> &Device {
+        self.emb.device()
     }
 
     /// Matrices (weight decay 0.01) and gains (no decay), like the two optimizer groups of `train2.py`.
@@ -166,12 +177,9 @@ impl Model {
     pub fn forward(&self, idx: &Tensor) -> anyhow::Result<Tensor> {
         let (_, t) = idx.dims2()?;
         let device = idx.device();
-        let positions = Tensor::arange(0u32, u32::try_from(t)?, device)?;
-        let mut x = self
-            .emb
-            .index_select(&idx.flatten_all()?, 0)?
-            .reshape((idx.dim(0)?, t, self.config.width))?
-            .broadcast_add(&self.pos.index_select(&positions, 0)?)?;
+        let mut x = one_hot(idx)?
+            .broadcast_matmul(&self.emb)?
+            .broadcast_add(&self.pos.narrow(0, 0, t)?)?;
         let mask = causal_mask(t, device)?;
 
         for block in &self.blocks {
@@ -235,7 +243,9 @@ impl Block {
         let (q, k, v) = (split(&self.q)?, split(&self.k)?, split(&self.v)?);
 
         let scores = (q.matmul(&k.t()?)? / f64_of(head_width).sqrt())?.broadcast_add(mask)?;
-        let weights = candle_nn::ops::softmax_last_dim(&scores)?;
+        // Not `softmax_last_dim`: candle builds that one without a backward pass,
+        // so the queries and keys would never learn.
+        let weights = candle_nn::ops::softmax(&scores, D::Minus1)?;
 
         Ok(weights
             .matmul(&v)?
@@ -290,6 +300,22 @@ fn norm(x: &Tensor, gain: &Tensor) -> candle_core::Result<Tensor> {
         .sqrt()?
         .recip()?;
     x.broadcast_mul(&scale)?.broadcast_mul(gain)
+}
+
+/// `… × VOCAB` one-hot rows for letter tokens `idx`, as `f32`.
+///
+/// Embedding lookups and loss picks go through this and a matrix product
+/// instead of `index_select`/`gather`, whose scatter-style gradients are slow
+/// in candle (especially on CUDA).
+///
+/// # Errors
+///
+/// Fails when candle cannot build the tensor.
+pub fn one_hot(idx: &Tensor) -> candle_core::Result<Tensor> {
+    let letters = Tensor::arange(0u32, u32::try_from(VOCAB).unwrap_or(u32::MAX), idx.device())?;
+    idx.unsqueeze(D::Minus1)?
+        .broadcast_eq(&letters)?
+        .to_dtype(DType::F32)
 }
 
 /// `T × T` additive mask: 0 on and below the diagonal, −∞ above it.
