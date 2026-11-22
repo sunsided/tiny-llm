@@ -2,3 +2,4 @@
 
 mod eval;
 mod export;
+mod model;

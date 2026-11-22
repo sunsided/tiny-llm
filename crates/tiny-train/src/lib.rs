@@ -7,3 +7,4 @@
 pub mod checkpoint;
 pub mod eval;
 pub mod export;
+pub mod model;
