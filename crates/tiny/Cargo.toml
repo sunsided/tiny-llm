@@ -1,0 +1,32 @@
+[package]
+name = "tiny"
+version = "0.1.0"
+description = "TINY 2.1 ported to Rust: a tiny letter-by-letter question-answering transformer with a neon terminal UI"
+keywords = ["transformer", "llm", "tui", "retro", "dos"]
+categories = ["command-line-utilities", "games"]
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+readme.workspace = true
+publish.workspace = true
+
+[dependencies]
+clap = { version = "4.6.9", features = ["derive"] }
+cpal = "0.18"
+rand = "0.10.4"
+ratatui = "0.30.2"
+synthie = { version = "0.8", default-features = false, features = ["std"] }
+synthie-trombone = "0.2"
+thiserror = "2.0.21"
+
+[dev-dependencies]
+criterion = "0.8.2"
+proptest = "1.12.0"
+
+[lints]
+workspace = true
+
+[[bench]]
+name = "step"
+harness = false

@@ -9,9 +9,9 @@ SPDX-FileCopyrightText = ["2026 WollyMonjac", "2026 Markus Mayer"]
 SPDX-License-Identifier = "MIT"
 
 # The trained network was trained partly on data from mledoze/countries (ODbL-1.0) and
-# Periodic-Table-JSON (CC-BY-SA-3.0); see assets/DATA_LICENSES.md.
+# Periodic-Table-JSON (CC-BY-SA-3.0); see crates/tiny/assets/DATA_LICENSES.md.
 [[annotations]]
-path = "assets/TINY.BIN"
+path = "crates/tiny/assets/TINY.BIN"
 precedence = "override"
 SPDX-FileCopyrightText = "2026 WollyMonjac"
 SPDX-License-Identifier = "MIT AND ODbL-1.0 AND CC-BY-SA-3.0"

@@ -45,7 +45,7 @@ needs before it can be merged.
 - `clippy::pedantic` must pass. If a lint is wrong in one place, use
   `#[expect(lint, reason = "...")]` on that item. Never `#[allow]`.
 - Unsafe code is forbidden (`#![forbid(unsafe_code)]`).
-- `src/model/` rounds exactly like the original `TINY.C`. `tests/it/parity.rs` compares greedy
+- `crates/tiny/src/model/` rounds exactly like the original `TINY.C`. `crates/tiny/tests/it/parity.rs` compares greedy
   answers with the C program letter for letter; keep it passing.
 - README and doc links use absolute URLs (crates.io renders READMEs outside GitHub).
   Mermaid diagrams are welcome.

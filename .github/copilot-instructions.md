@@ -10,8 +10,8 @@ This is a Rust project with strict conventions. Path-specific rules live in
 - `clippy::pedantic` must stay clean. Suppress only with
   `#[expect(lint, reason = "...")]` on the smallest item. Never `#[allow]`.
 - Unsafe code is forbidden (`#![forbid(unsafe_code)]`).
-- TINY is a port of https://github.com/WollyMonjac/Tiny-2.1. `src/model/` must keep giving the
-  same greedy answers as the original `TINY.C` (`tests/it/parity.rs`).
+- TINY is a port of https://github.com/WollyMonjac/Tiny-2.1. `crates/tiny/src/model/` must keep giving the
+  same greedy answers as the original `TINY.C` (`crates/tiny/tests/it/parity.rs`).
 - Commit subjects use the imperative mood ("Add X", "Fix Y"): no Conventional Commits prefix
   and no past tense. At most 72 characters, then a blank line and a body that explains why.
 - Branches: GitHub Flow (`main` plus `feature/<topic>`). Never `fix/`, `chore/`, `deps/` or
