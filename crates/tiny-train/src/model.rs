@@ -178,7 +178,7 @@ impl Model {
             x = block.forward(&x, &mask, self.config.heads)?;
         }
 
-        Ok(norm(&x, &self.nf)?.broadcast_matmul(&self.emb.t()?)?)
+        Ok(linear(&norm(&x, &self.nf)?, &self.emb)?)
     }
 }
 
@@ -270,9 +270,18 @@ impl Builder<'_> {
     }
 }
 
-/// `x · W^T`, a bias-free PyTorch `Linear`.
+/// `x · W^T`, a bias-free PyTorch `Linear`, for `x` of shape `… × in`.
+///
+/// The leading dimensions are flattened into one matrix product: candle runs a
+/// broadcast product as one small product per batch entry, which is far slower.
 fn linear(x: &Tensor, w: &Tensor) -> candle_core::Result<Tensor> {
-    x.broadcast_matmul(&w.t()?)
+    let mut dims = x.dims().to_vec();
+    let inputs = dims.pop().unwrap_or(1);
+    let rows = dims.iter().product::<usize>();
+    let out = x.reshape((rows, inputs))?.matmul(&w.t()?)?;
+    dims.push(w.dim(0)?);
+
+    out.reshape(dims)
 }
 
 /// RMS norm over the last dimension, times the gains.
