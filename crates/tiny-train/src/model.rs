@@ -1,92 +1,95 @@
-//! The trainable TINY network in candle: the same pre-norm transformer as
-//! `train2.py`'s `Model`, with variables named like its PyTorch state dict.
+//! The trainable TINY network in burn: the same pre-norm transformer as
+//! `train2.py`'s `Model`, with parameters stored in PyTorch's layout and named
+//! like its state dict, so checkpoints load and export unchanged.
 //!
 //! ```mermaid
 //! flowchart LR
-//!     idx[letters B×T] --> emb["emb + pos"]
+//!     idx[letters B×T] --> emb["one-hot × emb + pos"]
 //!     emb --> blk["block × L: x + attn(norm x), then x + f2(relu(f1(norm x)))"]
 //!     blk --> nf["norm"] --> head["× embᵀ"] --> logits[B×T×VOCAB]
 //! ```
 
 use std::collections::BTreeMap;
 
-use anyhow::{Context, ensure};
-use candle_core::{D, DType, Device, Tensor, Var};
-use candle_nn::{Init, VarMap};
+use anyhow::ensure;
+use burn::module::{Module, Param, ParamId};
+use burn::tensor::activation::{relu, softmax};
+use burn::tensor::{Bool, Device, Distribution, Int, Tensor, TensorData};
 use tiny::model::{CTX, Config, VOCAB};
 
-use crate::checkpoint::Checkpoint;
+use crate::checkpoint::{Array, Checkpoint};
 
 /// Added to the mean square before the root in every norm.
 const NORM_EPS: f64 = 1e-5;
 
-/// The network's variables, shared with the optimizer through a [`VarMap`].
+/// The network's parameters.
+#[derive(Module, Debug)]
 pub struct Model {
-    /// Shape of the network.
-    pub config: Config,
-    /// Every trainable variable, by state-dict name.
-    pub vars: VarMap,
-    /// Letter embedding `VOCAB × D`, also the output head.
-    emb: Tensor,
-    /// Position embedding `CTX × D`.
-    pos: Tensor,
-    /// The transformer blocks.
+    /// Letter embedding `VOCAB × D`, also the output head (`emb.weight`).
+    emb: Param<Tensor<2>>,
+    /// Position embedding `CTX × D` (`pos.weight`).
+    pos: Param<Tensor<2>>,
+    /// The transformer blocks (`blocks.N.`).
     blocks: Vec<Block>,
-    /// Final norm gain.
-    nf: Tensor,
+    /// Final norm gain (`nf.g`).
+    nf: Param<Tensor<1>>,
+    /// Number of attention heads (not recoverable from the shapes).
+    heads: usize,
 }
 
-/// Weights of one transformer block.
-#[derive(Debug)]
+/// Parameters of one transformer block, matrices in PyTorch layout (out × in).
+#[derive(Module, Debug)]
 struct Block {
     /// Norm gain before attention.
-    n1: Tensor,
-    /// Query projection `D × D` (PyTorch layout: out × in).
-    q: Tensor,
+    n1: Param<Tensor<1>>,
+    /// Query projection `D × D`.
+    q: Param<Tensor<2>>,
     /// Key projection.
-    k: Tensor,
+    k: Param<Tensor<2>>,
     /// Value projection.
-    v: Tensor,
+    v: Param<Tensor<2>>,
     /// Attention output projection.
-    o: Tensor,
+    o: Param<Tensor<2>>,
     /// Norm gain before the feed-forward part.
-    n2: Tensor,
+    n2: Param<Tensor<1>>,
     /// Feed-forward expansion `HID × D`.
-    f1: Tensor,
+    f1: Param<Tensor<2>>,
     /// Feed-forward contraction `D × HID`.
-    f2: Tensor,
+    f2: Param<Tensor<2>>,
+}
+
+/// One named parameter, for loading and saving in state-dict order.
+enum Named<'a> {
+    /// A matrix.
+    Matrix(String, &'a Param<Tensor<2>>),
+    /// A gain vector.
+    Gain(String, &'a Param<Tensor<1>>),
 }
 
 impl Model {
     /// A freshly initialised network, like `train2.Model.__init__`: embeddings
     /// N(0, 0.05), projections N(0, 0.5/√in), gains 1.
-    ///
-    /// # Errors
-    ///
-    /// Fails when candle cannot allocate a tensor.
-    pub fn new(config: Config, device: &Device) -> anyhow::Result<Self> {
-        let vars = VarMap::new();
-        let builder = Builder {
-            vars: &vars,
-            device,
-        };
+    #[must_use]
+    pub fn new(config: Config, device: &Device) -> Self {
         let (d, hid) = (config.width, config.hidden);
+        let block = || Block {
+            n1: ones(d, device),
+            q: normal(d, d, device),
+            k: normal(d, d, device),
+            v: normal(d, d, device),
+            o: normal(d, d, device),
+            n2: ones(d, device),
+            f1: normal(hid, d, device),
+            f2: normal(d, hid, device),
+        };
 
-        let emb = builder.normal("emb.weight", (VOCAB, d), 0.05)?;
-        let pos = builder.normal("pos.weight", (CTX, d), 0.05)?;
-        let blocks = (0..config.layers)
-            .map(|l| Block::new(&builder, &format!("blocks.{l}."), d, hid))
-            .collect::<anyhow::Result<_>>()?;
-        let nf = builder.ones("nf.g", d)?;
-
-        Ok(Self {
-            config,
-            vars,
-            emb,
-            pos,
-            blocks,
-            nf,
-        })
+        Self {
+            emb: random([VOCAB, d], 0.05, device),
+            pos: random([CTX, d], 0.05, device),
+            blocks: (0..config.layers).map(|_| block()).collect(),
+            nf: ones(d, device),
+            heads: config.heads,
+        }
     }
 
     /// A network holding the weights of `checkpoint`.
@@ -94,21 +97,9 @@ impl Model {
     /// # Errors
     ///
     /// Fails when the checkpoint's tensor names or shapes differ from the model's.
-    ///
-    /// # Panics
-    ///
-    /// Panics if the variable map's lock is poisoned, which only a panic elsewhere can cause.
     pub fn from_checkpoint(checkpoint: &Checkpoint, device: &Device) -> anyhow::Result<Self> {
-        let mut model = Self::new(checkpoint.config, device)?;
-        // `set_one` copies into the variables in place, so the tensors held by the model follow.
-        let names: Vec<String> = model
-            .vars
-            .data()
-            .lock()
-            .expect("var map")
-            .keys()
-            .cloned()
-            .collect();
+        let model = Self::new(checkpoint.config, device);
+        let names = model.named();
         ensure!(
             names.len() == checkpoint.tensors.len(),
             "checkpoint has {} tensors, the model {}",
@@ -116,214 +107,245 @@ impl Model {
             names.len()
         );
 
-        for name in &names {
-            let tensor = checkpoint.tensor(name)?.to_device(device)?;
-            model
-                .vars
-                .set_one(name, tensor)
-                .with_context(|| format!("setting {name}"))?;
+        let mut values = BTreeMap::new();
+        for named in &names {
+            let (name, shape) = match named {
+                Named::Matrix(name, p) => (name, p.val().dims().to_vec()),
+                Named::Gain(name, p) => (name, p.val().dims().to_vec()),
+            };
+            let array = checkpoint.tensor(name)?;
+            ensure!(
+                array.shape == shape,
+                "{name}: expected {shape:?}, got {:?}",
+                array.shape
+            );
+            values.insert(name.clone(), array.clone());
         }
 
-        Ok(model)
+        Ok(model.with_values(&values, device))
     }
 
-    /// The current weights as a checkpoint on the CPU (for export or saving).
-    ///
-    /// # Errors
-    ///
-    /// Fails when a variable cannot be copied.
+    /// The current weights as a checkpoint (for export or saving).
     ///
     /// # Panics
     ///
-    /// Panics if the variable map's lock is poisoned, which only a panic elsewhere can cause.
-    pub fn to_checkpoint(&self) -> anyhow::Result<Checkpoint> {
-        let data = self.vars.data().lock().expect("var map");
-        let tensors: BTreeMap<String, Tensor> = data
-            .iter()
-            .map(|(name, var)| {
-                Ok((
-                    name.clone(),
-                    var.as_tensor().copy()?.to_device(&Device::Cpu)?,
-                ))
-            })
-            .collect::<candle_core::Result<_>>()?;
-
-        Ok(Checkpoint {
-            config: self.config,
-            tensors,
-        })
-    }
-
-    /// Where the weights live (CPU or a CUDA device).
+    /// Panics if a parameter cannot be read back as `f32`, which would mean a
+    /// backend stored it in another type.
     #[must_use]
-    pub fn device(&self) -> &Device {
-        self.emb.device()
-    }
-
-    /// Matrices (weight decay 0.01) and gains (no decay), like the two optimizer groups of `train2.py`.
-    #[must_use]
-    pub fn parameter_groups(&self) -> (Vec<Var>, Vec<Var>) {
-        self.vars
-            .all_vars()
+    pub fn to_checkpoint(&self) -> Checkpoint {
+        let tensors = self
+            .named()
             .into_iter()
-            .partition(|var| var.rank() == 2)
+            .map(|named| match named {
+                Named::Matrix(name, p) => (name, array(&p.val().into_data())),
+                Named::Gain(name, p) => (name, array(&p.val().into_data())),
+            })
+            .collect();
+
+        Checkpoint {
+            config: self.config(),
+            tensors,
+        }
     }
 
-    /// Logits `B × T × VOCAB` for letter tokens `idx` (`B × T`, `u32`, `T ≤ CTX`).
-    ///
-    /// # Errors
-    ///
-    /// Fails on a shape mismatch.
-    pub fn forward(&self, idx: &Tensor) -> anyhow::Result<Tensor> {
-        let (_, t) = idx.dims2()?;
+    /// Shape of the network.
+    #[must_use]
+    pub fn config(&self) -> Config {
+        let [_, width] = self.emb.val().dims();
+        let hidden = self.blocks.first().map_or(0, |b| b.f1.val().dims()[0]);
+
+        Config {
+            width,
+            layers: self.blocks.len(),
+            heads: self.heads,
+            hidden,
+        }
+    }
+
+    /// Ids of the gain vectors, the parameter group without weight decay.
+    #[must_use]
+    pub fn gain_ids(&self) -> Vec<ParamId> {
+        let blocks = self.blocks.iter().flat_map(|b| [b.n1.id, b.n2.id]);
+        blocks.chain([self.nf.id]).collect()
+    }
+
+    /// Ids of the matrices, the parameter group with weight decay.
+    #[must_use]
+    pub fn matrix_ids(&self) -> Vec<ParamId> {
+        let blocks = self
+            .blocks
+            .iter()
+            .flat_map(|b| [b.q.id, b.k.id, b.v.id, b.o.id, b.f1.id, b.f2.id]);
+        [self.emb.id, self.pos.id]
+            .into_iter()
+            .chain(blocks)
+            .collect()
+    }
+
+    /// Logits `B × T × VOCAB` for letter tokens `idx` (`B × T`, `T ≤ CTX`).
+    #[must_use]
+    pub fn forward(&self, idx: Tensor<2, Int>) -> Tensor<3> {
+        let [batch, len] = idx.dims();
+        let width = self.config().width;
         let device = idx.device();
-        let mut x = one_hot(idx)?
-            .broadcast_matmul(&self.emb)?
-            .broadcast_add(&self.pos.narrow(0, 0, t)?)?;
-        let mask = causal_mask(t, device)?;
+        let letters = one_hot(idx)
+            .reshape([batch * len, VOCAB])
+            .matmul(self.emb.val());
+        let mut x = letters.reshape([batch, len, width])
+            + self.pos.val().narrow(0, 0, len).unsqueeze::<3>();
+        let mask = Tensor::<2, Bool>::tril_mask([len, len], 0, &device).unsqueeze::<4>();
 
         for block in &self.blocks {
-            x = block.forward(&x, &mask, self.config.heads)?;
+            x = block.forward(x, &mask, self.heads);
         }
 
-        Ok(linear(&norm(&x, &self.nf)?, &self.emb)?)
+        linear(norm(x, &self.nf), &self.emb)
     }
-}
 
-impl std::fmt::Debug for Model {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.debug_struct("Model")
-            .field("config", &self.config)
-            .finish_non_exhaustive()
+    /// Every parameter with its state-dict name, in state-dict order.
+    fn named(&self) -> Vec<Named<'_>> {
+        let mut out = vec![
+            Named::Matrix("emb.weight".into(), &self.emb),
+            Named::Matrix("pos.weight".into(), &self.pos),
+        ];
+        for (l, b) in self.blocks.iter().enumerate() {
+            let p = format!("blocks.{l}.");
+            out.push(Named::Gain(format!("{p}n1.g"), &b.n1));
+            for (n, m) in [("q", &b.q), ("k", &b.k), ("v", &b.v), ("o", &b.o)] {
+                out.push(Named::Matrix(format!("{p}{n}.weight"), m));
+            }
+            out.push(Named::Gain(format!("{p}n2.g"), &b.n2));
+            out.push(Named::Matrix(format!("{p}f1.weight"), &b.f1));
+            out.push(Named::Matrix(format!("{p}f2.weight"), &b.f2));
+        }
+
+        out.push(Named::Gain("nf.g".into(), &self.nf));
+        out
+    }
+
+    /// The same network with every parameter replaced by `values` (shapes already checked).
+    fn with_values(self, values: &BTreeMap<String, Array>, device: &Device) -> Self {
+        let matrix = |name: &str| Param::from_tensor(tensor::<2>(&values[name], device));
+        let gain = |name: &str| Param::from_tensor(tensor::<1>(&values[name], device));
+        let blocks = (0..self.blocks.len())
+            .map(|l| {
+                let p = format!("blocks.{l}.");
+                Block {
+                    n1: gain(&format!("{p}n1.g")),
+                    q: matrix(&format!("{p}q.weight")),
+                    k: matrix(&format!("{p}k.weight")),
+                    v: matrix(&format!("{p}v.weight")),
+                    o: matrix(&format!("{p}o.weight")),
+                    n2: gain(&format!("{p}n2.g")),
+                    f1: matrix(&format!("{p}f1.weight")),
+                    f2: matrix(&format!("{p}f2.weight")),
+                }
+            })
+            .collect();
+
+        Self {
+            emb: matrix("emb.weight"),
+            pos: matrix("pos.weight"),
+            blocks,
+            nf: gain("nf.g"),
+            heads: self.heads,
+        }
     }
 }
 
 impl Block {
-    /// Creates the variables of block `prefix` with their initial values.
-    fn new(builder: &Builder<'_>, prefix: &str, d: usize, hid: usize) -> anyhow::Result<Self> {
-        let linear = |name: &str, out: usize, inp: usize| {
-            builder.normal(
-                &format!("{prefix}{name}.weight"),
-                (out, inp),
-                0.5 / f64_of(inp).sqrt(),
-            )
-        };
-
-        Ok(Self {
-            n1: builder.ones(&format!("{prefix}n1.g"), d)?,
-            q: linear("q", d, d)?,
-            k: linear("k", d, d)?,
-            v: linear("v", d, d)?,
-            o: linear("o", d, d)?,
-            n2: builder.ones(&format!("{prefix}n2.g"), d)?,
-            f1: linear("f1", hid, d)?,
-            f2: linear("f2", d, hid)?,
-        })
-    }
-
     /// `x + attention(norm(x))`, then `x + f2(relu(f1(norm(x))))`.
-    fn forward(&self, x: &Tensor, mask: &Tensor, heads: usize) -> anyhow::Result<Tensor> {
-        let h = norm(x, &self.n1)?;
-        let x = (x + linear(&self.attention(&h, mask, heads)?, &self.o)?)?;
-        let h = linear(&norm(&x, &self.n2)?, &self.f1)?.relu()?;
+    fn forward(&self, x: Tensor<3>, mask: &Tensor<4, Bool>, heads: usize) -> Tensor<3> {
+        let attended = self.attention(&norm(x.clone(), &self.n1), mask, heads);
+        let x = x + linear(attended, &self.o);
+        let middle = relu(linear(norm(x.clone(), &self.n2), &self.f1));
 
-        Ok((&x + linear(&h, &self.f2)?)?)
+        x + linear(middle, &self.f2)
     }
 
     /// Causal multi-head self-attention of `h` (`B × T × D`), before the output projection.
-    fn attention(&self, h: &Tensor, mask: &Tensor, heads: usize) -> anyhow::Result<Tensor> {
-        let (batch, len, width) = h.dims3()?;
+    fn attention(&self, h: &Tensor<3>, mask: &Tensor<4, Bool>, heads: usize) -> Tensor<3> {
+        let [batch, len, width] = h.dims();
         let head_width = width / heads;
-        let split = |w: &Tensor| -> anyhow::Result<Tensor> {
-            Ok(linear(h, w)?
-                .reshape((batch, len, heads, head_width))?
-                .transpose(1, 2)?
-                .contiguous()?)
+        let split = |w: &Param<Tensor<2>>| {
+            linear(h.clone(), w)
+                .reshape([batch, len, heads, head_width])
+                .swap_dims(1, 2)
         };
-        let (q, k, v) = (split(&self.q)?, split(&self.k)?, split(&self.v)?);
+        let (q, k, v) = (split(&self.q), split(&self.k), split(&self.v));
 
-        let scores = (q.matmul(&k.t()?)? / f64_of(head_width).sqrt())?.broadcast_add(mask)?;
-        // Not `softmax_last_dim`: candle builds that one without a backward pass,
-        // so the queries and keys would never learn.
-        let weights = candle_nn::ops::softmax(&scores, D::Minus1)?;
+        let scores = q.matmul(k.swap_dims(2, 3)) / f64_of(head_width).sqrt();
+        let weights = softmax(scores.mask_fill(mask.clone(), f32::NEG_INFINITY), 3);
 
-        Ok(weights
-            .matmul(&v)?
-            .transpose(1, 2)?
-            .reshape((batch, len, width))?)
+        weights
+            .matmul(v)
+            .swap_dims(1, 2)
+            .reshape([batch, len, width])
     }
 }
 
-/// Creates variables in a [`VarMap`].
-struct Builder<'a> {
-    /// Where the variables are registered.
-    vars: &'a VarMap,
-    /// Where they live.
-    device: &'a Device,
-}
-
-impl Builder<'_> {
-    /// A variable drawn from N(0, `std`).
-    fn normal(&self, name: &str, shape: (usize, usize), std: f64) -> anyhow::Result<Tensor> {
-        let init = Init::Randn {
-            mean: 0.0,
-            stdev: std,
-        };
-        Ok(self.vars.get(shape, name, init, DType::F32, self.device)?)
-    }
-
-    /// A gain vector of ones.
-    fn ones(&self, name: &str, width: usize) -> anyhow::Result<Tensor> {
-        Ok(self
-            .vars
-            .get(width, name, candle_nn::init::ONE, DType::F32, self.device)?)
-    }
-}
-
-/// `x · W^T`, a bias-free PyTorch `Linear`, for `x` of shape `… × in`.
+/// `B × T × VOCAB` one-hot rows for letter tokens, as floats.
 ///
-/// The leading dimensions are flattened into one matrix product: candle runs a
-/// broadcast product as one small product per batch entry, which is far slower.
-fn linear(x: &Tensor, w: &Tensor) -> candle_core::Result<Tensor> {
-    let mut dims = x.dims().to_vec();
-    let inputs = dims.pop().unwrap_or(1);
-    let rows = dims.iter().product::<usize>();
-    let out = x.reshape((rows, inputs))?.matmul(&w.t()?)?;
-    dims.push(w.dim(0)?);
+/// Embedding lookups and loss picks go through this and a matrix product,
+/// which differentiates cheaply on every backend.
+#[must_use]
+pub fn one_hot(idx: Tensor<2, Int>) -> Tensor<3> {
+    idx.one_hot::<3>(VOCAB).float()
+}
 
-    out.reshape(dims)
+/// `x · W^T`, a bias-free PyTorch `Linear`, as one 2-D matrix product.
+fn linear(x: Tensor<3>, w: &Param<Tensor<2>>) -> Tensor<3> {
+    let [batch, len, inputs] = x.dims();
+    let weight = w.val();
+    let outputs = weight.dims()[0];
+
+    x.reshape([batch * len, inputs])
+        .matmul(weight.transpose())
+        .reshape([batch, len, outputs])
 }
 
 /// RMS norm over the last dimension, times the gains.
-fn norm(x: &Tensor, gain: &Tensor) -> candle_core::Result<Tensor> {
-    let scale = (x.sqr()?.mean_keepdim(D::Minus1)? + NORM_EPS)?
-        .sqrt()?
-        .recip()?;
-    x.broadcast_mul(&scale)?.broadcast_mul(gain)
+fn norm(x: Tensor<3>, gain: &Param<Tensor<1>>) -> Tensor<3> {
+    let scale = (x.clone().powi_scalar(2).mean_dim(2) + NORM_EPS)
+        .sqrt()
+        .recip();
+    x * scale * gain.val().unsqueeze::<3>()
 }
 
-/// `… × VOCAB` one-hot rows for letter tokens `idx`, as `f32`.
-///
-/// Embedding lookups and loss picks go through this and a matrix product
-/// instead of `index_select`/`gather`, whose scatter-style gradients are slow
-/// in candle (especially on CUDA).
-///
-/// # Errors
-///
-/// Fails when candle cannot build the tensor.
-pub fn one_hot(idx: &Tensor) -> candle_core::Result<Tensor> {
-    let letters = Tensor::arange(0u32, u32::try_from(VOCAB).unwrap_or(u32::MAX), idx.device())?;
-    idx.unsqueeze(D::Minus1)?
-        .broadcast_eq(&letters)?
-        .to_dtype(DType::F32)
+/// A `out × in` parameter drawn from N(0, 0.5/√in).
+fn normal(out: usize, inputs: usize, device: &Device) -> Param<Tensor<2>> {
+    random([out, inputs], 0.5 / f64_of(inputs).sqrt(), device)
 }
 
-/// `T × T` additive mask: 0 on and below the diagonal, −∞ above it.
-fn causal_mask(t: usize, device: &Device) -> candle_core::Result<Tensor> {
-    let allowed = Tensor::tril2(t, DType::U8, device)?;
-    let zeros = Tensor::zeros((t, t), DType::F32, device)?;
-    let blocked = Tensor::full(f32::NEG_INFINITY, (t, t), device)?;
-    allowed.where_cond(&zeros, &blocked)
+/// A parameter drawn from N(0, `std`).
+fn random(shape: [usize; 2], std: f64, device: &Device) -> Param<Tensor<2>> {
+    Param::from_tensor(Tensor::random(
+        shape,
+        Distribution::Normal(0.0, std),
+        device,
+    ))
+}
+
+/// A gain vector of ones.
+fn ones(width: usize, device: &Device) -> Param<Tensor<1>> {
+    Param::from_tensor(Tensor::ones([width], device))
+}
+
+/// A tensor holding `array`.
+fn tensor<const D: usize>(array: &Array, device: &Device) -> Tensor<D> {
+    Tensor::from_data(
+        TensorData::new(array.data.clone(), array.shape.clone()),
+        device,
+    )
+}
+
+/// Tensor data back as an [`Array`].
+fn array(data: &TensorData) -> Array {
+    let shape = data.shape().to_vec();
+    Array {
+        data: data.try_to_vec::<f32>().expect("parameters are f32"),
+        shape,
+    }
 }
 
 /// A small count as `f64`.

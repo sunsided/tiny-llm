@@ -11,7 +11,8 @@
 
 use std::time::Instant;
 
-use candle_nn::{AdamW, Optimizer, ParamsAdamW};
+use burn::module::Module;
+use burn::optim::{AdamWConfig, GradientsParams, ModuleOptimizer};
 use rand::SeedableRng;
 use rand::rngs::StdRng;
 use rand::seq::SliceRandom;
@@ -24,7 +25,7 @@ use crate::model::Model;
 const POOL_FACTOR: usize = 32;
 
 /// Weight decay of the matrices; gains get none.
-const WEIGHT_DECAY: f64 = 0.01;
+const WEIGHT_DECAY: f32 = 0.01;
 
 /// Settings of one training run.
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -72,20 +73,20 @@ impl<S: FnMut() -> Example> Pool<S> {
     }
 }
 
-/// Trains `model` in place until the schedule's time is up; returns the number of steps.
+/// Trains `model` until the schedule's time is up; returns it with the number of steps.
 ///
 /// `source` makes training examples. `on_eval` runs every `options.eval_every`
 /// seconds and once at the end, with the elapsed seconds.
 ///
 /// # Errors
 ///
-/// Fails when `options.batch_size` is 0, when candle fails, or when `on_eval` does.
+/// Fails when `options.batch_size` is 0, or when `on_eval` does.
 pub fn train(
-    model: &Model,
+    mut model: Model,
     options: &Options,
     source: impl FnMut() -> Example,
     mut on_eval: impl FnMut(&Model, f64) -> anyhow::Result<()>,
-) -> anyhow::Result<u32> {
+) -> anyhow::Result<(Model, u32)> {
     anyhow::ensure!(options.batch_size > 0, "the batch size must be at least 1");
     let mut pool = Pool {
         source,
@@ -93,7 +94,8 @@ pub fn train(
         size: options.batch_size,
         rng: StdRng::seed_from_u64(options.seed),
     };
-    let mut optimizer = Optimizers::new(model)?;
+    let mut optimizer = Optimizers::new(&model);
+    let device = model.devices().first().cloned().unwrap_or_default();
     let started = Instant::now();
     let mut log = LossLog::default();
     let mut next_eval = options.eval_every;
@@ -106,15 +108,17 @@ pub fn train(
         }
 
         if next_eval.is_some_and(|at| elapsed > at) {
-            on_eval(model, elapsed)?;
+            on_eval(&model, elapsed)?;
             next_eval = next_eval
                 .zip(options.eval_every)
                 .map(|(at, every)| at + every);
         }
 
-        let batch = Batch::new(&pool.next(), model.device())?;
+        let batch = Batch::new(&pool.next(), &device);
         let rate = options.schedule.rate(step, elapsed);
-        log.add(optimizer.step(model, &batch, rate)?);
+        let (next, loss) = optimizer.step(model, &batch, rate);
+        model = next;
+        log.add(loss);
         step += 1;
         if step.is_multiple_of(options.log_every) {
             println!(
@@ -124,51 +128,58 @@ pub fn train(
         }
     }
 
-    on_eval(model, started.elapsed().as_secs_f64())?;
-    Ok(step)
+    on_eval(&model, started.elapsed().as_secs_f64())?;
+    Ok((model, step))
 }
 
 /// One `AdamW` per parameter group, as `train2.py` builds them.
 struct Optimizers {
     /// The matrices, with weight decay.
-    matrices: AdamW,
+    matrices: ModuleOptimizer,
     /// The gains, without.
-    gains: AdamW,
-    /// All variables, for gradient clipping.
-    vars: Vec<candle_core::Var>,
+    gains: ModuleOptimizer,
+    /// Ids of the matrices.
+    matrix_ids: Vec<burn::module::ParamId>,
+    /// Ids of the gains.
+    gain_ids: Vec<burn::module::ParamId>,
 }
 
 impl Optimizers {
-    /// Optimizers over `model`'s two parameter groups (betas 0.9 and 0.98).
-    fn new(model: &Model) -> anyhow::Result<Self> {
-        let (matrices, gains) = model.parameter_groups();
-        let params = |weight_decay| ParamsAdamW {
-            lr: 0.0,
-            beta1: 0.9,
-            beta2: 0.98,
-            eps: 1e-8,
-            weight_decay,
+    /// Optimizers over `model`'s two parameter groups (betas 0.9 and 0.98, epsilon 1e-8).
+    fn new(model: &Model) -> Self {
+        let config = |decay: f32| {
+            AdamWConfig::new()
+                .with_beta_1(0.9)
+                .with_beta_2(0.98)
+                .with_epsilon(1e-8)
+                .with_weight_decay(decay)
         };
 
-        Ok(Self {
-            vars: model.vars.all_vars(),
-            matrices: AdamW::new(matrices, params(WEIGHT_DECAY))?,
-            gains: AdamW::new(gains, params(0.0))?,
-        })
+        Self {
+            matrices: config(WEIGHT_DECAY).init(),
+            gains: config(0.0).init(),
+            matrix_ids: model.matrix_ids(),
+            gain_ids: model.gain_ids(),
+        }
     }
 
-    /// One step at learning rate `rate`; returns the batch loss before the step.
-    fn step(&mut self, model: &Model, batch: &Batch, rate: f64) -> anyhow::Result<f32> {
-        let loss = loss(model, batch)?;
-        let mut grads = loss.backward()?;
-        clip_gradients(&mut grads, &self.vars, 1.0)?;
+    /// One step at learning rate `rate`; returns the updated model and the batch loss.
+    fn step(&mut self, model: Model, batch: &Batch, rate: f64) -> (Model, f32) {
+        let loss = loss(&model, batch);
+        let mut grads = GradientsParams::from_grads(loss.backward(), &model);
+        clip_gradients(&mut grads, &self.matrix_ids, &self.gain_ids, 1.0);
 
-        for optimizer in [&mut self.matrices, &mut self.gains] {
-            optimizer.set_learning_rate(rate);
-            optimizer.step(&grads)?;
+        let mut gains = GradientsParams::new();
+        for &id in &self.gain_ids {
+            if let Some(g) = grads.remove::<1>(id) {
+                gains.register(id, g);
+            }
         }
 
-        Ok(loss.to_scalar::<f32>()?)
+        let model = self.matrices.step(rate, model, grads);
+        let model = self.gains.step(rate, model, gains);
+
+        (model, loss.into_scalar::<f32>())
     }
 }
 

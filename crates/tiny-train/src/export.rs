@@ -2,10 +2,9 @@
 //! rounding exactly like `train2.py export` does.
 
 use anyhow::ensure;
-use candle_core::Tensor;
 use tiny::model::{CTX, VOCAB};
 
-use crate::checkpoint::Checkpoint;
+use crate::checkpoint::{Array, Checkpoint};
 
 /// The `TINY.BIN` bytes of a checkpoint.
 ///
@@ -41,15 +40,9 @@ pub fn to_bin(checkpoint: &Checkpoint) -> anyhow::Result<Vec<u8>> {
 }
 
 /// Appends a `rows x cols` matrix row by row: an `f32` scale, then one `i8` per weight.
-fn write_table(out: &mut Vec<u8>, tensor: &Tensor, rows: usize, cols: usize) -> anyhow::Result<()> {
-    ensure!(
-        tensor.dims() == [rows, cols],
-        "expected {rows}x{cols}, got {:?}",
-        tensor.dims()
-    );
-
-    for row in tensor.to_vec2::<f32>()? {
-        let (scale, weights) = quantise_row(&row);
+fn write_table(out: &mut Vec<u8>, array: &Array, rows: usize, cols: usize) -> anyhow::Result<()> {
+    for row in array.rows(rows, cols)? {
+        let (scale, weights) = quantise_row(row);
         out.extend_from_slice(&scale.to_le_bytes());
         out.extend(weights.iter().map(|w| w.to_le_bytes()[0]));
     }
@@ -58,14 +51,18 @@ fn write_table(out: &mut Vec<u8>, tensor: &Tensor, rows: usize, cols: usize) -> 
 }
 
 /// Appends `width` gains as plain `f32`.
-fn write_gains(out: &mut Vec<u8>, tensor: &Tensor, width: usize) -> anyhow::Result<()> {
+fn write_gains(out: &mut Vec<u8>, array: &Array, width: usize) -> anyhow::Result<()> {
     ensure!(
-        tensor.dims() == [width],
+        array.shape == [width],
         "expected {width} gains, got {:?}",
-        tensor.dims()
+        array.shape
     );
-
-    for g in tensor.to_vec1::<f32>()? {
+    ensure!(
+        array.data.len() == width,
+        "{width} gains hold {} values",
+        array.data.len()
+    );
+    for g in &array.data {
         out.extend_from_slice(&g.to_le_bytes());
     }
 
