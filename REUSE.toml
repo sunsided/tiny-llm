@@ -11,7 +11,7 @@ SPDX-License-Identifier = "MIT"
 # The trained network was trained partly on data from mledoze/countries (ODbL-1.0) and
 # Periodic-Table-JSON (CC-BY-SA-3.0); see crates/tiny/assets/DATA_LICENSES.md.
 [[annotations]]
-path = "crates/tiny/assets/TINY.BIN"
+path = ["crates/tiny/assets/TINY.BIN", "crates/tiny-train/data/tiny2.pt"]
 precedence = "override"
 SPDX-FileCopyrightText = "2026 WollyMonjac"
 SPDX-License-Identifier = "MIT AND ODbL-1.0 AND CC-BY-SA-3.0"

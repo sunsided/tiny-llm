@@ -6,3 +6,6 @@ cognitive-complexity-threshold = 15
 # Tests may unwrap/expect freely if the restriction lints are ever enabled.
 allow-unwrap-in-tests = true
 allow-expect-in-tests = true
+
+# Proper names in doc comments that are not code.
+doc-valid-idents = ["..", "PyTorch", "NumPy"]
