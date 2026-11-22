@@ -30,7 +30,7 @@ The original is a delightful piece of work: a question-answering transformer wri
 
 ## What carried over
 
-The network is the original one: `assets/TINY.BIN`, 4 layers, 96 wide, 8-bit weights with one scale per row, built into the binary. The inference code follows `TINY.C` closely enough to round the same way, down to the 8-bit key/value cache and the `±0.5`-then-truncate quantisation. At creativity 0 it therefore gives the same answers as the C program, letter for letter: `tests/parity.rs` checks 44 questions against answers from a gcc build of `TINY.C` in plain mode.
+The network is the original one: `assets/TINY.BIN`, 4 layers, 96 wide, 8-bit weights with one scale per row, built into the binary. The inference code follows `TINY.C` closely enough to round the same way, down to the 8-bit key/value cache and the `±0.5`-then-truncate quantisation. At creativity 0 it therefore gives the same answers as the C program, letter for letter: `tests/it/parity.rs` checks 44 questions against answers from a gcc build of `TINY.C` in plain mode.
 
 The interface is the DOS screen redrawn with [ratatui](https://ratatui.rs): the digital rain and the logo assembling at boot, the scanner while TINY reads, letters flickering into place, the layer activity and confidence meters, and the neon VGA palette as 24-bit colour. The original's robot voice made each letter a buzz, hiss or click on the PC speaker, since real speech didn't fit into 640 KB next to the network. Here the beeps come from [synthie](https://crates.io/crates/synthie) and the voice from [synthie-trombone](https://crates.io/crates/synthie-trombone), a Pink Trombone vocal tract model, so TINY actually speaks its answers, one highlighted word at a time.
 

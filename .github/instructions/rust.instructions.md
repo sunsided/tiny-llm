@@ -21,7 +21,7 @@ applyTo: "**/*.rs"
 - `#![forbid(unsafe_code)]` in `src/lib.rs` and `src/main.rs`. Reject any `unsafe`.
 - `src/model/` must keep rounding exactly like the original `TINY.C`: `f32` accumulation in
   index order, `f64` only where C calls `sqrt` or `exp`, and the `±0.5`-then-truncate
-  quantisation of the key/value cache. `tests/parity.rs` compares greedy answers letter for
+  quantisation of the key/value cache. `tests/it/parity.rs` compares greedy answers letter for
   letter; a change that breaks it is a bug, not a fixture update.
 - The audio callback (`src/sound/engine.rs`) must not block. It drains a bounded channel with
   `try_recv` and must not allocate in the steady state; compile utterances on the UI thread.
