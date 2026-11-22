@@ -1,0 +1,17 @@
+# https://github.com/crate-ci/typos/blob/master/docs/reference.md
+[files]
+extend-exclude = [
+  "*.lock",
+  "fuzz/corpus/**",
+  "fuzz/artifacts/**",
+  "**/proptest-regressions/**",
+  "LICENSES/**",
+  "LICENSE-*",
+]
+
+[default.extend-words]
+# Project-specific words typos flags wrongly, e.g. `ser = "ser"`. Keep each entry justified.
+# The terminal UI crate this project uses.
+ratatui = "ratatui"
+
+[default.extend-identifiers]

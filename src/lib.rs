@@ -5,6 +5,8 @@
 //! - [`think`] turns steps into question reading and answer writing.
 //! - [`text`] maps letters to tokens and tidies typed questions.
 
+#![forbid(unsafe_code)]
+
 pub mod model;
 pub mod text;
 pub mod think;

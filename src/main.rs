@@ -1,6 +1,8 @@
 //! `tiny`: ask the TINY network questions, in a full-screen neon interface or
 //! as plain text (automatic when input or output is redirected).
 
+#![forbid(unsafe_code)]
+
 mod plain;
 mod sound;
 mod tui;

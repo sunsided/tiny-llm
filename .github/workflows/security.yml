@@ -1,0 +1,123 @@
+# Code scanning (CodeQL, clippy and zizmor as SARIF) and dependency submission (SPDX SBOM).
+# docs/ci.md, docs/supply-chain.md. Action refs are tags here; pin with scripts/pin-actions.py.
+# Reporting only: ci.yml and actions-lint.yml stay the blocking checks, so none of these jobs is
+# a required status check.
+name: Security
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "17 4 * * 1"
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  codeql:
+    name: CodeQL (${{ matrix.language }})
+    # Code scanning needs a public repo or GitHub Code Security; fork PRs get no upload token.
+    # With Code Security on a private repo, drop the first condition.
+    if: ${{ !github.event.repository.private && !github.event.pull_request.head.repo.fork }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [rust, actions]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: github/codeql-action/init@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4.39.4
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: none
+      - uses: github/codeql-action/analyze@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4.39.4
+        with:
+          category: /language:${{ matrix.language }}
+
+  clippy-sarif:
+    name: clippy (SARIF)
+    if: ${{ !github.event.repository.private && !github.event.pull_request.head.repo.fork }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@df2a88e9fe4098bad09cb42c3dec7187f15861fc # master
+        with:
+          toolchain: stable
+          components: clippy
+      - uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+      - uses: taiki-e/install-action@fe3acb53a98b62c772db35de75ce0e4595e7ca8c # v2.90.8
+        with:
+          tool: clippy-sarif,sarif-fmt
+      # cpal (sound) links ALSA on Linux.
+      - run: sudo apt-get update && sudo apt-get install -y libasound2-dev
+      # No -D warnings: findings become alerts here; the blocking clippy job lives in ci.yml.
+      - name: Run clippy
+        shell: bash
+        run: >
+          cargo clippy --workspace --all-targets --all-features --message-format=json
+          | clippy-sarif | tee clippy.sarif | sarif-fmt
+      - uses: github/codeql-action/upload-sarif@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4.39.4
+        with:
+          sarif_file: clippy.sarif
+          category: clippy
+
+  zizmor-sarif:
+    name: zizmor (SARIF)
+    if: ${{ !github.event.repository.private && !github.event.pull_request.head.repo.fork }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # advanced-security (the default) uploads SARIF under category "zizmor" and does not fail
+      # the job; the blocking zizmor run lives in actions-lint.yml.
+      - uses: zizmorcore/zizmor-action@45d7276c9ca790aabd705e31ca99c6185c3e76dd # v0.8.1
+
+  dependencies:
+    name: SBOM and dependency submission
+    # Submissions describe the default branch; PRs get no write token.
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: taiki-e/install-action@fe3acb53a98b62c772db35de75ce0e4595e7ca8c # v2.90.8
+        with:
+          tool: cargo-sbom
+      - name: Write the SPDX SBOM from Cargo metadata
+        run: |
+          mkdir -p sbom
+          cargo sbom --output-format spdx_json_2_3 > sbom/tiny-llm.spdx.json
+      # Adds the transitive Cargo graph, which static Cargo.lock parsing does not provide.
+      - uses: advanced-security/spdx-dependency-submission-action@b009efcf8b9d562a4569d2028c276522232e631f # v0.4.0
+        with:
+          filePath: sbom
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: sbom
+          path: sbom/
+          if-no-files-found: error

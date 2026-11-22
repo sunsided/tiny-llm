@@ -1,0 +1,17 @@
+version = 1
+
+# Default: everything under MIT. The Rust port keeps the copyright of the original TINY 2.1
+# (https://github.com/WollyMonjac/Tiny-2.1), whose C code and training kit it is derived from.
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = ["2026 WollyMonjac", "2026 Markus Mayer"]
+SPDX-License-Identifier = "MIT"
+
+# The trained network was trained partly on data from mledoze/countries (ODbL-1.0) and
+# Periodic-Table-JSON (CC-BY-SA-3.0); see assets/DATA_LICENSES.md.
+[[annotations]]
+path = "assets/TINY.BIN"
+precedence = "override"
+SPDX-FileCopyrightText = "2026 WollyMonjac"
+SPDX-License-Identifier = "MIT AND ODbL-1.0 AND CC-BY-SA-3.0"
