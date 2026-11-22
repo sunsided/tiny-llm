@@ -5,7 +5,11 @@ all-features = true
 
 [advisories]
 # Advisories (vulnerable, unmaintained, yanked) fail by default; ignore entries need a reason.
-ignore = []
+ignore = [
+  # paste is an unmaintained compile-time macro crate; candle and burn (burn-dispatch, cubecl)
+  # both depend on it, so there is no way around it. Remove once they drop it.
+  { id = "RUSTSEC-2024-0436", reason = "unmaintained proc macro pulled in by the ML framework" },
+]
 
 [licenses]
 # Permissive licenses plus the weak-copyleft ones this project family uses (see docs/licensing.md).
