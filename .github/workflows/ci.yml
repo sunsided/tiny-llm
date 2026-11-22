@@ -214,7 +214,9 @@ jobs:
           tool: cargo-fuzz
       # cpal (sound) links ALSA on Linux.
       - run: sudo apt-get update && sudo apt-get install -y libasound2-dev
-      - run: cargo +nightly fuzz build
+      # The prebuilt cargo-fuzz is a musl binary and defaults --target to musl, where the
+      # address sanitizer fails ("sanitizer is incompatible with statically linked libc").
+      - run: cargo +nightly fuzz build --target "$(rustc +nightly -vV | sed -n 's/^host: //p')"
         working-directory: fuzz
       - run: cargo fmt --all --check && cargo +nightly clippy --all-targets -- -D warnings
         working-directory: fuzz
