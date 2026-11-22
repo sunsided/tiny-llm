@@ -2,8 +2,14 @@
 name = "tiny"
 version = "0.1.0"
 edition = "2024"
-description = "TINY 2.1, a letter-by-letter question-answering transformer, with a neon terminal UI"
+description = "TINY 2.1 ported to Rust: a tiny letter-by-letter question-answering transformer with a neon terminal UI"
 license = "MIT"
+rust-version = "1.95"
+repository = "https://github.com/sunsided/tiny-llm"
+readme = "README.md"
+keywords = ["transformer", "llm", "tui", "retro", "dos"]
+categories = ["command-line-utilities", "games"]
+publish = false
 
 [dependencies]
 clap = { version = "4.6.9", features = ["derive"] }
