@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://github.com/sunsided/tiny-llm#license)
 [![unsafe forbidden](https://img.shields.io/badge/unsafe-forbidden-success.svg)](https://github.com/rust-secure-code/safety-dance/)
 
-A port of [TINY 2.1](https://github.com/WollyMonjac/Tiny-2.1) by WollyMonjac to Rust: a 367,000-weight transformer that answers questions letter by letter, with the neon full-screen interface, the neural monitor and the robot voice of the original, now in a terminal near you.
+A port of [TINY 2.1](https://github.com/WollyMonjac/Tiny-2.1) by WollyMonjac to Rust: a 367,000-weight transformer that answers questions letter by letter, with the neon full-screen interface, the neural monitor and the robot voice of the original, running in a terminal.
 
 The original is a delightful piece of work: a question-answering transformer written in Turbo C 2.0 that runs on a 486DX under plain DOS, needs about 540 KB of conventional memory and fits on a floppy disk, PC-speaker voice included. This port is a joyful one, and it completely misses the point of the original (which was, after all, compiling it with DOS tooling for an actual DOS machine). It needs a 64-bit operating system, a Rust toolchain and about ninety crates instead, and it answers in milliseconds where the 486 took a few seconds (which, admittedly, takes some of the drama out of the neural monitor).
 
