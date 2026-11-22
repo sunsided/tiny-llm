@@ -8,9 +8,9 @@ applyTo: ".github/workflows/**,Taskfile.dist.yaml,**/Taskfile.dist.yaml,.pre-com
   (`branch`, `fmt`, `clippy`, `style`, `doc`, `test` on Linux, macOS and Windows, `coverage`,
   `deny`, `msrv`, `fuzz`). A change that adds, removes or renames a CI job, or changes its
   flags, must make the same change to `task ci` and the task it calls, and the other way round.
-- `coverage` is CI-only in `task ci` (it only matters for the upload). The `security.yml`
-  jobs (CodeQL, clippy and zizmor SARIF, SBOM submission) and `release-plz.yml` are CI-only
-  and report rather than gate.
+- `coverage` is left out of `task ci` (it only matters for the upload). The `security.yml`
+  jobs (CodeQL, clippy and zizmor SARIF, SBOM submission) are CI-only and report rather than
+  gate.
 - Every Linux job that compiles the crate installs `libasound2-dev` first: cpal links ALSA.
   Flag a new compiling job without that step.
 - The `msrv` job runs `cargo hack check --rust-version` without `--ignore-private`: the crate

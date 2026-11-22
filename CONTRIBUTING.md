@@ -59,8 +59,7 @@ This repository uses **GitHub Flow**:
 - Open a PR into `main`.
 
 No other prefixes (`fix/`, `chore/`, `deps/`, ...). `task lint:branch`, the pre-push hook and
-CI check the branch name. Bot branches (`release/*` from release-plz, `dependabot/*`) are the
-only exceptions. Copilot's `copilot/*` branches are renamed to `feature/*` before anyone
+CI check the branch name. Dependabot's `dependabot/*` branches are the only exception. Copilot's `copilot/*` branches are renamed to `feature/*` before anyone
 works on them.
 
 ## Commits and pull requests
@@ -69,21 +68,14 @@ works on them.
   "Fix overflow in tile index". Do not write "Added ...", "Adds ..." or `feat: ...`.
 - Keep the subject to 72 characters or fewer, capitalized, with no trailing period. Then add
   a blank line and a body that explains *why*. The `commit-msg` hook checks the subject.
-- The changelog groups commits by their leading verb (Add, Fix, Remove, Deprecate, ...).
-  Write a `BREAKING CHANGE:` line in the body for incompatible changes.
 - PRs are merged with a merge commit, or squashed using the PR title and description. Write
   both with care. Head branches are deleted after the merge.
 - Keep PRs focused. CI must be green.
-- Do not bump versions or edit `CHANGELOG.md` by hand. Releases are automated (see below).
 
 ## Releases
 
-Versions follow [Semantic Versioning 2.0](https://semver.org/spec/v2.0.0.html), as Cargo
-implements it (in `0.x`, a minor bump is breaking).
-
-Releases are handled by [release-plz](https://release-plz.dev/). Every merge to `main`
-updates a release PR. Merging that PR tags `vX.Y.Z` and creates the GitHub Release with the
-changelog. Nothing is published to crates.io.
+There are none: TINY is neither released nor published (`publish = false`). `main` is the
+version to run.
 
 ## License
 
