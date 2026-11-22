@@ -13,6 +13,26 @@ const EXTRA_WORDS: &str = "red blue green yellow black white orange purple pink 
     bread milk water house school book pencil table chair window door tree flower sun moon star \
     river mountain ocean computer keyboard mouse screen disk tiny hello friend";
 
+/// Relations the generators look up directly. Each needs at least two
+/// different answers, so a wrong-answer pick (`other`) always finds one.
+const REQUIRED: [&str; 15] = [
+    "capital",
+    "continent",
+    "language",
+    "currency",
+    "domain",
+    "state_capital",
+    "class",
+    "sound",
+    "legs",
+    "baby",
+    "opposite",
+    "plural",
+    "symbol",
+    "atomic",
+    "month_number",
+];
+
 /// Relations whose subjects join the spelling pool.
 const POOL_SUBJECTS: [&str; 6] = ["class", "legs", "baby", "sound", "food", "home"];
 
@@ -24,11 +44,14 @@ impl Kit {
     /// every derived table.
     ///
     /// # Errors
-    /// If a file cannot be read, is not ASCII, or has a malformed line.
+    /// If a file cannot be read, is not ASCII, or has a malformed line, or a
+    /// relation the generators need is missing or has fewer than two answers.
     pub fn load(dir: &Path) -> Result<Self> {
         let txt = load_txt(dir)?;
         let rel = load_tsv(dir)?;
+        check_relations(&rel)?;
         let borders = load_borders(dir)?;
+        ensure!(!borders.is_empty(), "geo3.tsv has no borders rows");
         let get = |r: &str| rel.iter().find(|(n, _)| n == r).map_or(&[][..], |(_, p)| p);
         let d: HashMap<String, HashMap<String, String>> = rel
             .iter()
@@ -232,6 +255,27 @@ fn load_tsv(dir: &Path) -> Result<Vec<(String, Pairs)>> {
     }
 
     Ok(rel)
+}
+
+/// Checks that every [`REQUIRED`] relation exists with at least two different answers.
+fn check_relations(rel: &[(String, Pairs)]) -> Result<()> {
+    for name in REQUIRED {
+        let pairs = rel
+            .iter()
+            .find(|(n, _)| n == name)
+            .map(|(_, p)| p)
+            .with_context(|| {
+                format!("no facts for the relation {name}, which the generators need")
+            })?;
+        let answers: BTreeSet<&String> = pairs.iter().map(|(_, a)| a).collect();
+        ensure!(
+            answers.len() >= 2,
+            "the relation {name} needs at least two different answers, has {}",
+            answers.len()
+        );
+    }
+
+    Ok(())
 }
 
 /// `BORDERS` from `geo3.tsv`: `-` means no land neighbours.
