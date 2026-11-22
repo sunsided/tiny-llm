@@ -237,7 +237,10 @@ impl Block {
         let scores = (q.matmul(&k.t()?)? / f64_of(head_width).sqrt())?.broadcast_add(mask)?;
         let weights = candle_nn::ops::softmax_last_dim(&scores)?;
 
-        Ok(weights.matmul(&v)?.transpose(1, 2)?.reshape((batch, len, width))?)
+        Ok(weights
+            .matmul(&v)?
+            .transpose(1, 2)?
+            .reshape((batch, len, width))?)
     }
 }
 
