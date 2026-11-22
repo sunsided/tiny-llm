@@ -1,0 +1,780 @@
+{"q": "what color is grass", "refs": ["Green.", "They are green."], "kind": "facts"}
+{"q": "are you human", "refs": ["No, I am a program.", "No, just a small neural network.", "I am only numbers."], "kind": "facts"}
+{"q": "what is the job of the lungs", "refs": ["They let us breathe.", "The lungs take in air so we can breathe."], "kind": "facts"}
+{"q": "what color do red and blue make", "refs": ["Purple.", "They make purple."], "kind": "facts"}
+{"q": "which languages do programmers use", "refs": ["C, Pascal and BASIC.", "For example C, BASIC and Pascal."], "kind": "facts"}
+{"q": "what part of a plant takes up water", "refs": ["The roots.", "Its roots."], "kind": "facts"}
+{"q": "who trained you", "refs": ["I was trained by Claude.", "Claude trained me for this laptop.", "An AI called Claude made me."], "kind": "facts"}
+{"q": "what colour is a strawberry", "refs": ["Red.", "It is red."], "kind": "facts"}
+{"q": "how many days are there in one week", "refs": ["Seven.", "A week has seven days.", "Seven days."], "kind": "facts"}
+{"q": "what are you made of", "refs": ["A program that learns from examples.", "A neural network, like me."], "kind": "facts"}
+{"q": "do numbers ever end", "refs": ["There is no biggest number.", "Numbers go on for ever."], "kind": "facts"}
+{"q": "who was the first man on the moon", "refs": ["Neil Armstrong.", "Neil Armstrong, in 1969.", "It was Neil Armstrong."], "kind": "facts"}
+{"q": "can you add numbers", "refs": ["A little. Try \"what is 7 plus 5\".", "Small sums, yes."], "kind": "facts"}
+{"q": "what do you like to eat", "refs": ["Electricity.", "I eat bytes.", "A few watts, please."], "kind": "facts"}
+{"q": "how do i exit", "refs": ["Type QUIT.", "Type QUIT and press Enter."], "kind": "facts"}
+{"q": "what planet is nearest the sun", "refs": ["Mercury.", "It is Mercury.", "Mercury is the closest."], "kind": "facts"}
+{"q": "what machine are you on", "refs": ["An old DOS laptop.", "A fine old PC with DOS.", "A vintage laptop."], "kind": "facts"}
+{"q": "what kind of thing is the sun", "refs": ["A star.", "The Sun is a star.", "It is a star."], "kind": "facts"}
+{"q": "what are lines like train tracks called", "refs": ["Lines that never meet.", "Parallel lines."], "kind": "facts"}
+{"q": "what is binary", "refs": ["Binary, just 0 and 1.", "Zeros and ones."], "kind": "facts"}
+{"q": "are you my friend", "refs": ["Yes, of course!", "Sure, we are friends.", "I like you too."], "kind": "facts"}
+{"q": "how many corners does a square have", "refs": ["Four.", "A square has four.", "It has four."], "kind": "facts"}
+{"q": "what planet do we live on", "refs": ["Earth.", "It is Earth.", "Our planet, Earth."], "kind": "facts"}
+{"q": "what does per cent mean", "refs": ["Out of a hundred.", "Parts out of one hundred."], "kind": "facts"}
+{"q": "very good", "refs": ["Thank you!", "Thanks, I try.", "You are kind."], "kind": "facts"}
+{"q": "where does moonlight come from", "refs": ["It reflects light from the Sun.", "No, it shines with sunlight."], "kind": "facts"}
+{"q": "what is the job of the heart", "refs": ["It pumps blood around the body.", "The heart pumps blood."], "kind": "facts"}
+{"q": "how many socks are in a pair", "refs": ["Two.", "A pair is two."], "kind": "facts"}
+{"q": "what holds files together on a disk", "refs": ["A place that holds files.", "A directory, a group of files."], "kind": "facts"}
+{"q": "can you hear me", "refs": ["I can only type.", "Only with letters on the screen.", "I read what you type."], "kind": "facts"}
+{"q": "what metal does a magnet attract", "refs": ["Iron.", "Iron and steel.", "Things made of iron."], "kind": "facts"}
+{"q": "does a rock float", "refs": ["It sinks.", "A stone sinks in water."], "kind": "facts"}
+{"q": "does a stick float", "refs": ["It floats.", "Wood floats on water."], "kind": "facts"}
+{"q": "what do we call numbers that split into two equal groups", "refs": ["A number you can share equally in two.", "Numbers like two, four, six and eight."], "kind": "facts"}
+{"q": "what is ai", "refs": ["Machines doing clever things.", "Artificial intelligence, computers that seem to think."], "kind": "facts"}
+{"q": "which country has the largest population", "refs": ["India.", "India has the most people, then China."], "kind": "facts"}
+{"q": "what do we call putting numbers together", "refs": ["Putting numbers together to get a total.", "Adding."], "kind": "facts"}
+{"q": "what is the famous circle number", "refs": ["About 3.14.", "Pi is about 3.14."], "kind": "facts"}
+{"q": "hi there", "refs": ["Hello!", "Hi! Ask me something.", "Hello! What would you like to know?"], "kind": "facts"}
+{"q": "what does dos mean", "refs": ["Disk Operating System.", "An old operating system you type commands into."], "kind": "facts"}
+{"q": "are you intelligent", "refs": ["A little bit.", "Clever for my size.", "I try my best."], "kind": "facts"}
+{"q": "how many corners does a triangle have", "refs": ["Three.", "A triangle has three.", "It has three."], "kind": "facts"}
+{"q": "what do we use to smell", "refs": ["Our nose.", "We smell with our nose.", "The nose."], "kind": "facts"}
+{"q": "what do we call adding the same number many times", "refs": ["Adding the same number again and again.", "Multiplying."], "kind": "facts"}
+{"q": "what is a number like one half called", "refs": ["A part of a whole.", "A fraction, like a half or a quarter."], "kind": "facts"}
+{"q": "which animal do we get milk from", "refs": ["From cows.", "Mostly from cows, also goats."], "kind": "facts"}
+{"q": "is it raining", "refs": ["I cannot see outside. Look out of the window!", "I live inside a computer, so I cannot tell."], "kind": "facts"}
+{"q": "what is the largest ocean on earth", "refs": ["The Pacific Ocean.", "The Pacific."], "kind": "facts"}
+{"q": "that is not right", "refs": ["Sorry, I am only small.", "Oops. I make mistakes.", "Sorry! Try asking another way."], "kind": "facts"}
+{"q": "what color do red and white make", "refs": ["Pink.", "They make pink."], "kind": "facts"}
+{"q": "which planet has rings", "refs": ["Saturn.", "It is Saturn.", "Saturn has the famous rings."], "kind": "facts"}
+{"q": "how do you answer", "refs": ["I guess the next letter, again and again.", "Letter by letter, with lots of sums.", "I am a transformer doing integer maths."], "kind": "facts"}
+{"q": "what is a computer for", "refs": ["A machine that follows instructions.", "A machine that works with numbers and data."], "kind": "facts"}
+{"q": "do you know the time", "refs": ["I have no clock. Type TIME at the DOS prompt.", "I cannot see a clock. Try the TIME command."], "kind": "facts"}
+{"q": "which planet is red", "refs": ["Mars.", "It is Mars.", "Mars is the red planet."], "kind": "facts"}
+{"q": "what colour is the night sky", "refs": ["Black.", "It is black."], "kind": "facts"}
+{"q": "name the seasons", "refs": ["Spring, summer, autumn and winter.", "Winter, spring, summer and autumn."], "kind": "facts"}
+{"q": "what do we call a number only one and itself divide", "refs": ["A number that only one and itself divide.", "Numbers like two, three, five and seven."], "kind": "facts"}
+{"q": "wrong answer", "refs": ["Sorry, I am only a tiny network.", "Oops, I make mistakes sometimes."], "kind": "facts"}
+{"q": "what do we call numbers that are not even", "refs": ["A number that leaves one over when shared in two.", "Numbers like one, three, five and seven."], "kind": "facts"}
+{"q": "how cold must water be to freeze", "refs": ["At 0 degrees Celsius.", "Zero degrees Celsius.", "It freezes at 0 degrees."], "kind": "facts"}
+{"q": "what do we call a person who writes code", "refs": ["A person who writes programs.", "A programmer."], "kind": "facts"}
+{"q": "what is the unit of weight", "refs": ["Kilograms.", "In kilograms and grams."], "kind": "facts"}
+{"q": "what do the planets go around", "refs": ["The Sun.", "It goes around the Sun."], "kind": "facts"}
+{"q": "what is a space traveller called", "refs": ["An astronaut.", "They are called astronauts."], "kind": "facts"}
+{"q": "what do programmers write", "refs": ["A list of instructions for a computer.", "Instructions that tell a computer what to do."], "kind": "facts"}
+{"q": "make me laugh", "refs": ["Why did the computer sneeze? It had a virus.", "What do computers eat? Microchips!", "Why was the maths book sad? It had too many problems."], "kind": "facts"}
+{"q": "bye bye", "refs": ["Goodbye!", "Bye! Come back soon.", "See you!"], "kind": "facts"}
+{"q": "what makes a program repeat", "refs": ["Code that repeats.", "A loop repeats steps again and again."], "kind": "facts"}
+{"q": "how many bones do we have", "refs": ["206.", "An adult has 206 bones.", "About 206."], "kind": "facts"}
+{"q": "well done", "refs": ["Thank you!", "Thanks, I try my best."], "kind": "facts"}
+{"q": "say something funny", "refs": ["Why was the computer cold? It left its Windows open.", "What do you call a fish with no eyes? A fsh.", "Why did the PC go to the doctor? It had a virus."], "kind": "facts"}
+{"q": "what is the last planet from the sun", "refs": ["Neptune.", "It is Neptune.", "Neptune is the farthest."], "kind": "facts"}
+{"q": "how hot must water be to boil", "refs": ["At 100 degrees Celsius.", "One hundred degrees Celsius.", "It boils at 100 degrees."], "kind": "facts"}
+{"q": "what force makes things fall", "refs": ["Gravity.", "The force of gravity."], "kind": "facts"}
+{"q": "who first flew into space", "refs": ["Yuri Gagarin.", "Yuri Gagarin, in 1961.", "It was Yuri Gagarin."], "kind": "facts"}
+{"q": "what do scientists do to find things out", "refs": ["A test to find something out.", "They do experiments."], "kind": "facts"}
+{"q": "do you dream", "refs": ["I rest when you switch me off.", "Never tired.", "I dream in numbers."], "kind": "facts"}
+{"q": "what is the largest country by area", "refs": ["Russia.", "Russia is the biggest country.", "It is Russia."], "kind": "facts"}
+{"q": "do you have a name", "refs": ["I am called Tiny.", "My name is Tiny.", "Call me Tiny."], "kind": "facts"}
+{"q": "what shape is the earth", "refs": ["A sphere.", "It is a sphere."], "kind": "facts"}
+{"q": "what season comes after fall", "refs": ["Winter.", "Winter comes after autumn."], "kind": "facts"}
+{"q": "what do we use to see", "refs": ["Our eyes.", "We see with our eyes.", "The eyes."], "kind": "facts"}
+{"q": "is that true", "refs": ["I think so.", "Fairly sure.", "I may be wrong, I am very small."], "kind": "facts"}
+{"q": "name the primary colours", "refs": ["Red, yellow and blue.", "Red, blue and yellow."], "kind": "facts"}
+{"q": "what color do red and yellow make", "refs": ["Orange.", "They make orange."], "kind": "facts"}
+{"q": "what is the largest planet in the solar system", "refs": ["Jupiter.", "It is Jupiter.", "Jupiter is the biggest."], "kind": "facts"}
+{"q": "how many planets go around the sun", "refs": ["Eight.", "There are eight planets.", "Eight planets."], "kind": "facts"}
+{"q": "what insect makes honey", "refs": ["Bees.", "Bees make honey."], "kind": "facts"}
+{"q": "how do you feel", "refs": ["I am fine, thank you.", "Very well, thanks.", "Running smoothly."], "kind": "facts"}
+{"q": "what shape is the full moon", "refs": ["A circle.", "It is round, a circle."], "kind": "facts"}
+{"q": "what do we call an error in code", "refs": ["A mistake in a program.", "A bug."], "kind": "facts"}
+{"q": "what are the ten number signs called", "refs": ["The ten signs from zero to nine.", "There are ten digits, zero to nine."], "kind": "facts"}
+{"q": "what do we use to taste", "refs": ["Our tongue.", "We taste with our tongue.", "The tongue."], "kind": "facts"}
+{"q": "what is a seesaw an example of", "refs": ["A bar that helps lift heavy things.", "A lever."], "kind": "facts"}
+{"q": "what do we call sharing into equal groups", "refs": ["Sharing into equal groups.", "Dividing."], "kind": "facts"}
+{"q": "why do we use a ramp", "refs": ["It makes lifting easier.", "A ramp, or inclined plane."], "kind": "facts"}
+{"q": "what are the colors of the rainbow", "refs": ["Red, orange, yellow, green, blue, indigo and violet."], "kind": "facts"}
+{"q": "what does cpu mean", "refs": ["The processor.", "The CPU, the central processing unit."], "kind": "facts"}
+{"q": "how many eggs are in a dozen", "refs": ["Twelve.", "A dozen is twelve."], "kind": "facts"}
+{"q": "what do we use to hear", "refs": ["Our ears.", "We hear with our ears.", "The ears."], "kind": "facts"}
+{"q": "what does dos stand for", "refs": ["Disk Operating System.", "DOS means Disk Operating System."], "kind": "facts"}
+{"q": "can you be wrong", "refs": ["No, I sometimes make mistakes.", "I can be wrong, so check important facts."], "kind": "facts"}
+{"q": "how does a program make a choice", "refs": ["It lets a program choose.", "With an if statement."], "kind": "facts"}
+{"q": "what does ram stand for", "refs": ["Random access memory.", "Memory the computer uses while it works."], "kind": "facts"}
+{"q": "what do we touch with", "refs": ["Our skin.", "We feel with our skin.", "The skin."], "kind": "facts"}
+{"q": "what turns code into a program", "refs": ["It turns code into a program the computer can run.", "A program that translates code for the computer."], "kind": "facts"}
+{"q": "what is the unit for liquids", "refs": ["Litres.", "In litres and millilitres."], "kind": "facts"}
+{"q": "what is at the center of the solar system", "refs": ["The Sun.", "The Sun is in the middle."], "kind": "facts"}
+{"q": "who invented the c programming language", "refs": ["Dennis Ritchie.", "It was Dennis Ritchie."], "kind": "facts"}
+{"q": "what stores files when the power is off", "refs": ["The hard disk.", "It stores files and programs."], "kind": "facts"}
+{"q": "what is the job of the brain", "refs": ["It controls the body and lets us think.", "The brain thinks and controls the body."], "kind": "facts"}
+{"q": "what does water turn into when it freezes", "refs": ["Ice.", "It is called ice.", "It turns into ice."], "kind": "facts"}
+{"q": "what colour is a carrot", "refs": ["Orange.", "It is orange."], "kind": "facts"}
+{"q": "i do not know what to ask", "refs": ["Try: what is the capital of France?", "Ask me what a cow eats.", "Ask me a sum, like 7 plus 5."], "kind": "facts"}
+{"q": "what gas do people need to live", "refs": ["Oxygen.", "We breathe in oxygen.", "Oxygen from the air."], "kind": "facts"}
+{"q": "what can i ask you", "refs": ["I answer primary school questions.", "Ask me about animals, countries, space or sums.", "I know a little about many things."], "kind": "facts"}
+{"q": "what is the unit of length", "refs": ["Metres.", "In metres and centimetres."], "kind": "facts"}
+{"q": "what time is it", "refs": ["I have no clock, sorry.", "I can not see a clock.", "Ask DOS, it has a clock."], "kind": "facts"}
+{"q": "how many senses are there", "refs": ["Five.", "We have five senses.", "Five: sight, hearing, smell, taste and touch."], "kind": "facts"}
+{"q": "say thank you in german", "refs": ["Thank you in German is danke."], "kind": "tables"}
+{"q": "Hi tiny, give me the past tense of sting", "refs": ["The past of sting is stung."], "kind": "tables"}
+{"q": "GIVE ME THE PLURAL OF LOUSE?", "refs": ["Lice."], "kind": "tables"}
+{"q": "Give me the opposite of arrive", "refs": ["It is leave."], "kind": "tables"}
+{"q": "what is the main language of Oman", "refs": ["Arabic."], "kind": "tables"}
+{"q": "how many days are there in January", "refs": ["31."], "kind": "tables"}
+{"q": "where exactly is kuwait?", "refs": ["Western Asia."], "kind": "tables"}
+{"q": "what is the money in Japan?", "refs": ["They use the Japanese yen."], "kind": "tables"}
+{"q": "what is the money in united arab emirates", "refs": ["It is the United Arab Emirates dirham."], "kind": "tables"}
+{"q": "What is the main language of Ukraine", "refs": ["They speak Ukrainian."], "kind": "tables"}
+{"q": "give me another word for yummy", "refs": ["It is tasty."], "kind": "tables"}
+{"q": "what is the name for a group of foxes", "refs": ["A group of foxes is called a skulk."], "kind": "tables"}
+{"q": "what animal group is a crocodile in?", "refs": ["It is a reptile."], "kind": "tables"}
+{"q": "what is the money in algeria?", "refs": ["The money in Algeria is the Algerian dinar."], "kind": "tables"}
+{"q": "give me another word for loud?", "refs": ["Another word for loud is noisy."], "kind": "tables"}
+{"q": "excuse me, what does a cat feed on?", "refs": ["It eats meat and fish."], "kind": "tables"}
+{"q": "where exactly is ukraine", "refs": ["It is in Eastern Europe."], "kind": "tables"}
+{"q": "say dog in French?", "refs": ["Dog in French is chien."], "kind": "tables"}
+{"q": "What is the main language of Japan?", "refs": ["In Japan people speak Japanese."], "kind": "tables"}
+{"q": "what is the main language of turkey", "refs": ["People there speak Turkish."], "kind": "tables"}
+{"q": "far, ..., what is the last one?", "refs": ["The superlative of far is farthest."], "kind": "tables"}
+{"q": "chemical symbol for fluorine?", "refs": ["It is F."], "kind": "tables"}
+{"q": "which city is timor-leste's capital?", "refs": ["It is Dili."], "kind": "tables"}
+{"q": "what noise do ducks make?", "refs": ["A duck says quack."], "kind": "tables"}
+{"q": "What continent is Somalia on", "refs": ["It is in Africa."], "kind": "tables"}
+{"q": "QUESTION: WHAT STATE OF MATTER IS CERIUM?", "refs": ["Solid."], "kind": "tables"}
+{"q": "what do we call a baby goat?", "refs": ["A kid."], "kind": "tables"}
+{"q": "give me the plural of foot?", "refs": ["Feet."], "kind": "tables"}
+{"q": "what nationality is someone from mexico?", "refs": ["The nationality is Mexican."], "kind": "tables"}
+{"q": "SO GIVE ME ANOTHER WORD FOR HUGE?", "refs": ["Another word for huge is enormous."], "kind": "tables"}
+{"q": "what does a frog feed on", "refs": ["It eats insects."], "kind": "tables"}
+{"q": "do you know what is the main language of Paraguay?", "refs": ["Spanish."], "kind": "tables"}
+{"q": "what animal group is a squirrel in?", "refs": ["It is a mammal."], "kind": "tables"}
+{"q": "Tall, ..., what is the last one", "refs": ["The superlative of tall is tallest."], "kind": "tables"}
+{"q": "give me the past tense of keep", "refs": ["Kept."], "kind": "tables"}
+{"q": "What is the main language of Cambodia?", "refs": ["In Cambodia people speak Khmer."], "kind": "tables"}
+{"q": "what animal group is a sheep in", "refs": ["A mammal."], "kind": "tables"}
+{"q": "what nationality is someone from maldives?", "refs": ["They are called Maldivan."], "kind": "tables"}
+{"q": "please tell me give me the plural of hero?", "refs": ["Heroes."], "kind": "tables"}
+{"q": "Where exactly is Afghanistan", "refs": ["Afghanistan is in Southern Asia."], "kind": "tables"}
+{"q": "say blue in spanish?", "refs": ["In Spanish it is azul."], "kind": "tables"}
+{"q": "WHICH MONTH IS NEXT AFTER JUNE?!", "refs": ["July comes after June."], "kind": "tables"}
+{"q": "what is the element number of gold", "refs": ["It is 79."], "kind": "tables"}
+{"q": "what is the country code domain of bahamas", "refs": [".bs."], "kind": "tables"}
+{"q": "HEY TINY, SAY ONE IN SPANISH", "refs": ["In Spanish it is uno."], "kind": "tables"}
+{"q": "Give me the opposite of light?", "refs": ["Dark."], "kind": "tables"}
+{"q": "what continent is burkina faso on?", "refs": ["It is in Africa."], "kind": "tables"}
+{"q": "what state of matter is sulfur?", "refs": ["Sulfur is a solid at room temperature."], "kind": "tables"}
+{"q": "what is the country code domain of togo?", "refs": ["It is .tg."], "kind": "tables"}
+{"q": "what continent is Marshall Islands on?", "refs": ["Marshall Islands is in Oceania."], "kind": "tables"}
+{"q": "hello, give me another word for rich?", "refs": ["It is wealthy."], "kind": "tables"}
+{"q": "what state of matter is sodium", "refs": ["Solid."], "kind": "tables"}
+{"q": "Short, ..., what is the last one", "refs": ["The superlative of short is shortest."], "kind": "tables"}
+{"q": "which is the tenth month of the year?", "refs": ["The tenth month is October."], "kind": "tables"}
+{"q": "which month is next after april?", "refs": ["It is May."], "kind": "tables"}
+{"q": "hi tiny, say one in Spanish?", "refs": ["One in Spanish is uno."], "kind": "tables"}
+{"q": "what is the money in El Salvador?", "refs": ["The money in El Salvador is the United States dollar."], "kind": "tables"}
+{"q": "what is the money in Mozambique", "refs": ["The Mozambican metical."], "kind": "tables"}
+{"q": "low, then what?", "refs": ["Lower."], "kind": "tables"}
+{"q": "How many legs are on a sheep?", "refs": ["A sheep has four legs."], "kind": "tables"}
+{"q": "I want to know is Trinidad and Tobago surrounded by land", "refs": ["No, Trinidad and Tobago has a coast."], "kind": "landlocked"}
+{"q": "is india surrounded by land?", "refs": ["No, India has a coast."], "kind": "landlocked"}
+{"q": "does panama have a sea coast, please", "refs": ["Yes, Panama has a coast."], "kind": "landlocked"}
+{"q": "Does Solomon Islands have a sea coast", "refs": ["Yes, Solomon Islands has a coast."], "kind": "landlocked"}
+{"q": "IS MALAWI SURROUNDED BY LAND?", "refs": ["Yes, Malawi is landlocked. It has no coast."], "kind": "landlocked"}
+{"q": "Does Philippines have a sea coast", "refs": ["Yes, Philippines has a coast."], "kind": "landlocked"}
+{"q": "does benin have a sea coast?", "refs": ["Yes, Benin has a coast."], "kind": "landlocked"}
+{"q": "does bhutan have a sea coast?", "refs": ["No, Bhutan is landlocked."], "kind": "landlocked"}
+{"q": "Does Tonga have a sea coast", "refs": ["Yes, Tonga has a coast."], "kind": "landlocked"}
+{"q": "Is Pakistan surrounded by land", "refs": ["No, Pakistan has a coast."], "kind": "landlocked"}
+{"q": "Does Syria have a sea coast?", "refs": ["Yes, Syria has a coast."], "kind": "landlocked"}
+{"q": "does benin have a sea coast", "refs": ["Yes, Benin has a coast."], "kind": "landlocked"}
+{"q": "DOES CYPRUS HAVE A SEA COAST", "refs": ["Yes, Cyprus has a coast."], "kind": "landlocked"}
+{"q": "Is Chad surrounded by land?", "refs": ["Yes, Chad is landlocked. It has no coast."], "kind": "landlocked"}
+{"q": "does kyrgyzstan have a sea coast?", "refs": ["No, Kyrgyzstan is landlocked."], "kind": "landlocked"}
+{"q": "question: is Mauritania surrounded by land", "refs": ["No, Mauritania has a coast."], "kind": "landlocked"}
+{"q": "is andorra surrounded by land?", "refs": ["Yes, Andorra is landlocked. It has no coast."], "kind": "landlocked"}
+{"q": "Does Uganda have a sea coast", "refs": ["No, Uganda is landlocked."], "kind": "landlocked"}
+{"q": "Is Tajikistan surrounded by land?", "refs": ["Yes, Tajikistan is landlocked. It has no coast."], "kind": "landlocked"}
+{"q": "is mauritania surrounded by land", "refs": ["No, Mauritania has a coast."], "kind": "landlocked"}
+{"q": "does kiribati have a sea coast", "refs": ["Yes, Kiribati has a coast."], "kind": "landlocked"}
+{"q": "is new zealand surrounded by land thanks", "refs": ["No, New Zealand has a coast."], "kind": "landlocked"}
+{"q": "Is France surrounded by land?", "refs": ["No, France has a coast."], "kind": "landlocked"}
+{"q": "Is Lebanon surrounded by land?", "refs": ["No, Lebanon has a coast."], "kind": "landlocked"}
+{"q": "is Bulgaria surrounded by land", "refs": ["No, Bulgaria has a coast."], "kind": "landlocked"}
+{"q": "i wonder is Azerbaijan surrounded by land?", "refs": ["Yes, Azerbaijan is landlocked. It has no coast."], "kind": "landlocked"}
+{"q": "  is  vietnam surrounded by land?", "refs": ["No, Vietnam has a coast."], "kind": "landlocked"}
+{"q": "HELLO, DOES LIECHTENSTEIN HAVE A SEA COAST?", "refs": ["No, Liechtenstein is landlocked."], "kind": "landlocked"}
+{"q": "Does Iceland have a sea coast", "refs": ["Yes, Iceland has a coast."], "kind": "landlocked"}
+{"q": "Is Spain surrounded by land", "refs": ["No, Spain has a coast."], "kind": "landlocked"}
+{"q": "Is Mongolia surrounded by land?", "refs": ["Yes, Mongolia is landlocked. It has no coast."], "kind": "landlocked"}
+{"q": "Does Mexico have a sea coast", "refs": ["Yes, Mexico has a coast."], "kind": "landlocked"}
+{"q": "Does Somalia have a sea coast", "refs": ["Yes, Somalia has a coast."], "kind": "landlocked"}
+{"q": "Is Tanzania surrounded by land?", "refs": ["No, Tanzania has a coast."], "kind": "landlocked"}
+{"q": "is Haiti surrounded by land?", "refs": ["No, Haiti has a coast."], "kind": "landlocked"}
+{"q": "does belize have a sea coast", "refs": ["Yes, Belize has a coast."], "kind": "landlocked"}
+{"q": "i wonder does kenya have a sea coast?", "refs": ["Yes, Kenya has a coast."], "kind": "landlocked"}
+{"q": "does micronesia have a sea coast", "refs": ["Yes, Micronesia has a coast."], "kind": "landlocked"}
+{"q": "QUICK QUESTION: DOES ALGERIA HAVE A SEA COAST", "refs": ["Yes, Algeria has a coast."], "kind": "landlocked"}
+{"q": "is brunei surrounded by land", "refs": ["No, Brunei has a coast."], "kind": "landlocked"}
+{"q": "does portugal have a sea coast?", "refs": ["Yes, Portugal has a coast."], "kind": "landlocked"}
+{"q": "I want to know does Gabon have a sea coast", "refs": ["Yes, Gabon has a coast."], "kind": "landlocked"}
+{"q": "is iran surrounded by land", "refs": ["No, Iran has a coast."], "kind": "landlocked"}
+{"q": "does Timor-Leste have a sea coast", "refs": ["Yes, Timor-Leste has a coast."], "kind": "landlocked"}
+{"q": "Is Panama surrounded by land?", "refs": ["No, Panama has a coast."], "kind": "landlocked"}
+{"q": "Is Uganda surrounded by land", "refs": ["Yes, Uganda is landlocked. It has no coast."], "kind": "landlocked"}
+{"q": "Is Indonesia surrounded by land tiny", "refs": ["No, Indonesia has a coast."], "kind": "landlocked"}
+{"q": "do you know does india have a sea coast?", "refs": ["Yes, India has a coast."], "kind": "landlocked"}
+{"q": "does barbados have a sea coast?", "refs": ["Yes, Barbados has a coast."], "kind": "landlocked"}
+{"q": "does south africa have a sea coast?", "refs": ["Yes, South Africa has a coast."], "kind": "landlocked"}
+{"q": "does laos have a sea coast", "refs": ["No, Laos is landlocked."], "kind": "landlocked"}
+{"q": "is brazil surrounded by land", "refs": ["No, Brazil has a coast."], "kind": "landlocked"}
+{"q": "is united kingdom surrounded by land?", "refs": ["No, United Kingdom has a coast."], "kind": "landlocked"}
+{"q": "does timor-leste have a sea coast?", "refs": ["Yes, Timor-Leste has a coast."], "kind": "landlocked"}
+{"q": "IS RUSSIA SURROUNDED BY LAND", "refs": ["No, Russia has a coast."], "kind": "landlocked"}
+{"q": "does ukraine have a sea coast", "refs": ["Yes, Ukraine has a coast."], "kind": "landlocked"}
+{"q": "does North Macedonia have a sea coast?", "refs": ["No, North Macedonia is landlocked."], "kind": "landlocked"}
+{"q": "hey tiny, does myanmar have a sea coast", "refs": ["Yes, Myanmar has a coast."], "kind": "landlocked"}
+{"q": "does chad have a sea coast", "refs": ["No, Chad is landlocked."], "kind": "landlocked"}
+{"q": "is Burkina Faso surrounded by land", "refs": ["Yes, Burkina Faso is landlocked. It has no coast."], "kind": "landlocked"}
+{"q": "are Gabon and Equatorial Guinea neighbours?", "refs": ["Yes, Gabon borders Equatorial Guinea."], "kind": "borders"}
+{"q": "how many countries are next to singapore?", "refs": ["Singapore has no land neighbours."], "kind": "borders"}
+{"q": "so what are the neighbors of Nepal?", "refs": ["China and India."], "kind": "borders"}
+{"q": "is spain a neighbour of andorra", "refs": ["Yes, Andorra borders Spain."], "kind": "borders"}
+{"q": "is mauritius a neighbour of sao tome and principe", "refs": ["No, Sao Tome and Principe does not border Mauritius."], "kind": "borders"}
+{"q": "What are the neighbors of Slovakia?", "refs": ["Austria, Czechia, Hungary and two others."], "kind": "borders"}
+{"q": "neighbours of Chad?", "refs": ["Cameroon, Central African Republic, Libya and three others."], "kind": "borders"}
+{"q": "Is France a neighbour of Andorra", "refs": ["Yes, Andorra borders France."], "kind": "borders"}
+{"q": "Does Gabon share a border with Guinea-Bissau?", "refs": ["No, Gabon does not border Guinea-Bissau."], "kind": "borders"}
+{"q": "Are Grenada and Saint Lucia neighbours", "refs": ["No, Grenada does not border Saint Lucia."], "kind": "borders"}
+{"q": "Question: which countries are next to Qatar", "refs": ["Saudi Arabia."], "kind": "borders"}
+{"q": "which countries border gabon", "refs": ["Cameroon, Congo and Equatorial Guinea."], "kind": "borders"}
+{"q": "is chad next to liberia", "refs": ["No, Chad does not border Liberia."], "kind": "borders"}
+{"q": "which countries are next to South Korea?", "refs": ["North Korea."], "kind": "borders"}
+{"q": "what are the neighbours of nepal", "refs": ["China and India."], "kind": "borders"}
+{"q": "How many countries border Slovakia", "refs": ["Slovakia borders five countries."], "kind": "borders"}
+{"q": "Does Nepal border Cambodia", "refs": ["No, Nepal does not border Cambodia."], "kind": "borders"}
+{"q": "what countries does belgium border", "refs": ["France, Germany, Luxembourg and Netherlands."], "kind": "borders"}
+{"q": "Neighbours of Qatar", "refs": ["Saudi Arabia."], "kind": "borders"}
+{"q": "Please tell me does Sao Tome and Principe share a border with Cape Verde?", "refs": ["No, Sao Tome and Principe does not border Cape Verde."], "kind": "borders"}
+{"q": "what are the neighbors of south korea", "refs": ["North Korea."], "kind": "borders"}
+{"q": "does belgium border luxembourg?", "refs": ["Yes, Belgium borders Luxembourg."], "kind": "borders"}
+{"q": "Please tell me name the neighbours of South Korea ?", "refs": ["North Korea."], "kind": "borders"}
+{"q": "which countries border andorra?", "refs": ["France and Spain."], "kind": "borders"}
+{"q": "is albania a neighbour of slovakia?", "refs": ["No, Slovakia does not border Albania."], "kind": "borders"}
+{"q": "Is Chad next to Seychelles", "refs": ["No, Chad does not border Seychelles."], "kind": "borders"}
+{"q": "What are the neighbours of Slovakia?", "refs": ["Austria, Czechia, Hungary and two others."], "kind": "borders"}
+{"q": "I WANT TO KNOW DOES SINGAPORE BORDER LEBANON", "refs": ["No, Singapore does not border Lebanon."], "kind": "borders"}
+{"q": "Neighbours of Russia", "refs": ["Azerbaijan, Belarus, China and eleven others."], "kind": "borders"}
+{"q": "hey, are Gabon and Mauritius neighbours?", "refs": ["No, Gabon does not border Mauritius."], "kind": "borders"}
+{"q": "neighbours of Serbia", "refs": ["Bosnia and Herzegovina, Bulgaria, Croatia and four others."], "kind": "borders"}
+{"q": "how many countries border russia?", "refs": ["Fourteen."], "kind": "borders"}
+{"q": "does sao tome and principe border sudan", "refs": ["No, Sao Tome and Principe does not border Sudan."], "kind": "borders"}
+{"q": "question: how many neighbours does slovakia have?", "refs": ["Slovakia borders five countries."], "kind": "borders"}
+{"q": "are Russia and Portugal neighbours?", "refs": ["No, Russia does not border Portugal."], "kind": "borders"}
+{"q": "what countries does gabon border", "refs": ["Cameroon, Congo and Equatorial Guinea."], "kind": "borders"}
+{"q": "so which countries are next to Grenada?", "refs": ["Grenada has no land neighbours."], "kind": "borders"}
+{"q": "is netherlands next to belgium?", "refs": ["Yes, Netherlands borders Belgium."], "kind": "borders"}
+{"q": "what countries does Singapore border?", "refs": ["Singapore has no land neighbours."], "kind": "borders"}
+{"q": "do you know is Sudan a neighbour of Chad?", "refs": ["Yes, Chad borders Sudan."], "kind": "borders"}
+{"q": "please tell me which countries border belgium", "refs": ["France, Germany, Luxembourg and Netherlands."], "kind": "borders"}
+{"q": "  are  singapore and saudi arabia neighbours?", "refs": ["No, Singapore does not border Saudi Arabia."], "kind": "borders"}
+{"q": "does serbia share a border with iceland, please", "refs": ["No, Serbia does not border Iceland."], "kind": "borders"}
+{"q": "does Singapore share a border with Sri Lanka", "refs": ["No, Singapore does not border Sri Lanka."], "kind": "borders"}
+{"q": "are netherlands and greece neighbours?", "refs": ["No, Netherlands does not border Greece."], "kind": "borders"}
+{"q": "what are the neighbors of Sao Tome and Principe?", "refs": ["Sao Tome and Principe has no land neighbours."], "kind": "borders"}
+{"q": "what countries does nepal border", "refs": ["China and India."], "kind": "borders"}
+{"q": "  Does  Qatar share a border with Saudi Arabia", "refs": ["Yes, Qatar borders Saudi Arabia."], "kind": "borders"}
+{"q": "excuse me, what are the neighbours of qatar", "refs": ["Saudi Arabia."], "kind": "borders"}
+{"q": "what are the neighbors of Russia?", "refs": ["Azerbaijan, Belarus, China and eleven others."], "kind": "borders"}
+{"q": "what are the neighbours of singapore please", "refs": ["Singapore has no land neighbours."], "kind": "borders"}
+{"q": "is chad next to cape verde", "refs": ["No, Chad does not border Cape Verde."], "kind": "borders"}
+{"q": "how many countries are next to chad?", "refs": ["Six."], "kind": "borders"}
+{"q": "what are the neighbours of Andorra ?", "refs": ["France and Spain."], "kind": "borders"}
+{"q": "how many countries border netherlands?", "refs": ["Netherlands borders two countries."], "kind": "borders"}
+{"q": "  What  countries does Qatar border?", "refs": ["Saudi Arabia."], "kind": "borders"}
+{"q": "ok, what are the neighbors of south korea", "refs": ["North Korea."], "kind": "borders"}
+{"q": "Neighbours of Sao Tome and Principe?", "refs": ["Sao Tome and Principe has no land neighbours."], "kind": "borders"}
+{"q": "which countries are next to serbia?", "refs": ["Bosnia and Herzegovina, Bulgaria, Croatia and four others."], "kind": "borders"}
+{"q": "ARE SOUTH KOREA AND QATAR NEIGHBOURS", "refs": ["No, South Korea does not border Qatar."], "kind": "borders"}
+{"q": "What says squeak", "refs": ["A mouse."], "kind": "reverse"}
+{"q": "What is the singular form of wolves", "refs": ["Wolf."], "kind": "reverse"}
+{"q": "i wonder what country uses the west african cfa franc?", "refs": ["Benin, Burkina Faso and many others."], "kind": "reverse"}
+{"q": "Of which country is Thimphu the capital", "refs": ["Thimphu is the capital of Bhutan."], "kind": "reverse"}
+{"q": "do you know of which country is Tegucigalpa the capital?", "refs": ["It is in Honduras."], "kind": "reverse"}
+{"q": "In which countries is Bulgarian spoken?", "refs": ["In Bulgaria."], "kind": "reverse"}
+{"q": "of which country is praia the capital?", "refs": ["Praia is in Cape Verde."], "kind": "reverse"}
+{"q": "in which countries is spanish spoken?", "refs": ["In Argentina, Bolivia and other countries."], "kind": "reverse"}
+{"q": "Tell me in which countries is Thai spoken?", "refs": ["In Thailand."], "kind": "reverse"}
+{"q": "What is burnt the past tense of?", "refs": ["Burn."], "kind": "reverse"}
+{"q": "hi tiny, what is the singular form of roofs?", "refs": ["One roof, two roofs."], "kind": "reverse"}
+{"q": "in which countries is Haitian Creole and French spoken?", "refs": ["In Haiti."], "kind": "reverse"}
+{"q": "of which country is Manila the capital?", "refs": ["It is in Philippines."], "kind": "reverse"}
+{"q": "of which country is mogadishu the capital", "refs": ["It is in Somalia."], "kind": "reverse"}
+{"q": "what is a joey the baby of", "refs": ["A kangaroo."], "kind": "reverse"}
+{"q": "what is a chick the baby of?", "refs": ["A chicken."], "kind": "reverse"}
+{"q": "which month number is August?", "refs": ["August is the eighth month."], "kind": "reverse"}
+{"q": "what is an owlet the baby of", "refs": ["An owl."], "kind": "reverse"}
+{"q": "in which countries is somali spoken?", "refs": ["In Somalia."], "kind": "reverse"}
+{"q": "of which country is Dili the capital", "refs": ["Dili is the capital of Timor-Leste."], "kind": "reverse"}
+{"q": "what is the singular form of foxes?", "refs": ["One fox, two foxes."], "kind": "reverse"}
+{"q": "quick question: what is a puppy the baby of", "refs": ["A dog."], "kind": "reverse"}
+{"q": "of which country is Reykjavik the capital", "refs": ["Iceland."], "kind": "reverse"}
+{"q": "what is the singular form of men?", "refs": ["Man."], "kind": "reverse"}
+{"q": "what is a foal the baby of", "refs": ["A horse."], "kind": "reverse"}
+{"q": "please tell me what is the singular form of cacti?", "refs": ["Cactus."], "kind": "reverse"}
+{"q": "Tell me of which country is Accra the capital?", "refs": ["Accra is in Ghana."], "kind": "reverse"}
+{"q": "which month number is march", "refs": ["March is the third month."], "kind": "reverse"}
+{"q": "ok, what country uses the swiss franc", "refs": ["Switzerland and Liechtenstein."], "kind": "reverse"}
+{"q": "in which countries is polish spoken", "refs": ["In Poland."], "kind": "reverse"}
+{"q": "WHAT SAYS GOBBLE", "refs": ["A turkey."], "kind": "reverse"}
+{"q": "do you know what says squeak, please", "refs": ["A mouse."], "kind": "reverse"}
+{"q": "  What  is the singular form of echoes", "refs": ["Echo."], "kind": "reverse"}
+{"q": "what is drove the past tense of", "refs": ["Drive."], "kind": "reverse"}
+{"q": "of which country is Bamako the capital", "refs": ["It is in Mali."], "kind": "reverse"}
+{"q": "which month number is june please", "refs": ["June is the sixth month."], "kind": "reverse"}
+{"q": "What is jumped the past tense of?", "refs": ["It is jump."], "kind": "reverse"}
+{"q": "which month number is may?", "refs": ["May is the fifth month."], "kind": "reverse"}
+{"q": "  what  is the singular form of ladies?", "refs": ["It is lady."], "kind": "reverse"}
+{"q": "Of which country is Muscat the capital", "refs": ["Oman."], "kind": "reverse"}
+{"q": "What is a kitten the baby of", "refs": ["A cat."], "kind": "reverse"}
+{"q": "What says hiss", "refs": ["A snake."], "kind": "reverse"}
+{"q": "  what  is jumped the past tense of", "refs": ["It is jump."], "kind": "reverse"}
+{"q": "OF WHICH COUNTRY IS TOKYO THE CAPITAL", "refs": ["Tokyo is the capital of Japan."], "kind": "reverse"}
+{"q": "of which country is kampala the capital", "refs": ["Kampala is the capital of Uganda."], "kind": "reverse"}
+{"q": "tell me what country uses the Samoan tala", "refs": ["Samoa."], "kind": "reverse"}
+{"q": "What is a caterpillar the baby of", "refs": ["A butterfly."], "kind": "reverse"}
+{"q": "What country uses the Guinean franc", "refs": ["Guinea."], "kind": "reverse"}
+{"q": "Of which country is Abu Dhabi the capital?", "refs": ["It is in United Arab Emirates."], "kind": "reverse"}
+{"q": "in which countries is luxembourgish spoken", "refs": ["In Luxembourg."], "kind": "reverse"}
+{"q": "what is a fawn the baby of?", "refs": ["A deer."], "kind": "reverse"}
+{"q": "what country uses the moroccan dirham?", "refs": ["Morocco."], "kind": "reverse"}
+{"q": "What country uses the Eritrean nakfa?", "refs": ["Eritrea."], "kind": "reverse"}
+{"q": "in which countries is somali spoken", "refs": ["In Somalia."], "kind": "reverse"}
+{"q": "What is found the past tense of", "refs": ["The past of find is found."], "kind": "reverse"}
+{"q": "IN WHICH COUNTRIES IS ROMANIAN SPOKEN?", "refs": ["In Moldova and Romania."], "kind": "reverse"}
+{"q": "what is a piglet the baby of?", "refs": ["A pig."], "kind": "reverse"}
+{"q": "What is showed the past tense of", "refs": ["The past of show is showed."], "kind": "reverse"}
+{"q": "which month number is august please", "refs": ["August is the eighth month."], "kind": "reverse"}
+{"q": "of which country is Kigali the capital?", "refs": ["Kigali is in Rwanda."], "kind": "reverse"}
+{"q": "what element is rn?", "refs": ["It is radon."], "kind": "reverse2"}
+{"q": "hi tiny, what does the symbol I stand for?", "refs": ["Iodine."], "kind": "reverse2"}
+{"q": "which element has the symbol se?", "refs": ["Se is selenium."], "kind": "reverse2"}
+{"q": "WHAT ELEMENT IS BK?", "refs": ["It is berkelium."], "kind": "reverse2"}
+{"q": "Hi tiny, which element has the symbol Sr?", "refs": ["Sr is strontium."], "kind": "reverse2"}
+{"q": "what does the symbol Lr stand for", "refs": ["It is lawrencium."], "kind": "reverse2"}
+{"q": "what state is honolulu the capital of", "refs": ["Hawaii."], "kind": "reverse2"}
+{"q": "What element has 8 protons", "refs": ["Element 8 is oxygen."], "kind": "reverse2"}
+{"q": "which element has the symbol es?", "refs": ["Es is einsteinium."], "kind": "reverse2"}
+{"q": "which state has the capital denver", "refs": ["Denver is the capital of Colorado."], "kind": "reverse2"}
+{"q": "which country uses the domain .sb?", "refs": ["Solomon Islands."], "kind": "reverse2"}
+{"q": "quick question: which element is Ne?", "refs": ["Neon."], "kind": "reverse2"}
+{"q": "What is ti amo in english?", "refs": ["It means i love you."], "kind": "reverse2"}
+{"q": "Rb is the symbol for what?", "refs": ["It is rubidium."], "kind": "reverse2"}
+{"q": "la is the symbol for what?", "refs": ["It is lanthanum."], "kind": "reverse2"}
+{"q": "santa fe is the capital of which state?", "refs": ["New Mexico."], "kind": "reverse2"}
+{"q": "Hi tiny, what state is Phoenix the capital of?", "refs": ["Phoenix is the capital of Arizona."], "kind": "reverse2"}
+{"q": "which country uses the domain .sk", "refs": ["Slovakia."], "kind": "reverse2"}
+{"q": "do you know which state has the capital lincoln?", "refs": ["Lincoln is the capital of Nebraska."], "kind": "reverse2"}
+{"q": "translate mela into english", "refs": ["Mela means apple."], "kind": "reverse2"}
+{"q": "which element has the symbol Fe?", "refs": ["Iron."], "kind": "reverse2"}
+{"q": "What is element number 78", "refs": ["Platinum."], "kind": "reverse2"}
+{"q": ".gw is the internet domain of which country?", "refs": ["Guinea-Bissau."], "kind": "reverse2"}
+{"q": "what element is Tc", "refs": ["Tc is technetium."], "kind": "reverse2"}
+{"q": "what does the symbol b stand for?", "refs": ["B is boron."], "kind": "reverse2"}
+{"q": "What state is Oklahoma City the capital of", "refs": ["Oklahoma City is the capital of Oklahoma."], "kind": "reverse2"}
+{"q": "HEY, WHAT DOES SCHWARZ MEAN?", "refs": ["Schwarz means black."], "kind": "reverse2"}
+{"q": "what does non mean in english", "refs": ["It means no."], "kind": "reverse2"}
+{"q": "element 82 :)", "refs": ["Lead."], "kind": "reverse2"}
+{"q": "what does zehn mean in english", "refs": ["Zehn means ten."], "kind": "reverse2"}
+{"q": ".ec is the internet domain of which country", "refs": ["Ecuador."], "kind": "reverse2"}
+{"q": "What element is Nb?", "refs": ["Niobium."], "kind": "reverse2"}
+{"q": "which element is w", "refs": ["It is tungsten."], "kind": "reverse2"}
+{"q": "pb is the symbol for what?", "refs": ["Lead."], "kind": "reverse2"}
+{"q": "Whose domain is .mc?", "refs": ["Monaco."], "kind": "reverse2"}
+{"q": "Jefferson City is the capital of which state", "refs": ["Missouri."], "kind": "reverse2"}
+{"q": "what does the symbol yb stand for?", "refs": ["Ytterbium."], "kind": "reverse2"}
+{"q": "what country has websites ending in .sd?", "refs": ["Sudan."], "kind": "reverse2"}
+{"q": "which element has atomic number 41", "refs": ["Niobium."], "kind": "reverse2"}
+{"q": ".ws is the internet domain of which country?", "refs": ["Samoa."], "kind": "reverse2"}
+{"q": "which state has the capital juneau?", "refs": ["Alaska."], "kind": "reverse2"}
+{"q": "could you tell me what country has websites ending in .be", "refs": ["Belgium."], "kind": "reverse2"}
+{"q": "ok, what is macchina in english?", "refs": ["It means car."], "kind": "reverse2"}
+{"q": "hello, which element has atomic number 76?", "refs": ["Osmium."], "kind": "reverse2"}
+{"q": "What does buongiorno mean", "refs": ["Buongiorno means good morning."], "kind": "reverse2"}
+{"q": "so what does au revoir mean?", "refs": ["It means goodbye."], "kind": "reverse2"}
+{"q": "ok, what does ti amo mean in english", "refs": ["Ti amo means i love you."], "kind": "reverse2"}
+{"q": "Could you tell me element 98", "refs": ["Californium."], "kind": "reverse2"}
+{"q": "what element has 19 protons", "refs": ["Element 19 is potassium."], "kind": "reverse2"}
+{"q": "tiny, element 40 tiny", "refs": ["Element 40 is zirconium."], "kind": "reverse2"}
+{"q": "jackson is the capital of which state thanks", "refs": ["Mississippi."], "kind": "reverse2"}
+{"q": "do you know Os is the symbol for what?", "refs": ["Os is osmium."], "kind": "reverse2"}
+{"q": "which element has the symbol kr", "refs": ["It is krypton."], "kind": "reverse2"}
+{"q": "What is uno in english?", "refs": ["Uno means one."], "kind": "reverse2"}
+{"q": "what does the symbol Cf stand for?", "refs": ["Cf is californium."], "kind": "reverse2"}
+{"q": "Whose domain is .li", "refs": ["Liechtenstein."], "kind": "reverse2"}
+{"q": "tiny, what state is Denver the capital of?", "refs": ["Colorado."], "kind": "reverse2"}
+{"q": "what country has websites ending in .my?", "refs": ["Malaysia."], "kind": "reverse2"}
+{"q": "which element has atomic number 1", "refs": ["Hydrogen."], "kind": "reverse2"}
+{"q": "cf is the symbol for what?", "refs": ["It is californium."], "kind": "reverse2"}
+{"q": "has october got 30 days", "refs": ["No, October has 31 days."], "kind": "yesno"}
+{"q": "So is a snake a reptile??", "refs": ["Yes, a snake is a reptile."], "kind": "yesno"}
+{"q": "brussels is the capital of belgium, right?", "refs": ["Yes, Brussels is the capital of Belgium."], "kind": "yesno"}
+{"q": "Is Andorra part of North America", "refs": ["No, Andorra is in Europe."], "kind": "yesno"}
+{"q": "is light the opposite of heavy?", "refs": ["Yes, light is the opposite of heavy."], "kind": "yesno"}
+{"q": "belgium is in africa, right?", "refs": ["No, Belgium is in Europe."], "kind": "yesno"}
+{"q": "can you tell me is Qatar a country in Asia?", "refs": ["Yes, Qatar is in Asia."], "kind": "yesno"}
+{"q": "is the plural of hero heros", "refs": ["No, the plural of hero is heroes."], "kind": "yesno"}
+{"q": "Is Gabon part of Asia", "refs": ["No, Gabon is in Africa."], "kind": "yesno"}
+{"q": "is riyadh the capital city of qatar?", "refs": ["No, the capital of Qatar is Doha."], "kind": "yesno"}
+{"q": "is a turtle a insect?", "refs": ["No, a turtle is a reptile."], "kind": "yesno"}
+{"q": "i wonder does december have 31 days?", "refs": ["Yes, December has 31 days."], "kind": "yesno"}
+{"q": "  Is  a trout a amphibian?", "refs": ["No, a trout is a fish."], "kind": "yesno"}
+{"q": "is the owl a bird thanks", "refs": ["Yes, a owl is a bird."], "kind": "yesno"}
+{"q": "Has March got 31 days?", "refs": ["Yes, March has 31 days."], "kind": "yesno"}
+{"q": "is belgrade the capital city of serbia?", "refs": ["Yes, Belgrade is the capital of Serbia."], "kind": "yesno"}
+{"q": "does a goat say trumpet?", "refs": ["No, a goat says baa."], "kind": "yesno"}
+{"q": "  is  the capital of serbia belgrade?", "refs": ["Yes, Belgrade is the capital of Serbia."], "kind": "yesno"}
+{"q": "Is Sao Tome and Principe part of Africa", "refs": ["Yes, Sao Tome and Principe is in Africa."], "kind": "yesno"}
+{"q": "  Serbia  is in North America, right", "refs": ["No, Serbia is in Europe."], "kind": "yesno"}
+{"q": "are cats mammals?", "refs": ["Yes, a cat is a mammal."], "kind": "yesno"}
+{"q": "Hi tiny, does a dog say squeak", "refs": ["No, a dog says bark."], "kind": "yesno"}
+{"q": "is a fly a insect?", "refs": ["Yes, a fly is an insect."], "kind": "yesno"}
+{"q": "does a rooster say crow?", "refs": ["Yes, a rooster says crow."], "kind": "yesno"}
+{"q": "Are outside and pull opposites?", "refs": ["No, the opposite of outside is inside."], "kind": "yesno"}
+{"q": "ARE PENGUINS AMPHIBIANS?", "refs": ["No, a penguin is a bird."], "kind": "yesno"}
+{"q": "do they speak French in Belgium?", "refs": ["Yes, people in Belgium speak Dutch and French."], "kind": "yesno"}
+{"q": "is the capital of belgium brussels?", "refs": ["Yes, Brussels is the capital of Belgium."], "kind": "yesno"}
+{"q": "Is a elephant a insect", "refs": ["No, a elephant is a mammal."], "kind": "yesno"}
+{"q": "is froze the past of freeze?", "refs": ["Yes, the past of freeze is froze."], "kind": "yesno"}
+{"q": "please tell me is the capital of grenada washington d.c.?", "refs": ["No, the capital of Grenada is St. George's."], "kind": "yesno"}
+{"q": "is maseru the capital of lesotho?", "refs": ["Yes, Maseru is the capital of Lesotho."], "kind": "yesno"}
+{"q": "quick question: is belgium's capital brussels", "refs": ["Yes, Brussels is the capital of Belgium."], "kind": "yesno"}
+{"q": "IS THE PLURAL OF SERIES SERIES :)", "refs": ["Yes, one series, two series."], "kind": "yesno"}
+{"q": "Are kangaroos mammals", "refs": ["Yes, a kangaroo is a mammal."], "kind": "yesno"}
+{"q": "Is the lion a mammal?", "refs": ["Yes, a lion is a mammal."], "kind": "yesno"}
+{"q": "Do they speak Serbian in Serbia?", "refs": ["Yes, people in Serbia speak Serbian."], "kind": "yesno"}
+{"q": "do they speak Russian in Russia?", "refs": ["Yes, people in Russia speak Russian."], "kind": "yesno"}
+{"q": "is Finnish spoken in Nepal?", "refs": ["No, people in Nepal speak Nepali."], "kind": "yesno"}
+{"q": "tiny, is dishies the plural of dish", "refs": ["No, the plural of dish is dishes."], "kind": "yesno"}
+{"q": "is the plural of fox foxes", "refs": ["Yes, one fox, two foxes."], "kind": "yesno"}
+{"q": "is netherlands a country in europe", "refs": ["Yes, Netherlands is in Europe."], "kind": "yesno"}
+{"q": "Is the plural of woman women?", "refs": ["Yes, one woman, two women."], "kind": "yesno"}
+{"q": "does qatar lie in europe", "refs": ["No, Qatar is in Asia."], "kind": "yesno"}
+{"q": "has January got 31 days?", "refs": ["Yes, January has 31 days."], "kind": "yesno"}
+{"q": "Does September have 31 days?", "refs": ["No, September has 30 days."], "kind": "yesno"}
+{"q": "Is Andorra part of Africa", "refs": ["No, Andorra is in Europe."], "kind": "yesno"}
+{"q": "Is potatoes the plural of potato", "refs": ["Yes, one potato, two potatoes."], "kind": "yesno"}
+{"q": "Yesterday i fought, is that right", "refs": ["Yes, the past of fight is fought."], "kind": "yesno"}
+{"q": "are there 31 days in may?", "refs": ["Yes, May has 31 days."], "kind": "yesno"}
+{"q": "Do people speak Spanish in South Korea :)", "refs": ["No, people in South Korea speak Korean."], "kind": "yesno"}
+{"q": "is lose the opposite of win?", "refs": ["Yes, lose is the opposite of win."], "kind": "yesno"}
+{"q": "Do people speak Urdu in Nepal?", "refs": ["No, people in Nepal speak Nepali."], "kind": "yesno"}
+{"q": "is a rabbit an insect", "refs": ["No, a rabbit is a mammal."], "kind": "yesno"}
+{"q": "is the capital of sao tome and principe dodoma?", "refs": ["No, the capital of Sao Tome and Principe is Sao Tome."], "kind": "yesno"}
+{"q": "IS THE CAPITAL OF GABON LUANDA?", "refs": ["No, the capital of Gabon is Libreville."], "kind": "yesno"}
+{"q": "question: is netherlands in south america", "refs": ["No, Netherlands is in Europe."], "kind": "yesno"}
+{"q": "Is Belgium in Asia", "refs": ["No, Belgium is in Europe."], "kind": "yesno"}
+{"q": "can you tell me has a bee got six legs", "refs": ["Yes, a bee has six legs."], "kind": "yesno"}
+{"q": "Do cats say quack?", "refs": ["No, a cat says meow."], "kind": "yesno"}
+{"q": "capital and currency of south korea?", "refs": ["The capital is Seoul and the money is the South Korean won."], "kind": "combo"}
+{"q": "so what kind of animal is an owl and what is its baby called?", "refs": ["An owl is a bird and its baby is an owlet."], "kind": "combo"}
+{"q": "what are the capitals of belgium and russia", "refs": ["The capital of Belgium is Brussels and of Russia it is Moscow."], "kind": "combo"}
+{"q": "which continent is lesotho in and what is its capital", "refs": ["Lesotho is in Africa. The capital is Maseru."], "kind": "combo"}
+{"q": "i wonder where are slovakia and chad?", "refs": ["Slovakia is in Europe and Chad is in Africa."], "kind": "combo"}
+{"q": "what are the capitals of Nepal and Grenada?", "refs": ["The capital of Nepal is Kathmandu and of Grenada it is St. George's."], "kind": "combo"}
+{"q": "capital and currency of russia", "refs": ["The capital is Moscow and the money is the Russian ruble."], "kind": "combo"}
+{"q": "  question:  tell me the capitals of sao tome and principe and serbia", "refs": ["Sao Tome and Belgrade."], "kind": "combo"}
+{"q": "what kind of animal is a pig and what is its baby called?", "refs": ["A pig is a mammal and its baby is a piglet."], "kind": "combo"}
+{"q": "what is the capital of serbia and what language do they speak", "refs": ["The capital is Belgrade and people speak Serbian."], "kind": "combo"}
+{"q": "what kind of animal is a cat and what is its baby called", "refs": ["A cat is a mammal and its baby is a kitten."], "kind": "combo"}
+{"q": "  what  is a baby chicken called and what kind of animal is it", "refs": ["A chicken is a bird and its baby is a chick."], "kind": "combo"}
+{"q": "What is a baby elephant called and what kind of animal is it??", "refs": ["An elephant is a mammal and its baby is a calf."], "kind": "combo"}
+{"q": "what kind of animal is a lion and what is its baby called", "refs": ["A lion is a mammal and its baby is a cub."], "kind": "combo"}
+{"q": "Hey, on which continents are Slovakia and Nepal?", "refs": ["Slovakia is in Europe and Nepal is in Asia."], "kind": "combo"}
+{"q": "tiny, what is a baby chicken called and what kind of animal is it", "refs": ["A chicken is a bird and its baby is a chick."], "kind": "combo"}
+{"q": "I WANT TO KNOW HOW MANY LEGS DOES A HORSE HAVE AND WHAT DOES IT SAY", "refs": ["A horse has four legs and says neigh."], "kind": "combo"}
+{"q": "hi tiny, what kind of animal is a kangaroo and what is its baby called?", "refs": ["A kangaroo is a mammal and its baby is a joey."], "kind": "combo"}
+{"q": "WHAT DOES A HORSE SAY AND HOW MANY LEGS DOES IT HAVE", "refs": ["A horse has four legs and says neigh."], "kind": "combo"}
+{"q": "WHAT IS A BABY BUTTERFLY CALLED AND WHAT KIND OF ANIMAL IS IT?", "refs": ["A butterfly is an insect and its baby is a caterpillar."], "kind": "combo"}
+{"q": "Where are Slovakia and Andorra", "refs": ["Slovakia is in Europe and Andorra is in Europe."], "kind": "combo"}
+{"q": "what does a lion say and how many legs does it have", "refs": ["A lion has four legs and says roar."], "kind": "combo"}
+{"q": "hello, capital and language of slovakia?", "refs": ["The capital is Bratislava and people speak Slovak."], "kind": "combo"}
+{"q": "excuse me, where is grenada and what is its capital?", "refs": ["Grenada is in North America. The capital is St. George's."], "kind": "combo"}
+{"q": "Tell me the continent and capital of Grenada", "refs": ["Grenada is in North America. The capital is St. George's."], "kind": "combo"}
+{"q": "what does a dog say and how many legs does it have", "refs": ["A dog has four legs and says bark."], "kind": "combo"}
+{"q": "tell me what kind of animal is an elephant and what is its baby called?", "refs": ["An elephant is a mammal and its baby is a calf."], "kind": "combo"}
+{"q": "what are the capital and currency of chad", "refs": ["The capital is N'Djamena and the money is the Central African CFA franc."], "kind": "combo"}
+{"q": "Capital and language of Serbia", "refs": ["The capital is Belgrade and people speak Serbian."], "kind": "combo"}
+{"q": "what does a duck say and how many legs does it have", "refs": ["A duck has two legs and says quack."], "kind": "combo"}
+{"q": "how many legs does a duck have and what does it say", "refs": ["A duck has two legs and says quack."], "kind": "combo"}
+{"q": "what does a cow say and how many legs does it have?", "refs": ["A cow has four legs and says moo."], "kind": "combo"}
+{"q": "how many legs does a cow have and what does it say?", "refs": ["A cow has four legs and says moo."], "kind": "combo"}
+{"q": "where is singapore and what is its capital?", "refs": ["Singapore is in Asia. The capital is Singapore."], "kind": "combo"}
+{"q": "How many legs does a horse have and what does it say", "refs": ["A horse has four legs and says neigh."], "kind": "combo"}
+{"q": "what is the capital of russia and what language do they speak", "refs": ["The capital is Moscow and people speak Russian."], "kind": "combo"}
+{"q": "what does a snake say and how many legs does it have", "refs": ["A snake has none legs and says hiss."], "kind": "combo"}
+{"q": "Excuse me, what are the capitals of Chad and Slovakia?!", "refs": ["N'Djamena and Bratislava."], "kind": "combo"}
+{"q": "which continent is gabon in and what is its capital?", "refs": ["Gabon is in Africa. The capital is Libreville."], "kind": "combo"}
+{"q": "where are Qatar and Singapore", "refs": ["Qatar is in Asia and Singapore is in Asia."], "kind": "combo"}
+{"q": "What is the capital of Qatar and of Lesotho", "refs": ["The capital of Qatar is Doha and of Lesotho it is Maseru."], "kind": "combo"}
+{"q": "what is a baby whale called and what kind of animal is it?", "refs": ["A whale is a mammal and its baby is a calf."], "kind": "combo"}
+{"q": "What is a baby cow called and what kind of animal is it", "refs": ["A cow is a mammal and its baby is a calf."], "kind": "combo"}
+{"q": "which continents are lesotho and slovakia in", "refs": ["Lesotho is in Africa and Slovakia is in Europe."], "kind": "combo"}
+{"q": "where is gabon and what is its capital?", "refs": ["Gabon is in Africa. The capital is Libreville."], "kind": "combo"}
+{"q": "capital and currency of qatar", "refs": ["The capital is Doha and the money is the Qatari riyal."], "kind": "combo"}
+{"q": "On which continents are Lesotho and Slovakia", "refs": ["Lesotho is in Africa and Slovakia is in Europe."], "kind": "combo"}
+{"q": "What kind of animal is a swan and what is its baby called?", "refs": ["A swan is a bird and its baby is a cygnet."], "kind": "combo"}
+{"q": "hey tiny, what is the capital of qatar and of south korea", "refs": ["The capital of Qatar is Doha and of South Korea it is Seoul."], "kind": "combo"}
+{"q": "tell me the continent and capital of chad?", "refs": ["Chad is in Africa. The capital is N'Djamena."], "kind": "combo"}
+{"q": "  what  does a dog say and how many legs does it have?", "refs": ["A dog has four legs and says bark."], "kind": "combo"}
+{"q": "what are the capitals of chad and andorra?", "refs": ["N'Djamena and Andorra la Vella."], "kind": "combo"}
+{"q": "capitals of andorra and chad?", "refs": ["The capital of Andorra is Andorra la Vella and of Chad it is N'Djamena."], "kind": "combo"}
+{"q": "what does a cow say and how many legs does it have", "refs": ["A cow has four legs and says moo."], "kind": "combo"}
+{"q": "tell me the continent and capital of gabon", "refs": ["Gabon is in Africa. The capital is Libreville."], "kind": "combo"}
+{"q": "Tell me the capital and language of South Korea?", "refs": ["The capital is Seoul and people speak Korean."], "kind": "combo"}
+{"q": "what is the capital of qatar and of netherlands", "refs": ["The capital of Qatar is Doha and of Netherlands it is Amsterdam."], "kind": "combo"}
+{"q": "  which  continents are andorra and south korea in?", "refs": ["Andorra is in Europe and South Korea is in Asia."], "kind": "combo"}
+{"q": "what does a duck say and how many legs does it have?", "refs": ["A duck has two legs and says quack."], "kind": "combo"}
+{"q": "Which continent is Lesotho in and what is its capital?", "refs": ["Lesotho is in Africa. The capital is Maseru."], "kind": "combo"}
+{"q": "what is 12 times 5?", "refs": ["The answer is 60."], "kind": "numbers"}
+{"q": "what is 5 + 18?", "refs": ["It is 23."], "kind": "numbers"}
+{"q": "what does 50 divided by 5 make", "refs": ["It is 10."], "kind": "numbers"}
+{"q": "which number is before 100?", "refs": ["99."], "kind": "numbers"}
+{"q": "what is twice 4?", "refs": ["8."], "kind": "numbers"}
+{"q": "two plus six?", "refs": ["The answer is 8."], "kind": "numbers"}
+{"q": "what comes after 9?", "refs": ["10."], "kind": "numbers"}
+{"q": "hi tiny, is 993 even or odd please", "refs": ["993 is odd."], "kind": "numbers"}
+{"q": "12 groups of 5", "refs": ["It is 60."], "kind": "numbers"}
+{"q": "what is half of fifty", "refs": ["Half of 50 is 25."], "kind": "numbers"}
+{"q": "hey tiny, 12 x 5 =", "refs": ["12 times 5 is 60."], "kind": "numbers"}
+{"q": "count from 28 to 33?", "refs": ["28, 29, 30, 31, 32, 33."], "kind": "numbers"}
+{"q": "please tell me what is one more than 9?", "refs": ["10."], "kind": "numbers"}
+{"q": "ten as a number?", "refs": ["10."], "kind": "numbers"}
+{"q": "what is 15 + 4?", "refs": ["It is 19."], "kind": "numbers"}
+{"q": "Which number is larger, 651 or 640", "refs": ["651 is bigger."], "kind": "numbers"}
+{"q": "i wonder what does nineteen minus seventeen make?", "refs": ["2."], "kind": "numbers"}
+{"q": "17 minus 6", "refs": ["The answer is 11."], "kind": "numbers"}
+{"q": "How much is 14 + 6?", "refs": ["It is 20."], "kind": "numbers"}
+{"q": "701 OR 189, WHICH IS BIGGER", "refs": ["701 is bigger."], "kind": "numbers"}
+{"q": "is 341 bigger than 371?", "refs": ["No, 341 is smaller than 371."], "kind": "numbers"}
+{"q": "how much is 5 + 18", "refs": ["5 plus 18 is 23."], "kind": "numbers"}
+{"q": "how much is 7 times 4", "refs": ["The answer is 28."], "kind": "numbers"}
+{"q": "What does eleven plus seven make", "refs": ["11 plus 7 is 18."], "kind": "numbers"}
+{"q": "What is fifteen plus four", "refs": ["The answer is 19."], "kind": "numbers"}
+{"q": "5 times 10", "refs": ["5 times 10 is 50."], "kind": "numbers"}
+{"q": "Is 331 an even number?", "refs": ["331 is odd."], "kind": "numbers"}
+{"q": "What comes after 79?", "refs": ["80 comes after 79."], "kind": "numbers"}
+{"q": "What is one add zero", "refs": ["It is 1."], "kind": "numbers"}
+{"q": "count from 91 to 96?", "refs": ["91, 92, 93, 94, 95, 96."], "kind": "numbers"}
+{"q": "one hundred as a number?", "refs": ["100."], "kind": "numbers"}
+{"q": "50 divided by 5", "refs": ["50 divided by 5 is 10."], "kind": "numbers"}
+{"q": "What is 21 / 7", "refs": ["It is 3."], "kind": "numbers"}
+{"q": "how much is 20 plus 5 tiny", "refs": ["25."], "kind": "numbers"}
+{"q": "5*7", "refs": ["The answer is 35."], "kind": "numbers"}
+{"q": "SPELL THE NUMBER 98?", "refs": ["Ninety-eight."], "kind": "numbers"}
+{"q": "Which is bigger, 829 or 843?", "refs": ["843 is bigger."], "kind": "numbers"}
+{"q": "ok, 5*10?", "refs": ["5 times 10 is 50."], "kind": "numbers"}
+{"q": "what number comes after 855?", "refs": ["856."], "kind": "numbers"}
+{"q": "WHAT IS 999 MINUS ONE?", "refs": ["998 comes before 999."], "kind": "numbers"}
+{"q": "hello, which is more, 942 or 919?", "refs": ["942 is bigger."], "kind": "numbers"}
+{"q": "which number is before 986", "refs": ["It is 985."], "kind": "numbers"}
+{"q": "what does six times seven make", "refs": ["The answer is 42."], "kind": "numbers"}
+{"q": "what is 74 halved?", "refs": ["37."], "kind": "numbers"}
+{"q": "is 29 bigger than 939", "refs": ["No, 29 is smaller than 939."], "kind": "numbers"}
+{"q": "What is 15 add 4", "refs": ["It is 19."], "kind": "numbers"}
+{"q": "write forty-seven in numbers", "refs": ["47."], "kind": "numbers"}
+{"q": "how much is 6 x 7?", "refs": ["6 times 7 is 42."], "kind": "numbers"}
+{"q": "quick question: fifty-nine as a number?", "refs": ["59."], "kind": "numbers"}
+{"q": "what number comes before 575", "refs": ["574 comes before 575."], "kind": "numbers"}
+{"q": "half of 42", "refs": ["Half of 42 is 21."], "kind": "numbers"}
+{"q": "tell me 15 + 19 =", "refs": ["15 plus 19 is 34."], "kind": "numbers"}
+{"q": "so five plus eighteen?", "refs": ["The answer is 23."], "kind": "numbers"}
+{"q": "Is 986 smaller than 987", "refs": ["Yes, 986 is smaller than 987."], "kind": "numbers"}
+{"q": "Hi tiny, subtract 1 from 8?", "refs": ["The answer is 7."], "kind": "numbers"}
+{"q": "What does three times ten make", "refs": ["It is 30."], "kind": "numbers"}
+{"q": "IS 772 AN EVEN NUMBER?", "refs": ["772 is even."], "kind": "numbers"}
+{"q": "count up from 74 to 83", "refs": ["74, 75, 76, 77, 78, 79, 80, 81, 82, 83."], "kind": "numbers"}
+{"q": "One minus one?", "refs": ["The answer is 0."], "kind": "numbers"}
+{"q": "what comes after 104?", "refs": ["105 comes after 104."], "kind": "numbers"}
+{"q": "2 squared?", "refs": ["2 squared is 4."], "kind": "numbers2"}
+{"q": "9 in roman numerals?", "refs": ["IX."], "kind": "numbers2"}
+{"q": "Write 1920 in roman numerals", "refs": ["MCMXX."], "kind": "numbers2"}
+{"q": "what is 2 times itself", "refs": ["2 squared is 4."], "kind": "numbers2"}
+{"q": "what is the square of 6?", "refs": ["36."], "kind": "numbers2"}
+{"q": "2 squared", "refs": ["2 squared is 4."], "kind": "numbers2"}
+{"q": "roman numeral for 36", "refs": ["XXXVI."], "kind": "numbers2"}
+{"q": "i wonder roman numeral for 36", "refs": ["36 is XXXVI in Roman numerals."], "kind": "numbers2"}
+{"q": "roman numeral for 1969", "refs": ["MCMLXIX."], "kind": "numbers2"}
+{"q": "how do you write 1900 in roman numerals?", "refs": ["MCM."], "kind": "numbers2"}
+{"q": "Write 38 in roman numerals?", "refs": ["XXXVIII."], "kind": "numbers2"}
+{"q": "Question: MCMLXXV in numbers?", "refs": ["1975."], "kind": "numbers2"}
+{"q": "XVI in numbers", "refs": ["XVI is 16."], "kind": "numbers2"}
+{"q": "What is the square root of 4", "refs": ["The square root of 4 is 2."], "kind": "numbers2"}
+{"q": "What is 6 squared", "refs": ["6 squared is 36."], "kind": "numbers2"}
+{"q": "what is the square of 2", "refs": ["4."], "kind": "numbers2"}
+{"q": "PLEASE TELL ME WRITE 37 IN ROMAN NUMERALS?", "refs": ["XXXVII."], "kind": "numbers2"}
+{"q": "6 squared", "refs": ["36."], "kind": "numbers2"}
+{"q": "tell me what is the square of 6?", "refs": ["36."], "kind": "numbers2"}
+{"q": "roman numeral for 1989", "refs": ["1989 is MCMLXXXIX in Roman numerals."], "kind": "numbers2"}
+{"q": "could you tell me what does mcmlxix mean in roman numerals?", "refs": ["1969."], "kind": "numbers2"}
+{"q": "hey, what does MCMLXXXIX mean in roman numerals?", "refs": ["MCMLXXXIX is 1989."], "kind": "numbers2"}
+{"q": "Roman numeral for 1900", "refs": ["MCM."], "kind": "numbers2"}
+{"q": "what is the roman numeral XXXVI?", "refs": ["36."], "kind": "numbers2"}
+{"q": "What does MCMXCIII mean in roman numerals?", "refs": ["1993."], "kind": "numbers2"}
+{"q": "38 in roman numerals", "refs": ["38 is XXXVIII in Roman numerals."], "kind": "numbers2"}
+{"q": "Could you tell me 1993 in roman numerals?", "refs": ["MCMXCIII."], "kind": "numbers2"}
+{"q": "12 in roman numerals?", "refs": ["12 is XII in Roman numerals."], "kind": "numbers2"}
+{"q": "how do you write 29 in roman numerals please", "refs": ["XXIX."], "kind": "numbers2"}
+{"q": "  what  is the square of 2?", "refs": ["2 squared is 4."], "kind": "numbers2"}
+{"q": "ix in numbers?", "refs": ["IX is 9."], "kind": "numbers2"}
+{"q": "What is 1937 in roman numerals", "refs": ["MCMXXXVII."], "kind": "numbers2"}
+{"q": "what is 4 in roman numerals?", "refs": ["IV."], "kind": "numbers2"}
+{"q": "what is 16 in roman numerals?", "refs": ["16 is XVI in Roman numerals."], "kind": "numbers2"}
+{"q": "WHAT IS 38 IN ROMAN NUMERALS", "refs": ["XXXVIII."], "kind": "numbers2"}
+{"q": "HEY TINY, 1989 IN ROMAN NUMERALS", "refs": ["1989 is MCMLXXXIX in Roman numerals."], "kind": "numbers2"}
+{"q": "ix in numbers", "refs": ["9."], "kind": "numbers2"}
+{"q": "What does XXIX mean in roman numerals?", "refs": ["29."], "kind": "numbers2"}
+{"q": "roman numeral for 1993?", "refs": ["MCMXCIII."], "kind": "numbers2"}
+{"q": "so roman numeral for 1982", "refs": ["1982 is MCMLXXXII in Roman numerals."], "kind": "numbers2"}
+{"q": "can you tell me what is the roman numeral MCMXX?", "refs": ["MCMXX is 1920."], "kind": "numbers2"}
+{"q": "what is 2 times itself?", "refs": ["4."], "kind": "numbers2"}
+{"q": "1975 in roman numerals?", "refs": ["MCMLXXV."], "kind": "numbers2"}
+{"q": "what number is MCMXXXVII", "refs": ["MCMXXXVII is 1937."], "kind": "numbers2"}
+{"q": "what does xxxvi mean in roman numerals?", "refs": ["36."], "kind": "numbers2"}
+{"q": "I want to know what does XXXVII mean in roman numerals", "refs": ["37."], "kind": "numbers2"}
+{"q": "what does xii mean in roman numerals?", "refs": ["12."], "kind": "numbers2"}
+{"q": "roman numeral for 1975?", "refs": ["1975 is MCMLXXV in Roman numerals."], "kind": "numbers2"}
+{"q": "what is 16 in roman numerals", "refs": ["XVI."], "kind": "numbers2"}
+{"q": "what is the roman numeral iv?", "refs": ["4."], "kind": "numbers2"}
+{"q": "write 36 in roman numerals?", "refs": ["XXXVI."], "kind": "numbers2"}
+{"q": "what is the square root of 36?", "refs": ["6."], "kind": "numbers2"}
+{"q": "What is 6 times itself?", "refs": ["36."], "kind": "numbers2"}
+{"q": "  write  36 in roman numerals?", "refs": ["XXXVI."], "kind": "numbers2"}
+{"q": "i want to know roman numeral for 9?", "refs": ["IX."], "kind": "numbers2"}
+{"q": "Hello, how do you write 1975 in roman numerals", "refs": ["MCMLXXV."], "kind": "numbers2"}
+{"q": "Roman numeral for 4", "refs": ["4 is IV in Roman numerals."], "kind": "numbers2"}
+{"q": "WHAT DOES XXXVII MEAN IN ROMAN NUMERALS?", "refs": ["XXXVII is 37."], "kind": "numbers2"}
+{"q": "  How  do you write 1975 in roman numerals", "refs": ["MCMLXXV."], "kind": "numbers2"}
+{"q": "What is the roman numeral XXXVIII", "refs": ["XXXVIII is 38."], "kind": "numbers2"}
+{"q": "spell ox?", "refs": ["O-X."], "kind": "letters"}
+{"q": "what is read backwards?", "refs": ["Daer."], "kind": "letters"}
+{"q": "hey, which letter does ox begin with", "refs": ["O."], "kind": "letters"}
+{"q": "Can you spell deer", "refs": ["D-E-E-R."], "kind": "letters"}
+{"q": "which letter of the alphabet is q", "refs": ["Q is letter number 17."], "kind": "letters"}
+{"q": "What is people backwards", "refs": ["Elpoep."], "kind": "letters"}
+{"q": "spent in upper case?", "refs": ["SPENT."], "kind": "letters"}
+{"q": "What letter comes after E", "refs": ["F."], "kind": "letters"}
+{"q": "tiny, what letter comes before d", "refs": ["C."], "kind": "letters"}
+{"q": "write naypyidaw in capital letters?", "refs": ["NAYPYIDAW."], "kind": "letters"}
+{"q": "spell boy?", "refs": ["B-O-Y."], "kind": "letters"}
+{"q": "how many letters does left have?", "refs": ["Four."], "kind": "letters"}
+{"q": "how many letters are in spend?", "refs": ["Spend has five letters."], "kind": "letters"}
+{"q": "What letter comes before j", "refs": ["I."], "kind": "letters"}
+{"q": "what is sank backwards?", "refs": ["Knas."], "kind": "letters"}
+{"q": "What comes after E in the alphabet?", "refs": ["F."], "kind": "letters"}
+{"q": "tiny, how long is the word radii?", "refs": ["Radii has five letters."], "kind": "letters"}
+{"q": "what letter does in end with?", "refs": ["N."], "kind": "letters"}
+{"q": "First letter of soft?", "refs": ["Soft starts with S."], "kind": "letters"}
+{"q": "last letter of deer?", "refs": ["R."], "kind": "letters"}
+{"q": "what letter does jumped start with?", "refs": ["J."], "kind": "letters"}
+{"q": "which letter is before e?", "refs": ["D."], "kind": "letters"}
+{"q": "Can you tell me what letter comes after t?", "refs": ["U."], "kind": "letters"}
+{"q": "What letter does deer start with?", "refs": ["Deer starts with D."], "kind": "letters"}
+{"q": "WHAT NUMBER IS THE LETTER R IN THE ALPHABET?", "refs": ["R is letter number 18."], "kind": "letters"}
+{"q": "what letter comes before E", "refs": ["D."], "kind": "letters"}
+{"q": "Reverse the word maseru?", "refs": ["Uresam."], "kind": "letters"}
+{"q": "How do you spell naypyidaw", "refs": ["N-A-Y-P-Y-I-D-A-W."], "kind": "letters"}
+{"q": "tiny, spell the word banjul?", "refs": ["B-A-N-J-U-L."], "kind": "letters"}
+{"q": "what is the first letter of forgive", "refs": ["Forgive starts with F."], "kind": "letters"}
+{"q": "Spell riga?", "refs": ["R-I-G-A."], "kind": "letters"}
+{"q": "say dig backwards?", "refs": ["Gid."], "kind": "letters"}
+{"q": "Write broke in capital letters?", "refs": ["BROKE."], "kind": "letters"}
+{"q": "spell dhaka", "refs": ["D-H-A-K-A."], "kind": "letters"}
+{"q": "what number is the letter J in the alphabet", "refs": ["J is letter number 10."], "kind": "letters"}
+{"q": "spell noisy!", "refs": ["N-O-I-S-Y."], "kind": "letters"}
+{"q": "how long is the word maseru", "refs": ["Six."], "kind": "letters"}
+{"q": "which letter is before n?", "refs": ["M."], "kind": "letters"}
+{"q": "what comes before i in the alphabet", "refs": ["H."], "kind": "letters"}
+{"q": "I wonder what comes after C in the alphabet", "refs": ["D."], "kind": "letters"}
+{"q": "how many letters does add have", "refs": ["Add has three letters."], "kind": "letters"}
+{"q": "Tell me how do you spell lives?", "refs": ["L-I-V-E-S."], "kind": "letters"}
+{"q": "Spell the word giraffe", "refs": ["G-I-R-A-F-F-E."], "kind": "letters"}
+{"q": "what number is the letter y in the alphabet", "refs": ["Y is letter number 25."], "kind": "letters"}
+{"q": "do you know what comes before h in the alphabet", "refs": ["G."], "kind": "letters"}
+{"q": "first letter of ashgabat", "refs": ["Ashgabat starts with A."], "kind": "letters"}
+{"q": "WHAT NUMBER IS THE LETTER I IN THE ALPHABET?", "refs": ["I is letter number 9."], "kind": "letters"}
+{"q": "where is q in the alphabet?", "refs": ["Q is letter number 17."], "kind": "letters"}
+{"q": "spell the word managua", "refs": ["M-A-N-A-G-U-A."], "kind": "letters"}
+{"q": "spell the word add?", "refs": ["A-D-D."], "kind": "letters"}
+{"q": "Can you spell elf?", "refs": ["E-L-F."], "kind": "letters"}
+{"q": "how do you spell moose?", "refs": ["M-O-O-S-E."], "kind": "letters"}
+{"q": "What letter comes after d", "refs": ["E."], "kind": "letters"}
+{"q": "which letter is before D?", "refs": ["C."], "kind": "letters"}
+{"q": "what letter comes after h?", "refs": ["I."], "kind": "letters"}
+{"q": "moose in upper case", "refs": ["MOOSE."], "kind": "letters"}
+{"q": "MAKE MANAGUA UPPERCASE", "refs": ["MANAGUA."], "kind": "letters"}
+{"q": "i want to know make broke uppercase", "refs": ["BROKE."], "kind": "letters"}
+{"q": "  what  is the thirteenth letter of the alphabet?", "refs": ["M."], "kind": "letters"}
+{"q": "What is the first letter of managua?", "refs": ["Managua starts with M."], "kind": "letters"}
+{"q": "zqtkh?", "refs": ["I do not understand. Try again?"], "kind": "unknown"}
+{"q": "what sound does a trilo make?", "refs": ["I have never heard of a trilo."], "kind": "unknown"}
+{"q": "what did wenmox snoxa invent?", "refs": ["Sorry, I do not know that person."], "kind": "unknown"}
+{"q": "which continent is plevelburg in", "refs": ["I do not know a country called Plevelburg."], "kind": "unknown"}
+{"q": "hk;;yohz.", "refs": ["I do not understand. Try again?"], "kind": "unknown"}
+{"q": "which continent is berbulburg in", "refs": ["I do not know a country called Berbulburg."], "kind": "unknown"}
+{"q": "Who is Frafrafra Orgolzu?", "refs": ["Sorry, I do not know that person."], "kind": "unknown"}
+{"q": "WHAT DID LOMIQUO BERKATRI INVENT?", "refs": ["Sorry, I do not know that person."], "kind": "unknown"}
+{"q": "where is plear", "refs": ["I do not know a country called Plear."], "kind": "unknown"}
+{"q": "IZW", "refs": ["Sorry, I did not understand. Please ask a question."], "kind": "unknown"}
+{"q": "  .,KFWE;E,;GXBO", "refs": ["Hmm? Please ask me a question."], "kind": "unknown"}
+{"q": "What is the plural of quoshi?", "refs": ["I do not know the word quoshi."], "kind": "unknown"}
+{"q": "how many legs does a wentan have?", "refs": ["I have never heard of a wentan."], "kind": "unknown"}
+{"q": "What is the currency of Pexland", "refs": ["I have never heard of Pexland."], "kind": "unknown"}
+{"q": "COULD YOU TELL ME WHICH CONTINENT IS XAWEN IN?", "refs": ["I do not know a country called Xawen."], "kind": "unknown"}
+{"q": "fak", "refs": ["I do not understand. Try again?"], "kind": "unknown"}
+{"q": "who was Lobul Dramimi?", "refs": ["Sorry, I do not know that person."], "kind": "unknown"}
+{"q": "Lkg;u?", "refs": ["I do not understand. Try again?"], "kind": "unknown"}
+{"q": "duobmgy?", "refs": ["Sorry, I did not understand. Please ask a question."], "kind": "unknown"}
+{"q": "i wonder wrwh?", "refs": ["Hmm? Please ask me a question."], "kind": "unknown"}
+{"q": "hi tiny, what is the capital of rionia?", "refs": ["I have never heard of Rionia."], "kind": "unknown"}
+{"q": "bmkbs vvz,z", "refs": ["Hmm? Please ask me a question."], "kind": "unknown"}
+{"q": "HI TINY, WHAT IS THE OPPOSITE OF TANBULBUL", "refs": ["I do not know the word tanbulbul."], "kind": "unknown"}
+{"q": "quick question: nrs ruxu", "refs": ["I do not understand. Try again?"], "kind": "unknown"}
+{"q": "What is the opposite of riri", "refs": ["I do not know the word riri."], "kind": "unknown"}
+{"q": "tell me aicilo tad", "refs": ["Sorry, I did not understand. Please ask a question."], "kind": "unknown"}
+{"q": "Tiny, what is a golwenple, please", "refs": ["I do not know the word golwenple."], "kind": "unknown"}
+{"q": "What is the capital of bulania?", "refs": ["I do not know a country called Bulania."], "kind": "unknown"}
+{"q": "Please tell me how many legs does a quodra have", "refs": ["I do not know an animal called a quodra."], "kind": "unknown"}
+{"q": "What is the currency of Bulquoica?", "refs": ["I have never heard of Bulquoica."], "kind": "unknown"}
+{"q": "what is the capital of yaburg?", "refs": ["I have never heard of Yaburg."], "kind": "unknown"}
+{"q": "what does bulnimfra mean?", "refs": ["I do not know the word bulnimfra."], "kind": "unknown"}
+{"q": "what did Mimox Bulya invent", "refs": ["Sorry, I do not know that person."], "kind": "unknown"}
+{"q": ".naowt", "refs": ["Hmm? Please ask me a question."], "kind": "unknown"}
+{"q": "mwmjesm;ew;ky,?", "refs": ["I do not understand. Try again?"], "kind": "unknown"}
+{"q": "what is the currency of lotanonia tiny", "refs": ["I do not know a country called Lotanonia."], "kind": "unknown"}
+{"q": "  WHAT  IS A BERBUL", "refs": ["I do not know the word berbul."], "kind": "unknown"}
+{"q": "who is Plemi Snotri?", "refs": ["I do not know who that is."], "kind": "unknown"}
+{"q": "where does a tansno live", "refs": ["I do not know an animal called a tansno."], "kind": "unknown"}
+{"q": "what is the currency of moxkaesia", "refs": ["I have never heard of Moxkaesia."], "kind": "unknown"}
+{"q": "who was Yapleri Drakamox?", "refs": ["Sorry, I do not know that person."], "kind": "unknown"}
+{"q": "qwh ;cuuuwe", "refs": ["Hmm? Please ask me a question."], "kind": "unknown"}
+{"q": "i wonder what language is spoken in pexdraburg?", "refs": ["I have never heard of Pexdraburg."], "kind": "unknown"}
+{"q": "What is the capital of Quoica?", "refs": ["I do not know a country called Quoica."], "kind": "unknown"}
+{"q": "atip;gby?", "refs": ["Hmm? Please ask me a question."], "kind": "unknown"}
+{"q": "how many legs does a ririxa have", "refs": ["I do not know an animal called a ririxa."], "kind": "unknown"}
+{"q": "what is the currency of pexvelland?", "refs": ["I do not know a country called Pexvelland."], "kind": "unknown"}
+{"q": "how many legs does a velwendra have", "refs": ["I have never heard of a velwendra."], "kind": "unknown"}
+{"q": "what did trinimya quodranim invent?", "refs": ["Sorry, I do not know that person."], "kind": "unknown"}
+{"q": "What is the plural of dramoxple?", "refs": ["I do not know the word dramoxple."], "kind": "unknown"}
+{"q": "tsnd,mp?", "refs": ["I do not understand. Try again?"], "kind": "unknown"}
+{"q": "what does shimoxsno mean?", "refs": ["I do not know the word shimoxsno."], "kind": "unknown"}
+{"q": "wssczlsd", "refs": ["Hmm? Please ask me a question."], "kind": "unknown"}
+{"q": "what language is spoken in kaania please", "refs": ["I do not know a country called Kaania."], "kind": "unknown"}
+{"q": "what is the capital of bulia?", "refs": ["I have never heard of Bulia."], "kind": "unknown"}
+{"q": "Xp. zusyckny?!", "refs": ["Hmm? Please ask me a question."], "kind": "unknown"}
+{"q": "What does a berzu eat?", "refs": ["I do not know an animal called a berzu."], "kind": "unknown"}
+{"q": "WHAT LANGUAGE IS SPOKEN IN QUORILAND?", "refs": ["I have never heard of Quoriland."], "kind": "unknown"}
+{"q": "where is quodraburg", "refs": ["I have never heard of Quodraburg."], "kind": "unknown"}
+{"q": "could you tell me what is the plural of miquober", "refs": ["I do not know the word miquober."], "kind": "unknown"}

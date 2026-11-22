@@ -1,0 +1,12 @@
+lion lion lioness
+tiger tiger tigress
+horse stallion mare
+cow bull cow
+chicken rooster hen
+duck drake duck
+goose gander goose
+pig boar sow
+sheep ram ewe
+deer stag doe
+fox fox vixen
+goat billy goat nanny goat

@@ -1,0 +1,582 @@
+subregion	Afghanistan	Southern Asia
+borders	Afghanistan	Iran|Pakistan|Turkmenistan|Uzbekistan|Tajikistan|China
+domain	Afghanistan	.af
+subregion	Angola	Middle Africa
+borders	Angola	Congo|DR Congo|Zambia|Namibia
+domain	Angola	.ao
+subregion	Albania	Southeast Europe
+borders	Albania	Montenegro|Greece|North Macedonia
+domain	Albania	.al
+subregion	Andorra	Southern Europe
+borders	Andorra	France|Spain
+domain	Andorra	.ad
+subregion	United Arab Emirates	Western Asia
+borders	United Arab Emirates	Oman|Saudi Arabia
+domain	United Arab Emirates	.ae
+subregion	Argentina	South America
+borders	Argentina	Bolivia|Brazil|Chile|Paraguay|Uruguay
+domain	Argentina	.ar
+subregion	Armenia	Western Asia
+borders	Armenia	Azerbaijan|Georgia|Iran|Turkey
+domain	Armenia	.am
+subregion	Antigua and Barbuda	Caribbean
+borders	Antigua and Barbuda	-
+domain	Antigua and Barbuda	.ag
+subregion	Australia	Australia and New Zealand
+borders	Australia	-
+domain	Australia	.au
+subregion	Austria	Central Europe
+borders	Austria	Czechia|Germany|Hungary|Italy|Liechtenstein|Slovakia|Slovenia|Switzerland
+domain	Austria	.at
+subregion	Azerbaijan	Western Asia
+borders	Azerbaijan	Armenia|Georgia|Iran|Russia|Turkey
+domain	Azerbaijan	.az
+subregion	Burundi	Eastern Africa
+borders	Burundi	DR Congo|Rwanda|Tanzania
+domain	Burundi	.bi
+subregion	Belgium	Western Europe
+borders	Belgium	France|Germany|Luxembourg|Netherlands
+domain	Belgium	.be
+subregion	Benin	Western Africa
+borders	Benin	Burkina Faso|Niger|Nigeria|Togo
+domain	Benin	.bj
+subregion	Burkina Faso	Western Africa
+borders	Burkina Faso	Benin|Ivory Coast|Ghana|Mali|Niger|Togo
+domain	Burkina Faso	.bf
+subregion	Bangladesh	Southern Asia
+borders	Bangladesh	Myanmar|India
+domain	Bangladesh	.bd
+subregion	Bulgaria	Southeast Europe
+borders	Bulgaria	Greece|North Macedonia|Romania|Serbia|Turkey
+domain	Bulgaria	.bg
+subregion	Bahrain	Western Asia
+borders	Bahrain	-
+domain	Bahrain	.bh
+subregion	Bahamas	Caribbean
+borders	Bahamas	-
+domain	Bahamas	.bs
+subregion	Bosnia and Herzegovina	Southeast Europe
+borders	Bosnia and Herzegovina	Croatia|Montenegro|Serbia
+domain	Bosnia and Herzegovina	.ba
+subregion	Belarus	Eastern Europe
+borders	Belarus	Latvia|Lithuania|Poland|Russia|Ukraine
+domain	Belarus	.by
+subregion	Belize	Central America
+borders	Belize	Guatemala|Mexico
+domain	Belize	.bz
+subregion	Bolivia	South America
+borders	Bolivia	Argentina|Brazil|Chile|Paraguay|Peru
+domain	Bolivia	.bo
+subregion	Brazil	South America
+borders	Brazil	Argentina|Bolivia|Colombia|Guyana|Paraguay|Peru|Suriname|Uruguay|Venezuela
+domain	Brazil	.br
+subregion	Barbados	Caribbean
+borders	Barbados	-
+domain	Barbados	.bb
+subregion	Brunei	South-Eastern Asia
+borders	Brunei	Malaysia
+domain	Brunei	.bn
+subregion	Bhutan	Southern Asia
+borders	Bhutan	China|India
+domain	Bhutan	.bt
+subregion	Botswana	Southern Africa
+borders	Botswana	Namibia|South Africa|Zambia|Zimbabwe
+domain	Botswana	.bw
+subregion	Central African Republic	Middle Africa
+borders	Central African Republic	Cameroon|Chad|DR Congo|Congo|South Sudan|Sudan
+domain	Central African Republic	.cf
+subregion	Canada	North America
+borders	Canada	United States
+domain	Canada	.ca
+subregion	Switzerland	Western Europe
+borders	Switzerland	Austria|France|Italy|Liechtenstein|Germany
+domain	Switzerland	.ch
+subregion	Chile	South America
+borders	Chile	Argentina|Bolivia|Peru
+domain	Chile	.cl
+subregion	China	Eastern Asia
+borders	China	Afghanistan|Bhutan|Myanmar|India|Kazakhstan|Nepal|North Korea|Kyrgyzstan|Laos|Mongolia|Pakistan|Russia|Tajikistan|Vietnam
+domain	China	.cn
+subregion	Ivory Coast	Western Africa
+borders	Ivory Coast	Burkina Faso|Ghana|Guinea|Liberia|Mali
+domain	Ivory Coast	.ci
+subregion	Cameroon	Middle Africa
+borders	Cameroon	Central African Republic|Chad|Congo|Equatorial Guinea|Gabon|Nigeria
+domain	Cameroon	.cm
+subregion	DR Congo	Middle Africa
+borders	DR Congo	Angola|Burundi|Central African Republic|Congo|Rwanda|South Sudan|Tanzania|Uganda|Zambia
+domain	DR Congo	.cd
+subregion	Congo	Middle Africa
+borders	Congo	Angola|Cameroon|Central African Republic|DR Congo|Gabon
+domain	Congo	.cg
+subregion	Colombia	South America
+borders	Colombia	Brazil|Ecuador|Panama|Peru|Venezuela
+domain	Colombia	.co
+subregion	Comoros	Eastern Africa
+borders	Comoros	-
+domain	Comoros	.km
+subregion	Cape Verde	Western Africa
+borders	Cape Verde	-
+domain	Cape Verde	.cv
+subregion	Costa Rica	Central America
+borders	Costa Rica	Nicaragua|Panama
+domain	Costa Rica	.cr
+subregion	Cuba	Caribbean
+borders	Cuba	-
+domain	Cuba	.cu
+subregion	Cyprus	Southern Europe
+borders	Cyprus	-
+domain	Cyprus	.cy
+subregion	Czechia	Central Europe
+borders	Czechia	Austria|Germany|Poland|Slovakia
+domain	Czechia	.cz
+subregion	Germany	Western Europe
+borders	Germany	Austria|Belgium|Czechia|Denmark|France|Luxembourg|Netherlands|Poland|Switzerland
+domain	Germany	.de
+subregion	Djibouti	Eastern Africa
+borders	Djibouti	Eritrea|Ethiopia|Somalia
+domain	Djibouti	.dj
+subregion	Dominica	Caribbean
+borders	Dominica	-
+domain	Dominica	.dm
+subregion	Denmark	Northern Europe
+borders	Denmark	Germany
+domain	Denmark	.dk
+subregion	Dominican Republic	Caribbean
+borders	Dominican Republic	Haiti
+domain	Dominican Republic	.do
+subregion	Algeria	Northern Africa
+borders	Algeria	Tunisia|Libya|Niger|Mauritania|Mali|Morocco
+domain	Algeria	.dz
+subregion	Ecuador	South America
+borders	Ecuador	Colombia|Peru
+domain	Ecuador	.ec
+subregion	Egypt	Northern Africa
+borders	Egypt	Israel|Libya|Sudan
+domain	Egypt	.eg
+subregion	Eritrea	Eastern Africa
+borders	Eritrea	Djibouti|Ethiopia|Sudan
+domain	Eritrea	.er
+subregion	Spain	Southern Europe
+borders	Spain	Andorra|France|Portugal|Morocco
+domain	Spain	.es
+subregion	Estonia	Northern Europe
+borders	Estonia	Latvia|Russia
+domain	Estonia	.ee
+subregion	Ethiopia	Eastern Africa
+borders	Ethiopia	Djibouti|Eritrea|Kenya|Somalia|South Sudan|Sudan
+domain	Ethiopia	.et
+subregion	Finland	Northern Europe
+borders	Finland	Norway|Sweden|Russia
+domain	Finland	.fi
+subregion	Fiji	Melanesia
+borders	Fiji	-
+domain	Fiji	.fj
+subregion	France	Western Europe
+borders	France	Andorra|Belgium|Germany|Italy|Luxembourg|Monaco|Spain|Switzerland
+domain	France	.fr
+subregion	Micronesia	Micronesia
+borders	Micronesia	-
+domain	Micronesia	.fm
+subregion	Gabon	Middle Africa
+borders	Gabon	Cameroon|Congo|Equatorial Guinea
+domain	Gabon	.ga
+subregion	United Kingdom	Northern Europe
+borders	United Kingdom	Ireland
+domain	United Kingdom	.uk
+subregion	Georgia	Western Asia
+borders	Georgia	Armenia|Azerbaijan|Russia|Turkey
+domain	Georgia	.ge
+subregion	Ghana	Western Africa
+borders	Ghana	Burkina Faso|Ivory Coast|Togo
+domain	Ghana	.gh
+subregion	Guinea	Western Africa
+borders	Guinea	Ivory Coast|Guinea-Bissau|Liberia|Mali|Senegal|Sierra Leone
+domain	Guinea	.gn
+subregion	Gambia	Western Africa
+borders	Gambia	Senegal
+domain	Gambia	.gm
+subregion	Guinea-Bissau	Western Africa
+borders	Guinea-Bissau	Guinea|Senegal
+domain	Guinea-Bissau	.gw
+subregion	Equatorial Guinea	Middle Africa
+borders	Equatorial Guinea	Cameroon|Gabon
+domain	Equatorial Guinea	.gq
+subregion	Greece	Southern Europe
+borders	Greece	Albania|Bulgaria|Turkey|North Macedonia
+domain	Greece	.gr
+subregion	Grenada	Caribbean
+borders	Grenada	-
+domain	Grenada	.gd
+subregion	Guatemala	Central America
+borders	Guatemala	Belize|El Salvador|Honduras|Mexico
+domain	Guatemala	.gt
+subregion	Guyana	South America
+borders	Guyana	Brazil|Suriname|Venezuela
+domain	Guyana	.gy
+subregion	Honduras	Central America
+borders	Honduras	Guatemala|El Salvador|Nicaragua
+domain	Honduras	.hn
+subregion	Croatia	Southeast Europe
+borders	Croatia	Bosnia and Herzegovina|Hungary|Montenegro|Serbia|Slovenia
+domain	Croatia	.hr
+subregion	Haiti	Caribbean
+borders	Haiti	Dominican Republic
+domain	Haiti	.ht
+subregion	Hungary	Central Europe
+borders	Hungary	Austria|Croatia|Romania|Serbia|Slovakia|Slovenia|Ukraine
+domain	Hungary	.hu
+subregion	Indonesia	South-Eastern Asia
+borders	Indonesia	Timor-Leste|Malaysia|Papua New Guinea
+domain	Indonesia	.id
+subregion	India	Southern Asia
+borders	India	Bangladesh|Bhutan|Myanmar|China|Nepal|Pakistan
+domain	India	.in
+subregion	Ireland	Northern Europe
+borders	Ireland	United Kingdom
+domain	Ireland	.ie
+subregion	Iran	Southern Asia
+borders	Iran	Afghanistan|Armenia|Azerbaijan|Iraq|Pakistan|Turkey|Turkmenistan
+domain	Iran	.ir
+subregion	Iraq	Western Asia
+borders	Iraq	Iran|Jordan|Kuwait|Saudi Arabia|Syria|Turkey
+domain	Iraq	.iq
+subregion	Iceland	Northern Europe
+borders	Iceland	-
+domain	Iceland	.is
+subregion	Israel	Western Asia
+borders	Israel	Egypt|Jordan|Lebanon|Syria
+domain	Israel	.il
+subregion	Italy	Southern Europe
+borders	Italy	Austria|France|San Marino|Slovenia|Switzerland|Vatican City
+domain	Italy	.it
+subregion	Jamaica	Caribbean
+borders	Jamaica	-
+domain	Jamaica	.jm
+subregion	Jordan	Western Asia
+borders	Jordan	Iraq|Israel|Saudi Arabia|Syria
+domain	Jordan	.jo
+subregion	Japan	Eastern Asia
+borders	Japan	-
+domain	Japan	.jp
+subregion	Kazakhstan	Central Asia
+borders	Kazakhstan	China|Kyrgyzstan|Russia|Turkmenistan|Uzbekistan
+domain	Kazakhstan	.kz
+subregion	Kenya	Eastern Africa
+borders	Kenya	Ethiopia|Somalia|South Sudan|Tanzania|Uganda
+domain	Kenya	.ke
+subregion	Kyrgyzstan	Central Asia
+borders	Kyrgyzstan	China|Kazakhstan|Tajikistan|Uzbekistan
+domain	Kyrgyzstan	.kg
+subregion	Cambodia	South-Eastern Asia
+borders	Cambodia	Laos|Thailand|Vietnam
+domain	Cambodia	.kh
+subregion	Kiribati	Micronesia
+borders	Kiribati	-
+domain	Kiribati	.ki
+subregion	Saint Kitts and Nevis	Caribbean
+borders	Saint Kitts and Nevis	-
+domain	Saint Kitts and Nevis	.kn
+subregion	South Korea	Eastern Asia
+borders	South Korea	North Korea
+domain	South Korea	.kr
+subregion	Kuwait	Western Asia
+borders	Kuwait	Iraq|Saudi Arabia
+domain	Kuwait	.kw
+subregion	Laos	South-Eastern Asia
+borders	Laos	Myanmar|Cambodia|China|Thailand|Vietnam
+domain	Laos	.la
+subregion	Lebanon	Western Asia
+borders	Lebanon	Israel|Syria
+domain	Lebanon	.lb
+subregion	Liberia	Western Africa
+borders	Liberia	Guinea|Ivory Coast|Sierra Leone
+domain	Liberia	.lr
+subregion	Libya	Northern Africa
+borders	Libya	Algeria|Chad|Egypt|Niger|Sudan|Tunisia
+domain	Libya	.ly
+subregion	Saint Lucia	Caribbean
+borders	Saint Lucia	-
+domain	Saint Lucia	.lc
+subregion	Liechtenstein	Western Europe
+borders	Liechtenstein	Austria|Switzerland
+domain	Liechtenstein	.li
+subregion	Sri Lanka	Southern Asia
+borders	Sri Lanka	India
+domain	Sri Lanka	.lk
+subregion	Lesotho	Southern Africa
+borders	Lesotho	South Africa
+domain	Lesotho	.ls
+subregion	Lithuania	Northern Europe
+borders	Lithuania	Belarus|Latvia|Poland|Russia
+domain	Lithuania	.lt
+subregion	Luxembourg	Western Europe
+borders	Luxembourg	Belgium|France|Germany
+domain	Luxembourg	.lu
+subregion	Latvia	Northern Europe
+borders	Latvia	Belarus|Estonia|Lithuania|Russia
+domain	Latvia	.lv
+subregion	Morocco	Northern Africa
+borders	Morocco	Algeria|Spain
+domain	Morocco	.ma
+subregion	Monaco	Western Europe
+borders	Monaco	France
+domain	Monaco	.mc
+subregion	Moldova	Eastern Europe
+borders	Moldova	Romania|Ukraine
+domain	Moldova	.md
+subregion	Madagascar	Eastern Africa
+borders	Madagascar	-
+domain	Madagascar	.mg
+subregion	Maldives	Southern Asia
+borders	Maldives	-
+domain	Maldives	.mv
+subregion	Mexico	North America
+borders	Mexico	Belize|Guatemala|United States
+domain	Mexico	.mx
+subregion	Marshall Islands	Micronesia
+borders	Marshall Islands	-
+domain	Marshall Islands	.mh
+subregion	North Macedonia	Southeast Europe
+borders	North Macedonia	Albania|Bulgaria|Greece|Serbia
+domain	North Macedonia	.mk
+subregion	Mali	Western Africa
+borders	Mali	Algeria|Burkina Faso|Guinea|Ivory Coast|Mauritania|Niger|Senegal
+domain	Mali	.ml
+subregion	Malta	Southern Europe
+borders	Malta	-
+domain	Malta	.mt
+subregion	Myanmar	South-Eastern Asia
+borders	Myanmar	Bangladesh|China|India|Laos|Thailand
+domain	Myanmar	.mm
+subregion	Montenegro	Southeast Europe
+borders	Montenegro	Albania|Bosnia and Herzegovina|Croatia|Serbia
+domain	Montenegro	.me
+subregion	Mongolia	Eastern Asia
+borders	Mongolia	China|Russia
+domain	Mongolia	.mn
+subregion	Mozambique	Eastern Africa
+borders	Mozambique	Malawi|South Africa|Eswatini|Tanzania|Zambia|Zimbabwe
+domain	Mozambique	.mz
+subregion	Mauritania	Western Africa
+borders	Mauritania	Algeria|Mali|Senegal
+domain	Mauritania	.mr
+subregion	Mauritius	Eastern Africa
+borders	Mauritius	-
+domain	Mauritius	.mu
+subregion	Malawi	Eastern Africa
+borders	Malawi	Mozambique|Tanzania|Zambia
+domain	Malawi	.mw
+subregion	Malaysia	South-Eastern Asia
+borders	Malaysia	Brunei|Indonesia|Thailand
+domain	Malaysia	.my
+subregion	Namibia	Southern Africa
+borders	Namibia	Angola|Botswana|South Africa|Zambia
+domain	Namibia	.na
+subregion	Niger	Western Africa
+borders	Niger	Algeria|Benin|Burkina Faso|Chad|Libya|Mali|Nigeria
+domain	Niger	.ne
+subregion	Nigeria	Western Africa
+borders	Nigeria	Benin|Cameroon|Chad|Niger
+domain	Nigeria	.ng
+subregion	Nicaragua	Central America
+borders	Nicaragua	Costa Rica|Honduras
+domain	Nicaragua	.ni
+subregion	Netherlands	Western Europe
+borders	Netherlands	Belgium|Germany
+domain	Netherlands	.nl
+subregion	Norway	Northern Europe
+borders	Norway	Finland|Sweden|Russia
+domain	Norway	.no
+subregion	Nepal	Southern Asia
+borders	Nepal	China|India
+domain	Nepal	.np
+subregion	Nauru	Micronesia
+borders	Nauru	-
+domain	Nauru	.nr
+subregion	New Zealand	Australia and New Zealand
+borders	New Zealand	-
+domain	New Zealand	.nz
+subregion	Oman	Western Asia
+borders	Oman	Saudi Arabia|United Arab Emirates|Yemen
+domain	Oman	.om
+subregion	Pakistan	Southern Asia
+borders	Pakistan	Afghanistan|China|India|Iran
+domain	Pakistan	.pk
+subregion	Panama	Central America
+borders	Panama	Colombia|Costa Rica
+domain	Panama	.pa
+subregion	Peru	South America
+borders	Peru	Bolivia|Brazil|Chile|Colombia|Ecuador
+domain	Peru	.pe
+subregion	Philippines	South-Eastern Asia
+borders	Philippines	-
+domain	Philippines	.ph
+subregion	Palau	Micronesia
+borders	Palau	-
+domain	Palau	.pw
+subregion	Papua New Guinea	Melanesia
+borders	Papua New Guinea	Indonesia
+domain	Papua New Guinea	.pg
+subregion	Poland	Central Europe
+borders	Poland	Belarus|Czechia|Germany|Lithuania|Russia|Slovakia|Ukraine
+domain	Poland	.pl
+subregion	North Korea	Eastern Asia
+borders	North Korea	China|South Korea|Russia
+domain	North Korea	.kp
+subregion	Portugal	Southern Europe
+borders	Portugal	Spain
+domain	Portugal	.pt
+subregion	Paraguay	South America
+borders	Paraguay	Argentina|Bolivia|Brazil
+domain	Paraguay	.py
+subregion	Qatar	Western Asia
+borders	Qatar	Saudi Arabia
+domain	Qatar	.qa
+subregion	Romania	Southeast Europe
+borders	Romania	Bulgaria|Hungary|Moldova|Serbia|Ukraine
+domain	Romania	.ro
+subregion	Russia	Eastern Europe
+borders	Russia	Azerbaijan|Belarus|China|Estonia|Finland|Georgia|Kazakhstan|North Korea|Latvia|Lithuania|Mongolia|Norway|Poland|Ukraine
+domain	Russia	.ru
+subregion	Rwanda	Eastern Africa
+borders	Rwanda	Burundi|DR Congo|Tanzania|Uganda
+domain	Rwanda	.rw
+subregion	Saudi Arabia	Western Asia
+borders	Saudi Arabia	Iraq|Jordan|Kuwait|Oman|Qatar|United Arab Emirates|Yemen
+domain	Saudi Arabia	.sa
+subregion	Sudan	Northern Africa
+borders	Sudan	Central African Republic|Chad|Egypt|Eritrea|Ethiopia|Libya|South Sudan
+domain	Sudan	.sd
+subregion	Senegal	Western Africa
+borders	Senegal	Gambia|Guinea|Guinea-Bissau|Mali|Mauritania
+domain	Senegal	.sn
+subregion	Singapore	South-Eastern Asia
+borders	Singapore	-
+domain	Singapore	.sg
+subregion	Solomon Islands	Melanesia
+borders	Solomon Islands	-
+domain	Solomon Islands	.sb
+subregion	Sierra Leone	Western Africa
+borders	Sierra Leone	Guinea|Liberia
+domain	Sierra Leone	.sl
+subregion	El Salvador	Central America
+borders	El Salvador	Guatemala|Honduras
+domain	El Salvador	.sv
+subregion	San Marino	Southern Europe
+borders	San Marino	Italy
+domain	San Marino	.sm
+subregion	Somalia	Eastern Africa
+borders	Somalia	Djibouti|Ethiopia|Kenya
+domain	Somalia	.so
+subregion	Serbia	Southeast Europe
+borders	Serbia	Bosnia and Herzegovina|Bulgaria|Croatia|Hungary|North Macedonia|Montenegro|Romania
+domain	Serbia	.rs
+subregion	South Sudan	Middle Africa
+borders	South Sudan	Central African Republic|DR Congo|Ethiopia|Kenya|Sudan|Uganda
+domain	South Sudan	.ss
+subregion	Sao Tome and Principe	Middle Africa
+borders	Sao Tome and Principe	-
+domain	Sao Tome and Principe	.st
+subregion	Suriname	South America
+borders	Suriname	Brazil|Guyana
+domain	Suriname	.sr
+subregion	Slovakia	Central Europe
+borders	Slovakia	Austria|Czechia|Hungary|Poland|Ukraine
+domain	Slovakia	.sk
+subregion	Slovenia	Central Europe
+borders	Slovenia	Austria|Croatia|Italy|Hungary
+domain	Slovenia	.si
+subregion	Sweden	Northern Europe
+borders	Sweden	Finland|Norway
+domain	Sweden	.se
+subregion	Eswatini	Southern Africa
+borders	Eswatini	Mozambique|South Africa
+domain	Eswatini	.sz
+subregion	Seychelles	Eastern Africa
+borders	Seychelles	-
+domain	Seychelles	.sc
+subregion	Syria	Western Asia
+borders	Syria	Iraq|Israel|Jordan|Lebanon|Turkey
+domain	Syria	.sy
+subregion	Chad	Middle Africa
+borders	Chad	Cameroon|Central African Republic|Libya|Niger|Nigeria|Sudan
+domain	Chad	.td
+subregion	Togo	Western Africa
+borders	Togo	Benin|Burkina Faso|Ghana
+domain	Togo	.tg
+subregion	Thailand	South-Eastern Asia
+borders	Thailand	Myanmar|Cambodia|Laos|Malaysia
+domain	Thailand	.th
+subregion	Tajikistan	Central Asia
+borders	Tajikistan	Afghanistan|China|Kyrgyzstan|Uzbekistan
+domain	Tajikistan	.tj
+subregion	Turkmenistan	Central Asia
+borders	Turkmenistan	Afghanistan|Iran|Kazakhstan|Uzbekistan
+domain	Turkmenistan	.tm
+subregion	Timor-Leste	South-Eastern Asia
+borders	Timor-Leste	Indonesia
+domain	Timor-Leste	.tl
+subregion	Tonga	Polynesia
+borders	Tonga	-
+domain	Tonga	.to
+subregion	Trinidad and Tobago	Caribbean
+borders	Trinidad and Tobago	-
+domain	Trinidad and Tobago	.tt
+subregion	Tunisia	Northern Africa
+borders	Tunisia	Algeria|Libya
+domain	Tunisia	.tn
+subregion	Turkey	Western Asia
+borders	Turkey	Armenia|Azerbaijan|Bulgaria|Georgia|Greece|Iran|Iraq|Syria
+domain	Turkey	.tr
+subregion	Tuvalu	Polynesia
+borders	Tuvalu	-
+domain	Tuvalu	.tv
+subregion	Tanzania	Eastern Africa
+borders	Tanzania	Burundi|DR Congo|Kenya|Malawi|Mozambique|Rwanda|Uganda|Zambia
+domain	Tanzania	.tz
+subregion	Uganda	Eastern Africa
+borders	Uganda	DR Congo|Kenya|Rwanda|South Sudan|Tanzania
+domain	Uganda	.ug
+subregion	Ukraine	Eastern Europe
+borders	Ukraine	Belarus|Hungary|Moldova|Poland|Romania|Russia|Slovakia
+domain	Ukraine	.ua
+subregion	Uruguay	South America
+borders	Uruguay	Argentina|Brazil
+domain	Uruguay	.uy
+subregion	United States	North America
+borders	United States	Canada|Mexico
+domain	United States	.us
+subregion	Uzbekistan	Central Asia
+borders	Uzbekistan	Afghanistan|Kazakhstan|Kyrgyzstan|Tajikistan|Turkmenistan
+domain	Uzbekistan	.uz
+subregion	Vatican City	Southern Europe
+borders	Vatican City	Italy
+domain	Vatican City	.va
+subregion	Saint Vincent and the Grenadines	Caribbean
+borders	Saint Vincent and the Grenadines	-
+domain	Saint Vincent and the Grenadines	.vc
+subregion	Venezuela	South America
+borders	Venezuela	Brazil|Colombia|Guyana
+domain	Venezuela	.ve
+subregion	Vietnam	South-Eastern Asia
+borders	Vietnam	Cambodia|China|Laos
+domain	Vietnam	.vn
+subregion	Vanuatu	Melanesia
+borders	Vanuatu	-
+domain	Vanuatu	.vu
+subregion	Samoa	Polynesia
+borders	Samoa	-
+domain	Samoa	.ws
+subregion	Yemen	Western Asia
+borders	Yemen	Oman|Saudi Arabia
+domain	Yemen	.ye
+subregion	South Africa	Southern Africa
+borders	South Africa	Botswana|Lesotho|Mozambique|Namibia|Eswatini|Zimbabwe
+domain	South Africa	.za
+subregion	Zambia	Eastern Africa
+borders	Zambia	Angola|Botswana|DR Congo|Malawi|Mozambique|Namibia|Tanzania|Zimbabwe
+domain	Zambia	.zm
+subregion	Zimbabwe	Eastern Africa
+borders	Zimbabwe	Botswana|Mozambique|South Africa|Zambia
+domain	Zimbabwe	.zw

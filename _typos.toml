@@ -7,6 +7,9 @@ extend-exclude = [
   "**/proptest-regressions/**",
   "LICENSES/**",
   "LICENSE-*",
+  # Training data and the frozen test set: verbatim from the original kit, with deliberate typos.
+  "crates/tiny-train/data/**",
+  "crates/tiny-train/tests/fixtures/**",
 ]
 
 [default.extend-words]

@@ -1,0 +1,34 @@
+hello|bonjour|hallo|hola|ciao
+goodbye|au revoir|auf Wiedersehen|-|arrivederci
+thank you|merci|danke|gracias|grazie
+please|-|bitte|por favor|per favore
+yes|oui|ja|-|-
+no|non|nein|no|no
+good morning|bonjour|guten Morgen|-|buongiorno
+good night|bonne nuit|gute Nacht|buenas noches|buona notte
+one|un|eins|uno|uno
+two|deux|zwei|dos|due
+three|trois|drei|tres|tre
+four|quatre|vier|cuatro|quattro
+five|cinq|-|cinco|cinque
+ten|dix|zehn|diez|dieci
+cat|chat|Katze|gato|gatto
+dog|chien|Hund|perro|cane
+water|eau|Wasser|agua|acqua
+bread|pain|Brot|pan|pane
+house|maison|Haus|casa|casa
+red|rouge|rot|rojo|rosso
+blue|bleu|blau|azul|blu
+black|noir|schwarz|negro|nero
+sun|soleil|Sonne|sol|sole
+moon|lune|Mond|luna|luna
+book|livre|Buch|libro|libro
+friend|ami|Freund|amigo|amico
+milk|lait|Milch|leche|latte
+apple|pomme|Apfel|manzana|mela
+mother|-|Mutter|madre|madre
+father|-|Vater|padre|padre
+girl|fille|-|chica|ragazza
+car|voiture|Auto|coche|macchina
+night|nuit|Nacht|noche|notte
+i love you|je t'aime|ich liebe dich|te quiero|ti amo
