@@ -8,4 +8,4 @@ allow-unwrap-in-tests = true
 allow-expect-in-tests = true
 
 # Proper names in doc comments that are not code.
-doc-valid-idents = ["..", "PyTorch", "NumPy"]
+doc-valid-idents = ["..", "PyTorch", "NumPy", "AdamW"]

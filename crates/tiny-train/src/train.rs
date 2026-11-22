@@ -2,6 +2,10 @@
 //! batching, the loss on answer letters only, the learning-rate schedule and
 //! gradient clipping.
 
+mod run;
+
+pub use run::{Options, train};
+
 use candle_core::backprop::GradStore;
 use candle_core::{D, DType, Device, Tensor, Var};
 use tiny::model::CTX;

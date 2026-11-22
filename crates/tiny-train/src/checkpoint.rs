@@ -7,8 +7,11 @@ use std::path::Path;
 
 use anyhow::{Context, bail};
 use candle_core::pickle::{Object, Stack, read_all_with_key};
-use candle_core::{DType, Tensor};
+use candle_core::{DType, Device, Tensor};
 use tiny::model::Config;
+
+/// Name of the tensor that holds `[D, L, H, HID]` in saved checkpoints.
+const CONFIG_KEY: &str = "config";
 
 /// A network's shape and its named full-precision tensors.
 #[derive(Debug, Clone)]
@@ -34,6 +37,59 @@ impl Checkpoint {
             .collect::<candle_core::Result<_>>()?;
 
         Ok(Self { config, tensors })
+    }
+
+    /// Reads a checkpoint: a PyTorch `.pt` file from `train2.py`, or a
+    /// `.safetensors` file written by [`Checkpoint::save`].
+    ///
+    /// # Errors
+    ///
+    /// Fails when the file cannot be read as either.
+    pub fn load(path: &Path) -> anyhow::Result<Self> {
+        if path.extension().is_some_and(|ext| ext == "pt") {
+            return Self::load_pt(path);
+        }
+
+        let mut tensors: BTreeMap<String, Tensor> =
+            candle_core::safetensors::load(path, &Device::Cpu)?
+                .into_iter()
+                .collect();
+        let sizes = tensors
+            .remove(CONFIG_KEY)
+            .context("no config tensor in the checkpoint")?
+            .to_vec1::<u32>()?;
+        let [width, layers, heads, hidden] = sizes[..] else {
+            bail!("config tensor has {} values, expected 4", sizes.len());
+        };
+        let size = |n: u32| usize::try_from(n);
+        let config = Config {
+            width: size(width)?,
+            layers: size(layers)?,
+            heads: size(heads)?,
+            hidden: size(hidden)?,
+        };
+
+        Ok(Self { config, tensors })
+    }
+
+    /// Writes the checkpoint as safetensors, with the config as an extra `u32` tensor.
+    ///
+    /// # Errors
+    ///
+    /// Fails when the file cannot be written.
+    pub fn save(&self, path: &Path) -> anyhow::Result<()> {
+        let c = self.config;
+        let sizes = [c.width, c.layers, c.heads, c.hidden]
+            .map(|n| u32::try_from(n).unwrap_or(u32::MAX))
+            .to_vec();
+        let mut tensors: std::collections::HashMap<String, Tensor> = self
+            .tensors
+            .iter()
+            .map(|(k, v)| (k.clone(), v.clone()))
+            .collect();
+        tensors.insert(CONFIG_KEY.to_owned(), Tensor::new(sizes, &Device::Cpu)?);
+
+        Ok(candle_core::safetensors::save(&tensors, path)?)
     }
 
     /// The tensor called `name`.
