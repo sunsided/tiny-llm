@@ -118,6 +118,9 @@ tasks:
 
   lint:mermaid:
     desc: Render every mermaid diagram (Markdown and doc comments) to catch broken ones
+    env:
+      # Chromium's sandbox is unavailable on Ubuntu 23.10+ (AppArmor userns); CI sets the same.
+      MMDC_NO_SANDBOX: '1'
     cmds:
       # Passes without mermaid-cli when there are no diagrams; set MMDC to override the command.
       - python3 scripts/lint-mermaid.py
