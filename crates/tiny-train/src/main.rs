@@ -204,13 +204,42 @@ fn show_samples(kit: &Kit, seed: u64) {
 fn device(name: &str) -> anyhow::Result<Device> {
     match name {
         "cpu" => Ok(Device::flex()),
-        #[cfg(feature = "cuda")]
-        "cuda" => Ok(Device::cuda(0)),
-        #[cfg(feature = "wgpu")]
-        "wgpu" => Ok(Device::wgpu(Default::default())),
-        "cuda" | "wgpu" => anyhow::bail!("build with `--features {name}` to train on {name}"),
+        "cuda" => cuda(),
+        "wgpu" => wgpu(),
         other => anyhow::bail!("unknown device {other}; use cpu, cuda or wgpu"),
     }
+}
+
+/// The first CUDA device.
+#[cfg(feature = "cuda")]
+#[expect(
+    clippy::unnecessary_wraps,
+    reason = "same signature as without the feature"
+)]
+fn cuda() -> anyhow::Result<Device> {
+    Ok(Device::cuda(0))
+}
+
+/// Without the `cuda` feature there is no CUDA device.
+#[cfg(not(feature = "cuda"))]
+fn cuda() -> anyhow::Result<Device> {
+    anyhow::bail!("build with `--features cuda` to train on CUDA")
+}
+
+/// The default wgpu device (Vulkan, Metal or DX12).
+#[cfg(feature = "wgpu")]
+#[expect(
+    clippy::unnecessary_wraps,
+    reason = "same signature as without the feature"
+)]
+fn wgpu() -> anyhow::Result<Device> {
+    Ok(Device::wgpu(burn::tensor::DeviceKind::default()))
+}
+
+/// Without the `wgpu` feature there is no wgpu device.
+#[cfg(not(feature = "wgpu"))]
+fn wgpu() -> anyhow::Result<Device> {
+    anyhow::bail!("build with `--features wgpu` to train on wgpu")
 }
 
 /// The fact files bundled with this crate.
